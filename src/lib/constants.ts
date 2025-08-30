@@ -84,7 +84,7 @@ export const DISCOGRAPHY = [
       '5 Stars Rivista MUSICA',
       '5 Stars PIZZICATO Magazine'
     ],
-    awardImageUrl: 'https://picsum.photos/120/120?random=10',
+    awardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/disco-top%201.png?alt=media&token=0582663c-2726-487d-940a-91975d36e643',
   },
   {
     id: 2,
@@ -99,7 +99,7 @@ export const DISCOGRAPHY = [
         '5 Stars Rivista MUSICA',
         '43rd "Liszt Ferenc Grand Prix du Disque" from Budapest Liszt Society (2024)'
     ],
-    awardImageUrl: 'https://picsum.photos/120/120?random=11',
+    awardImageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Liszt-plakett%201.png?alt=media&token=18320f1d-43e7-4e33-aa19-c815074bc0a5',
   },
 ];
 
