@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { NAV_LINKS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,7 +18,14 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-transparent">
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-bold font-headline text-accent tracking-widest">GIOVANNI BERTOLAZZI</span>
+          <Image 
+            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d" 
+            alt="Giovanni Bertolazzi Logo" 
+            width={250}
+            height={24}
+            className="h-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -41,14 +49,20 @@ export function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 text-white" />
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">
-                  <span className="font-bold font-headline text-accent">GIOVANNI BERTOLAZZI</span>
+                  <Image 
+                    src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d" 
+                    alt="Giovanni Bertolazzi Logo" 
+                    width={200}
+                    height={20}
+                    className="h-auto"
+                  />
                 </Link>
                 <nav className="grid gap-6 text-lg font-medium">
                   {NAV_LINKS.map((link) => (
