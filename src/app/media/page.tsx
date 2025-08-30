@@ -9,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { GALLERY_IMAGES, VIDEOS } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlayCircle } from 'lucide-react';
@@ -71,13 +70,13 @@ function PhotoGallery() {
   return (
     <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
       {images.map((photo) => (
-        <div key={photo.id} className="break-inside-avoid">
+        <div key={photo.id} className="break-inside-avoid relative w-full h-auto">
           <Image
             src={photo.imageUrl}
             alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            className="w-full h-auto object-cover"
+            fill
+            className="!relative object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             data-ai-hint="musician photo"
           />
         </div>
