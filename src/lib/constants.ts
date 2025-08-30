@@ -116,6 +116,7 @@ export const NEWS = [
         date: 'September 15, 2023',
         excerpt: 'Giovanni Bertolazzi\'s latest album explores the delicate and profound world of Chopin and Debussy, receiving critical acclaim.',
         link: '#',
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/News%2Fnews-1.png?alt=media&token=1c6b12a8-12c5-4d2d-9a67-27a1e2a8e805',
     },
     {
         id: 2,
@@ -123,6 +124,7 @@ export const NEWS = [
         date: 'August 28, 2023',
         excerpt: 'Read an in-depth interview where Giovanni discusses his musical philosophy and the making of his new album.',
         link: '#',
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/News%2Fnews-2.png?alt=media&token=4a7a8d0e-5d1e-4f1a-8c7a-9a9a35e4d271',
     },
     {
         id: 3,
@@ -130,6 +132,7 @@ export const NEWS = [
         date: 'July 10, 2023',
         excerpt: 'A look back at the magical evening in New York where Giovanni enchanted the audience with a breathtaking performance.',
         link: '#',
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/News%2Fnews-3.png?alt=media&token=8d2e8b0a-7e1d-4f1e-9a1c-7a6c9e0d1b1a',
     },
 ];
 
