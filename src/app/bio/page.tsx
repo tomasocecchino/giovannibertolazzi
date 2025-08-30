@@ -19,7 +19,7 @@ export default function BioPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         </div>
         <div className="container mx-auto px-4 z-10 text-left relative pt-24">
-          <h1 className="text-6xl md:text-8xl font-semibold font-headline text-[#008DDA] mb-4">
+          <h1 className="text-5xl md:text-7xl font-semibold font-headline text-[#008DDA] mb-4">
             Bio
           </h1>
           <blockquote className="max-w-xl text-lg md:text-xl text-white/80 italic">
