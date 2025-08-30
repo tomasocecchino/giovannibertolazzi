@@ -8,8 +8,10 @@ import Link from "next/link";
 export default function DiscographyPage() {
   return (
     <div className="bg-[#004165] text-white">
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <PageTitle className="text-white text-left">Discography</PageTitle>
+      <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
+        <h1 className="text-4xl md:text-6xl font-semibold font-headline text-white mb-16 text-left">
+          Discography
+        </h1>
         <blockquote className="max-w-2xl text-lg md:text-xl text-white/80 italic mt-4 mb-16">
           <p>&quot;There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!&quot;</p>
           <cite className="block mt-2 not-italic text-sm text-white/50">Cyprien Katsaris</cite>
