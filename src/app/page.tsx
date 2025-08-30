@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center bg-background">
         <div className="absolute inset-0 z-0">
              <Image
-                src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d"
+                src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Bertolazzi%20Giovanni%20Home.png?alt=media&token=e4b31c76-4870-426e-96ed-c6a423fe7967"
                 alt="Giovanni Bertolazzi"
                 fill
                 priority
