@@ -8,9 +8,9 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 export default function Home() {
 
   return (
-    <div className="-mt-16 md:-mt-16">
+    <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
+      <section className="relative min-h-screen flex items-center bg-[#0e141a] overflow-hidden">
         <div className="absolute inset-0 z-0">
              <Image
                 src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Bertolazzi%20Giovanni%20Home.png?alt=media&token=e4b31c76-4870-426e-96ed-c6a423fe7967"
