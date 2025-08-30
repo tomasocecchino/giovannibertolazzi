@@ -90,7 +90,7 @@ export const DISCOGRAPHY = [
     id: 2,
     title: 'LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE\'S SONETT',
     recordLabel: 'BORGATO COLLECTION',
-    imageUrl: 'https://picsum.photos/500/500?random=2',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/LISZT-PIANO-SONATA-IN-B-MINOR.png?alt=media&token=cabcd94c-6ffe-4b7e-a457-d96ca5e28665',
     spotifyEmbedUrl: 'https://open.spotify.com/embed/album/0pVsDPAv2K6g4h3MiJ4aA4?utm_source=generator',
     copyEmail: 'info@borgato.it',
     awards: [
