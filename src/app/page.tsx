@@ -26,7 +26,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 items-center h-full">
             <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-24 sm:pt-16">
               <div>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-headline tracking-tight text-white">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline tracking-tight text-white">
                   <span className="font-normal">Giovanni</span>
                   <br />
                   <span className="font-semibold">Bertolazzi</span>
@@ -53,18 +53,14 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="py-16 md:py-24 bg-[#f0f0f0]">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 items-center">
-            <div className="md:col-span-1">
-              <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63]">ABOUT</h2>
-            </div>
-            <div className="md:col-span-2 text-[#333] space-y-4 text-lg">
+        <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
+            <div className="max-w-3xl mx-auto text-[#333] space-y-4 text-lg text-left">
               <p>Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.</p>
               <p>He officially performed on the World's longest Concert-grand Piano during its first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).</p>
               <p>In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.</p>
               <p>Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the MAV Symphony Orchestra, the Orchestra del Teatro La Fenice.</p>
             </div>
-          </div>
           <div className="text-right mt-8">
             <Link href="/bio" className="text-[#004a63] font-semibold hover:underline">
               Read Bio <ArrowRight className="inline h-4 w-4" />
@@ -74,11 +70,11 @@ export default function Home() {
       </section>
 
       {/* Explore CDs Section */}
-      <section id="cds" className="py-16 md:py-24 bg-[#004a63]">
+      <section id="cds" className="py-16 md:py-24 bg-[#004165]">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
-              EXPLORE <span className="text-[#9adbe8]">CDs</span>
+              EXPLORE <span className="text-[#008DDA]">CDs</span>
             </h2>
             <Link href="/discography" className="text-white font-semibold hover:underline">
               View Discography <ArrowRight className="inline h-4 w-4" />
@@ -138,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Videos Section */}
-      <section id="videos" className="py-16 md:py-24 bg-[#004a63]">
+      <section id="videos" className="py-16 md:py-24 bg-[#004165]">
         <div className="container mx-auto px-4">
            <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
