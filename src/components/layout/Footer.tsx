@@ -52,7 +52,7 @@ export function Footer() {
             <h3 className="font-semibold text-gray-500 mb-4 tracking-widest">DATA PROTECTION</h3>
              <ul className="space-y-2">
                  {dataProtectionLinks.map(link => (
-                    <li key={link.href}>
+                    <li key={link.label}>
                         <Link href={link.href} className="text-gray-800 hover:text-[#004a63] transition-colors font-medium">
                             {link.label}
                         </Link>
