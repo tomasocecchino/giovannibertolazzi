@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -13,9 +13,21 @@ import Image from 'next/image';
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-transparent">
+    <header className={cn(
+      "sticky top-0 z-50 w-full transition-colors duration-300",
+      isScrolled ? "bg-black/80 backdrop-blur-sm" : "bg-transparent"
+    )}>
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Image 
@@ -36,7 +48,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 'transition-colors hover:text-white',
-                pathname === link.href ? 'text-white underline underline-offset-4' : 'text-white/60'
+                pathname === link.href ? 'text-white' : 'text-white/60'
               )}
             >
               {link.label}
@@ -53,7 +65,7 @@ export function Header() {
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="bg-[#0e141a]">
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">
                   <Image 
@@ -71,8 +83,8 @@ export function Header() {
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
-                        'flex items-center text-lg font-semibold text-muted-foreground hover:text-foreground',
-                         pathname === link.href && 'text-foreground'
+                        'flex items-center text-lg font-semibold text-white/70 hover:text-white',
+                         pathname === link.href && 'text-white'
                       )}
                     >
                       {link.label}
