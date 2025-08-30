@@ -9,7 +9,7 @@ export default function BioPage() {
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white bg-black">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://picsum.photos/1200/800"
+            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Bertolazzi%20Giovanni%20Bio.png?alt=media&token=1bbada54-9a39-4c95-b4c6-f77693a3c87e"
             alt="Giovanni Bertolazzi performing"
             fill
             priority
