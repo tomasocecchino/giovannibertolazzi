@@ -131,3 +131,63 @@ export const CONTACT_DETAILS = {
   email: 'booking@bertolazzi-music.com',
   phone: '+39 123 456 7890',
 };
+
+export const GALLERY_IMAGES = [
+  { id: 1, imageUrl: 'https://picsum.photos/seed/a/500/750', alt: 'Giovanni Bertolazzi performing', order: 1, height: 750 },
+  { id: 2, imageUrl: 'https://picsum.photos/seed/b/500/350', alt: 'Concert hall', order: 2, height: 350 },
+  { id: 3, imageUrl: 'https://picsum.photos/seed/c/500/600', alt: 'Portrait of Giovanni Bertolazzi', order: 3, height: 600 },
+  { id: 4, imageUrl: 'https://picsum.photos/seed/d/500/350', alt: 'Piano details', order: 4, height: 350 },
+  { id: 5, imageUrl: 'https://picsum.photos/seed/e/500/600', alt: 'Expressive portrait', order: 5, height: 600 },
+  { id: 6, imageUrl: 'https://picsum.photos/seed/f/500/350', alt: 'Orchestra performance', order: 6, height: 350 },
+  { id: 7, imageUrl: 'https://picsum.photos/seed/g/500/250', alt: 'Audience view', order: 7, height: 250 },
+  { id: 8, imageUrl: 'https://picsum.photos/seed/h/500/600', alt: 'Close up hands', order: 8, height: 600 },
+  { id: 9, imageUrl: 'https://picsum.photos/seed/i/500/350', alt: 'Candid photo', order: 9, height: 350 },
+];
+
+export const VIDEOS = [
+    {
+        id: 1,
+        title: "12 Études d'exécution transcendante, S. 139: N. 12 in B-Flat Minor...",
+        description: "Giovanni Bertolazzi - Topic • 175 visualizzazioni • 1 anno fa",
+        duration: "5:14",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        thumbnailUrl: "https://picsum.photos/seed/v1/180/101",
+        order: 1,
+    },
+    {
+        id: 2,
+        title: "Totentanz, S. 525",
+        description: "Giovanni Bertolazzi - Topic • 130 visualizzazioni • 1 anno fa",
+        duration: "5:14",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        thumbnailUrl: "https://picsum.photos/seed/v2/180/101",
+        order: 2,
+    },
+    {
+        id: 3,
+        title: "Recueillement, S. 204",
+        description: "Giovanni Bertolazzi - Topic • 78 visualizzazioni • 1 anno fa",
+        duration: "5:14",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        thumbnailUrl: "https://picsum.photos/seed/v3/180/101",
+        order: 3,
+    },
+     {
+        id: 4,
+        title: "6 Grandes Études de Paganini, S. 141: N. 3 in G-Sharp Minor 'La...",
+        description: "Giovanni Bertolazzi - Topic • 78 visualizzazioni • 1 anno fa",
+        duration: "5:14",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        thumbnailUrl: "https://picsum.photos/seed/v4/180/101",
+        order: 4,
+    },
+     {
+        id: 5,
+        title: '3 Études de concert, S. 144: N. 3 in D-Flat Major "Un sospiro"',
+        description: "Giovanni Bertolazzi - Topic • 64 visualizzazioni • 1 anno fa",
+        duration: "5:14",
+        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        thumbnailUrl: "https://picsum.photos/seed/v5/180/101",
+        order: 5,
+    },
+];

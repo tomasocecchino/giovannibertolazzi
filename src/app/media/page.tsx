@@ -1,51 +1,97 @@
-import { PageTitle } from "@/components/PageTitle";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Image from "next/image";
 
-const photos = Array.from({ length: 9 }, (_, i) => i + 1);
-const videos = Array.from({ length: 4 }, (_, i) => i + 1);
+'use client';
+
+import { useState } from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { GALLERY_IMAGES, VIDEOS } from '@/lib/constants';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ChevronDown, PlayCircle } from 'lucide-react';
+
+type View = 'gallery' | 'videos';
 
 export default function MediaPage() {
+  const [currentView, setCurrentView] = useState<View>('gallery');
+
   return (
-    <div className="animate-in fade-in duration-500">
-      <PageTitle>Media</PageTitle>
-      <Tabs defaultValue="photos" className="w-full">
-        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-          <TabsTrigger value="photos">Photos</TabsTrigger>
-          <TabsTrigger value="videos">Videos</TabsTrigger>
-        </TabsList>
-        <TabsContent value="photos">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-            {photos.map((p) => (
-              <Card key={p} className="overflow-hidden group">
-                <Image
-                  src={`https://picsum.photos/600/400?random=${p}`}
-                  alt={`Gallery image ${p}`}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover aspect-video group-hover:scale-105 transition-transform duration-300"
-                  data-ai-hint="concert performance"
-                />
-              </Card>
-            ))}
-          </div>
-        </TabsContent>
-        <TabsContent value="videos">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            {videos.map((v) => (
-              <Card key={v}>
-                <CardContent className="p-4">
-                  <div className="aspect-video bg-secondary rounded-lg flex items-center justify-center">
-                    <p className="text-muted-foreground">Video Placeholder {v}</p>
-                  </div>
-                  <p className="font-semibold mt-2">Performance at Hall {v}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </TabsContent>
-      </Tabs>
+    <div className="animate-in fade-in duration-500 container py-12 pt-32">
+      <div className="flex items-center gap-4 mb-8 md:mb-12">
+        <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
+          Media
+        </h1>
+        <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
+          <SelectTrigger className="w-auto bg-transparent border-0 text-2xl md:text-3xl font-headline text-[#004a63] focus:ring-0 focus:ring-offset-0">
+             <SelectValue placeholder="Select view" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="gallery">Gallery</SelectItem>
+            <SelectItem value="videos">Videos</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      {currentView === 'gallery' && <PhotoGallery />}
+      {currentView === 'videos' && <VideoGallery />}
+    </div>
+  );
+}
+
+function PhotoGallery() {
+  // TODO: Replace with dynamic data from Firebase Storage/Firestore
+  // You would fetch a list of image objects with URLs and order properties.
+  return (
+    <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+      {GALLERY_IMAGES.sort((a, b) => a.order - b.order).map((photo) => (
+        <div key={photo.id} className="break-inside-avoid">
+          <Image
+            src={photo.imageUrl}
+            alt={photo.alt}
+            width={500}
+            height={photo.height}
+            className="w-full h-auto object-cover"
+            data-ai-hint="musician photo"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VideoGallery() {
+    // TODO: Replace with dynamic data from Firestore collection "videos"
+    // Fetch video data including title, description, duration, videoUrl, thumbnailUrl, and order.
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+        {VIDEOS.sort((a, b) => a.order - b.order).map((video) => (
+            <Link href={video.videoUrl} key={video.id} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-colors">
+                <div className="relative shrink-0">
+                    <Image
+                        src={video.thumbnailUrl}
+                        alt={`Thumbnail for ${video.title}`}
+                        width={180}
+                        height={101}
+                        className="w-[180px] h-auto object-cover rounded-md"
+                        data-ai-hint="video thumbnail"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <PlayCircle className="w-8 h-8 text-white" />
+                    </div>
+                    <span className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded">
+                        {video.duration}
+                    </span>
+                </div>
+                <div>
+                    <h3 className="font-semibold text-base font-headline group-hover:text-[#004a63]">{video.title}</h3>
+                    <p className="text-sm text-muted-foreground">{video.description}</p>
+                </div>
+            </Link>
+        ))}
     </div>
   );
 }
