@@ -11,11 +11,12 @@ import {
 } from '@/components/ui/select';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PlayCircle } from 'lucide-react';
+import { PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 type View = 'gallery' | 'videos';
 
@@ -55,7 +56,7 @@ export default function MediaPage() {
 function PhotoGallery() {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
     async function loadImages() {
@@ -71,6 +72,22 @@ function PhotoGallery() {
     loadImages();
   }, []);
 
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((prevIndex) => (prevIndex! + 1) % images.length);
+    }
+  };
+
+  const handlePrevious = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((prevIndex) => (prevIndex! - 1 + images.length) % images.length);
+    }
+  };
+  
+  const currentImage = selectedImageIndex !== null ? images[selectedImageIndex] : null;
+
   if (loading) {
     return <div className="text-center">Loading gallery...</div>;
   }
@@ -78,11 +95,11 @@ function PhotoGallery() {
   return (
     <>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-        {images.map((photo) => (
+        {images.map((photo, index) => (
           <div 
             key={photo.id} 
             className="break-inside-avoid relative w-full h-auto cursor-pointer group"
-            onClick={() => setSelectedImage(photo.imageUrl)}
+            onClick={() => setSelectedImageIndex(index)}
           >
             <Image
               src={photo.imageUrl}
@@ -97,17 +114,37 @@ function PhotoGallery() {
         ))}
       </div>
 
-      <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] p-2 bg-transparent border-none shadow-none">
-           <DialogTitle className="sr-only">Enlarged gallery image</DialogTitle>
-          {selectedImage && (
-            <Image
-              src={selectedImage}
-              alt="Enlarged gallery view"
-              width={1600}
-              height={900}
-              className="w-full h-full object-contain"
-            />
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-screen-xl w-[95%] max-h-[90vh] p-0 bg-transparent border-none shadow-none flex items-center justify-center">
+           <DialogTitle className="sr-only">Enlarged gallery image: {currentImage?.alt}</DialogTitle>
+          {currentImage && (
+            <>
+                <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    onClick={handlePrevious}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
+                    aria-label="Previous image"
+                >
+                    <ChevronLeft className="h-8 w-8" />
+                </Button>
+                <Image
+                    src={currentImage.imageUrl}
+                    alt={currentImage.alt}
+                    width={1600}
+                    height={900}
+                    className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
+                />
+                <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    onClick={handleNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
+                    aria-label="Next image"
+                >
+                    <ChevronRight className="h-8 w-8" />
+                </Button>
+            </>
           )}
         </DialogContent>
       </Dialog>
