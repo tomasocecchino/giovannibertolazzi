@@ -75,7 +75,7 @@ export const DISCOGRAPHY = [
     id: 1,
     title: 'LISZT: PIANO WORKS (2CD)',
     recordLabel: 'BORGATO COLLECTION',
-    imageUrl: 'https://picsum.photos/500/500?random=1',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/LISZT-DOPPIO-CD.png?alt=media&token=4ead12fc-8dae-4802-aa89-6ac3a320358e',
     spotifyEmbedUrl: 'https://open.spotify.com/embed/album/3xQ1sWgCHzLeX21n4d1P9P?utm_source=generator',
     copyEmail: 'info@borgato.it',
     awards: [
