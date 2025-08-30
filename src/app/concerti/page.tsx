@@ -1,7 +1,7 @@
 
 'use client';
 import { CONCERTS } from "@/lib/constants";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -37,10 +37,13 @@ export default function ConcertsPage() {
                     Concerts
                 </h1>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
-                    <SelectTrigger className="w-auto bg-transparent border-none text-3xl md:text-5xl font-headline text-[#008DDA] focus:ring-0 focus:ring-offset-0 p-2 h-auto mb-4 font-semibold shadow-none">
+                    <SelectTrigger 
+                        className="w-auto bg-transparent border-none text-3xl md:text-5xl font-headline text-[#008DDA] focus:ring-0 focus:ring-offset-0 p-2 h-auto mb-4 font-semibold shadow-none"
+                        icon={<ChevronDown className="h-8 w-8 text-[#008DDA]" />}
+                    >
                         <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-black/80 text-white border-white/20">
+                    <SelectContent className="bg-white text-black">
                         <SelectItem value="2025">2025</SelectItem>
                         <SelectItem value="2024">2024</SelectItem>
                     </SelectContent>
