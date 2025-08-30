@@ -76,7 +76,7 @@ export const DISCOGRAPHY = [
     title: 'LISZT: PIANO WORKS (2CD)',
     recordLabel: 'BORGATO COLLECTION',
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/LISZT-DOPPIO-CD.png?alt=media&token=4ead12fc-8dae-4802-aa89-6ac3a320358e',
-    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/3xQ1sWgCHzLeX21n4d1P9P?utm_source=generator',
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/1DYHB8psfmArsIOLGF5V6c?utm_source=generator&theme=0',
     copyEmail: 'info@borgato.it',
     awards: [
       'ICMA Nomination 2024',
@@ -91,7 +91,7 @@ export const DISCOGRAPHY = [
     title: 'LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE\'S SONETT',
     recordLabel: 'BORGATO COLLECTION',
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/LISZT-PIANO-SONATA-IN-B-MINOR.png?alt=media&token=cabcd94c-6ffe-4b7e-a457-d96ca5e28665',
-    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/0pVsDPAv2K6g4h3MiJ4aA4?utm_source=generator',
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/3Onuw6iklYNjwvMYNzoPKz?utm_source=generator&theme=0',
     copyEmail: 'info@borgato.it',
     awards: [
         'ICMA Nomination 2023',
