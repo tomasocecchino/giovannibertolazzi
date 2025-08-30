@@ -28,7 +28,7 @@ export default function Home() {
                 <br />
                 <span className="font-semibold">Bertolazzi</span>
               </h1>
-              <p className="mt-4 text-2xl md:text-3xl max-w-2xl font-light text-white/20 tracking-widest">
+              <p className="mt-4 text-2xl md:text-3xl max-w-2xl font-normal text-white/20 tracking-widest">
                 CONCERT-PIANIST
               </p>
               <blockquote className="mt-12 italic text-lg text-white/50 max-w-md">
