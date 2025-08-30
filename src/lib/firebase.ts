@@ -23,6 +23,8 @@ export interface GalleryImage {
     order: number;
     imageUrl: string;
     alt: string;
+    description?: string;
+    photographer?: string;
 }
 
 export interface Video {

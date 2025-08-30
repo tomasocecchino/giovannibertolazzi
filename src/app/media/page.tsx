@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PlayCircle, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
@@ -118,12 +118,12 @@ function PhotoGallery() {
         <DialogContent className="max-w-screen-xl w-[95%] max-h-[90vh] p-0 bg-transparent border-none shadow-none flex items-center justify-center">
            <DialogTitle className="sr-only">Enlarged gallery image: {currentImage?.alt}</DialogTitle>
           {currentImage && (
-            <>
+            <div className="relative">
                 <Button 
                     variant="ghost" 
                     size="icon" 
                     onClick={handlePrevious}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
                     aria-label="Previous image"
                 >
                     <ChevronLeft className="h-8 w-8" />
@@ -139,12 +139,23 @@ function PhotoGallery() {
                     variant="ghost" 
                     size="icon" 
                     onClick={handleNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
                     aria-label="Next image"
                 >
                     <ChevronRight className="h-8 w-8" />
                 </Button>
-            </>
+                
+                {(currentImage.description || currentImage.photographer) && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-10">
+                    {currentImage.description && (
+                      <p className="text-base mb-1">{currentImage.description}</p>
+                    )}
+                    {currentImage.photographer && (
+                      <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {currentImage.photographer}</p>
+                    )}
+                  </div>
+                )}
+            </div>
           )}
         </DialogContent>
       </Dialog>
