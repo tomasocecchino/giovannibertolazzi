@@ -21,7 +21,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-[#f0f0f0] text-black py-12 mt-16">
+    <footer className="bg-[#f0f0f0] text-black py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-1">

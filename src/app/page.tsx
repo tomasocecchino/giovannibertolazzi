@@ -8,7 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 export default function Home() {
 
   return (
-    <div className="space-y-16 md:space-y-24 -mt-16 md:-mt-16">
+    <div className="-mt-16 md:-mt-16">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24 bg-[#f0f0f0]">
+      <section id="about" className="bg-[#f0f0f0]">
         <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
             <div className="max-w-3xl mx-auto text-[#333] space-y-4 text-lg text-left">
@@ -70,7 +70,7 @@ export default function Home() {
       </section>
 
       {/* Explore CDs Section */}
-      <section id="cds" className="py-16 md:py-24 bg-[#004165]">
+      <section id="cds" className="bg-[#004165]">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
@@ -100,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Next Concerts Section */}
-       <section id="concerts" className="py-16 md:py-24 bg-[#f0f0f0]">
+       <section id="concerts" className="bg-[#f0f0f0]">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-black">
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Videos Section */}
-      <section id="videos" className="py-16 md:py-24 bg-[#004165]">
+      <section id="videos" className="bg-[#004165]">
         <div className="container mx-auto px-4">
            <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
