@@ -26,7 +26,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 items-center h-full">
             <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-24 sm:pt-16">
               <div>
-                <h1 className="text-4xl sm:text-5xl font-headline tracking-tight text-white">
+                <h1 className="text-5xl sm:text-6xl font-headline tracking-tight text-white">
                   <span className="font-normal">Giovanni</span>
                   <br />
                   <span className="font-semibold">Bertolazzi</span>
@@ -76,7 +76,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
               EXPLORE <span className="text-[#008DDA]">CDs</span>
             </h2>
-            <Link href="/discography" className="text-white font-semibold hover:underline">
+            <Link href="/discografia" className="text-white font-semibold hover:underline">
               View Discography <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
