@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { NAV_LINKS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -66,6 +66,7 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-[#0e141a]">
+              <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">
                   <Image 
