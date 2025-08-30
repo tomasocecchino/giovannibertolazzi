@@ -14,7 +14,7 @@ import Link from 'next/link';
 import { PlayCircle } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 
 type View = 'gallery' | 'videos';
@@ -99,6 +99,7 @@ function PhotoGallery() {
 
       <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
         <DialogContent className="max-w-4xl max-h-[90vh] p-2 bg-transparent border-none shadow-none">
+           <DialogTitle className="sr-only">Enlarged gallery image</DialogTitle>
           {selectedImage && (
             <Image
               src={selectedImage}
