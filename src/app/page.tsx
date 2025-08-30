@@ -26,7 +26,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 items-center h-full">
             <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-24 sm:pt-16">
               <div>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline tracking-tight text-white">
+                <h1 className="text-4xl sm:text-5xl font-headline tracking-tight text-white">
                   <span className="font-normal">Giovanni</span>
                   <br />
                   <span className="font-semibold">Bertolazzi</span>
@@ -52,8 +52,8 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="bg-[#f0f0f0] py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
+      <section id="about" className="bg-[#f0f0f0]">
+        <div className="container mx-auto px-4 text-center py-16 md:py-24">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
             <div className="max-w-3xl mx-auto text-[#333] space-y-4 text-lg text-left">
               <p>Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.</p>
@@ -70,8 +70,8 @@ export default function Home() {
       </section>
 
       {/* Explore CDs Section */}
-      <section id="cds" className="bg-[#004165] py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section id="cds" className="bg-[#004165]">
+        <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
               EXPLORE <span className="text-[#008DDA]">CDs</span>
@@ -100,8 +100,8 @@ export default function Home() {
       </section>
 
       {/* Next Concerts Section */}
-       <section id="concerts" className="bg-[#f0f0f0] py-16 md:py-24">
-        <div className="container mx-auto px-4">
+       <section id="concerts" className="bg-[#f0f0f0]">
+        <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-black">
               NEXT <span className="text-[#004a63]">CONCERTS</span>
@@ -134,8 +134,8 @@ export default function Home() {
       </section>
 
       {/* Videos Section */}
-      <section id="videos" className="bg-[#004165] py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section id="videos" className="bg-[#004165]">
+        <div className="container mx-auto px-4 py-16 md:py-24">
            <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
             <Link href="/media" className="text-white font-semibold hover:underline">
