@@ -4,12 +4,12 @@ import { getFirestore, collection, getDocs, query, orderBy } from "firebase/fire
 
 // IMPORTANT: Replace this with your actual Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAdg0NHtJXf4bcieJIRIrKpZphj-DV_T_0",
+  authDomain: "giovanni-bertolazzi.firebaseapp.com",
+  projectId: "giovanni-bertolazzi",
+  storageBucket: "giovanni-bertolazzi.firebasestorage.app",
+  messagingSenderId: "325607330174",
+  appId: "1:325607330174:web:98e038db0a6893c87ae32f"
 };
 
 // Initialize Firebase
