@@ -28,12 +28,12 @@ export default function Home() {
                 <br />
                 <span className="font-semibold">Bertolazzi</span>
               </h1>
-              <p className="mt-4 text-2xl md:text-3xl max-w-2xl font-light text-white/70 tracking-widest">
+              <p className="mt-4 text-2xl md:text-3xl max-w-2xl font-light text-white/20 tracking-widest">
                 CONCERT-PIANIST
               </p>
-              <blockquote className="mt-12 border-l-2 border-accent pl-4 italic text-lg text-white/80 max-w-md">
+              <blockquote className="mt-12 border-l-2 border-accent pl-4 italic text-lg text-white/50 max-w-md">
                 &quot;The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.&quot;
-                <cite className="block mt-2 not-italic text-base text-white/50 tracking-widest">PIZZICATO Magazine</cite>
+                <cite className="block mt-2 not-italic text-base text-white/20 tracking-widest">PIZZICATO Magazine</cite>
               </blockquote>
               <div className="mt-24 flex items-center gap-4 text-accent">
                 <ArrowDown className="animate-bounce h-8 w-8"/>
