@@ -22,7 +22,7 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-2 gap-16 items-start">
                 <div>
                     <Image
-                        src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/giovanni-bertolazzi-contact.png?alt=media&token=e9375545-a92c-4740-977d-7f4158a1f7d5"
+                        src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Contact%20Giovanni%20Bertolazzi.png?alt=media&token=f43d2909-d46d-4df3-83be-b0d4b2f2ec29"
                         alt="Giovanni Bertolazzi"
                         width={600}
                         height={800}
