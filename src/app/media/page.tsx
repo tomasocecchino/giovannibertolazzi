@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Select,
   SelectContent,
@@ -13,6 +13,8 @@ import { GALLERY_IMAGES, VIDEOS } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlayCircle } from 'lucide-react';
+import { getGalleryImages, getVideos } from '@/lib/firebase';
+import type { GalleryImage, Video } from '@/lib/firebase';
 
 type View = 'gallery' | 'videos';
 
@@ -27,7 +29,7 @@ export default function MediaPage() {
             Media
           </h1>
           <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
-            <SelectTrigger className="w-auto bg-transparent border-0 text-2xl md:text-3xl font-headline text-black/80 focus:ring-0 focus:ring-offset-0 p-0 h-auto">
+            <SelectTrigger className="w-auto bg-white border-gray-300 text-2xl md:text-3xl font-headline text-black/80 focus:ring-0 focus:ring-offset-0 p-2 h-auto rounded-md">
               <SelectValue placeholder="Select view" />
             </SelectTrigger>
             <SelectContent className="bg-white text-black">
@@ -45,16 +47,35 @@ export default function MediaPage() {
 }
 
 function PhotoGallery() {
-  // TODO: Replace with dynamic data from Firebase Storage/Firestore
-  // You would fetch a list of image objects with URLs and order properties.
+    const [images, setImages] = useState<GalleryImage[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function loadImages() {
+            try {
+                const fetchedImages = await getGalleryImages();
+                setImages(fetchedImages);
+            } catch (error) {
+                console.error("Failed to fetch gallery images:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        loadImages();
+    }, []);
+
+    if (loading) {
+        return <div className="text-center">Loading gallery...</div>
+    }
+
   return (
     <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-      {GALLERY_IMAGES.sort((a, b) => a.order - b.order).map((photo) => (
+      {images.map((photo) => (
         <div key={photo.id} className="break-inside-avoid">
           <Image
             src={photo.imageUrl}
             alt={photo.alt}
-            width={500}
+            width={photo.width}
             height={photo.height}
             className="w-full h-auto object-cover"
             data-ai-hint="musician photo"
@@ -66,11 +87,30 @@ function PhotoGallery() {
 }
 
 function VideoGallery() {
-    // TODO: Replace with dynamic data from Firestore collection "videos"
-    // Fetch video data including title, description, duration, videoUrl, thumbnailUrl, and order.
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      async function loadVideos() {
+          try {
+              const fetchedVideos = await getVideos();
+              setVideos(fetchedVideos);
+          } catch (error) {
+              console.error("Failed to fetch videos:", error);
+          } finally {
+              setLoading(false);
+          }
+      }
+      loadVideos();
+  }, []);
+
+  if (loading) {
+      return <div className="text-center">Loading videos...</div>
+  }
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-        {VIDEOS.sort((a, b) => a.order - b.order).map((video) => (
+        {videos.map((video) => (
             <Link href={video.videoUrl} key={video.id} target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 group p-3 hover:bg-black/5 rounded-lg transition-colors">
                 <div className="relative shrink-0">
                     <Image
