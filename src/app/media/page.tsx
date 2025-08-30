@@ -28,7 +28,7 @@ export default function MediaPage() {
             Media
           </h1>
           <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
-            <SelectTrigger className="w-auto bg-white border-gray-300 text-2xl md:text-3xl font-headline text-black/80 focus:ring-0 focus:ring-offset-0 p-2 h-auto rounded-md">
+            <SelectTrigger className="w-auto bg-transparent border-none text-2xl md:text-3xl font-headline text-black/80 focus:ring-0 focus:ring-offset-0 p-2 h-auto rounded-md shadow-none">
               <SelectValue placeholder="Select view" />
             </SelectTrigger>
             <SelectContent className="bg-white text-black">
