@@ -14,10 +14,10 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+    <header className="sticky top-0 z-50 w-full bg-transparent">
+      <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-bold font-headline text-primary">GIOVANNI BERTOLAZZI</span>
+          <span className="font-bold font-headline text-accent tracking-widest">GIOVANNI BERTOLAZZI</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -27,8 +27,8 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                'transition-colors hover:text-accent',
-                pathname === link.href ? 'text-accent' : 'text-foreground/60'
+                'transition-colors hover:text-white',
+                pathname === link.href ? 'text-white underline underline-offset-4' : 'text-white/60'
               )}
             >
               {link.label}
@@ -48,7 +48,7 @@ export function Header() {
             <SheetContent side="right">
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">
-                  <span className="font-bold font-headline text-primary">GIOVANNI BERTOLAZZI</span>
+                  <span className="font-bold font-headline text-accent">GIOVANNI BERTOLAZZI</span>
                 </Link>
                 <nav className="grid gap-6 text-lg font-medium">
                   {NAV_LINKS.map((link) => (

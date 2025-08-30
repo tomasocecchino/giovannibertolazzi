@@ -1,14 +1,14 @@
 import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 
 export const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/bio', label: 'Bio' },
-  { href: '/concerti', label: 'Concerti' },
-  { href: '/discografia', label: 'Discografia' },
-  { href: '/media', label: 'Media' },
-  { href: '/contatti', label: 'Contatti' },
-  { href: '/news', label: 'News' },
-  { href: '/ai-recommender', label: 'AI Recommender' },
+  { href: '/', label: 'HOME' },
+  { href: '/bio', label: 'BIO' },
+  { href: '/agenda', label: 'AGENDA' },
+  { href: '/media', label: 'MEDIA' },
+  { href: '/news', label: 'NEWS' },
+  { href: '/discography', label: 'DISCOGRAPHY' },
+  { href: '/philosophy', label: 'PHILOSOPHY' },
+  { href: '/contacts', label: 'CONTACTS' },
 ];
 
 export const SOCIAL_LINKS = [
