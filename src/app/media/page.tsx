@@ -30,7 +30,7 @@ export default function MediaPage() {
             <SelectTrigger className="w-auto bg-transparent border-0 text-2xl md:text-3xl font-headline text-black/80 focus:ring-0 focus:ring-offset-0 p-0 h-auto">
               <SelectValue placeholder="Select view" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white text-black">
               <SelectItem value="gallery">Gallery</SelectItem>
               <SelectItem value="videos">Videos</SelectItem>
             </SelectContent>
