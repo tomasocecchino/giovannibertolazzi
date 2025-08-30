@@ -33,11 +33,11 @@ export default function ConcertsPage() {
         </div>
         <div className="container mx-auto px-4 z-10 text-left relative pt-24">
             <div className="flex items-end gap-4">
-                 <h1 className="text-6xl md:text-8xl font-semibold font-headline text-white mb-4">
+                 <h1 className="text-5xl md:text-7xl font-semibold font-headline text-white mb-4">
                     Concerts
                 </h1>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
-                    <SelectTrigger className="w-auto bg-transparent border-none text-4xl md:text-6xl font-headline text-[#008DDA] focus:ring-0 focus:ring-offset-0 p-2 h-auto mb-4 font-semibold shadow-none">
+                    <SelectTrigger className="w-auto bg-transparent border-none text-3xl md:text-5xl font-headline text-[#008DDA] focus:ring-0 focus:ring-offset-0 p-2 h-auto mb-4 font-semibold shadow-none">
                         <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-black/80 text-white border-white/20">
