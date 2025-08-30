@@ -14,6 +14,8 @@ import Link from 'next/link';
 import { PlayCircle } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 
 type View = 'gallery' | 'videos';
 
@@ -28,7 +30,12 @@ export default function MediaPage() {
             Media
           </h1>
           <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
-            <SelectTrigger className="w-auto bg-transparent border-none text-2xl md:text-3xl font-headline text-black/80 focus:ring-0 focus:ring-offset-0 p-2 h-auto rounded-md shadow-none">
+            <SelectTrigger className={cn(
+              "w-auto bg-transparent border-none text-2xl md:text-3xl font-headline focus:ring-0 focus:ring-offset-0 p-2 h-auto",
+              currentView === 'gallery' ? "text-[#004a63]" : "text-black/80",
+              "shadow-none",
+              "data-[state=open]:bg-white"
+            )}>
               <SelectValue placeholder="Select view" />
             </SelectTrigger>
             <SelectContent className="bg-white text-black">
@@ -46,42 +53,64 @@ export default function MediaPage() {
 }
 
 function PhotoGallery() {
-    const [images, setImages] = useState<GalleryImage[]>([]);
-    const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-    useEffect(() => {
-        async function loadImages() {
-            try {
-                const fetchedImages = await getGalleryImages();
-                setImages(fetchedImages);
-            } catch (error) {
-                console.error("Failed to fetch gallery images:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
-        loadImages();
-    }, []);
-
-    if (loading) {
-        return <div className="text-center">Loading gallery...</div>
+  useEffect(() => {
+    async function loadImages() {
+      try {
+        const fetchedImages = await getGalleryImages();
+        setImages(fetchedImages);
+      } catch (error) {
+        console.error("Failed to fetch gallery images:", error);
+      } finally {
+        setLoading(false);
+      }
     }
+    loadImages();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center">Loading gallery...</div>;
+  }
 
   return (
-    <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-      {images.map((photo) => (
-        <div key={photo.id} className="break-inside-avoid relative w-full h-auto">
-          <Image
-            src={photo.imageUrl}
-            alt={photo.alt}
-            fill
-            className="!relative object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            data-ai-hint="musician photo"
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        {images.map((photo) => (
+          <div 
+            key={photo.id} 
+            className="break-inside-avoid relative w-full h-auto cursor-pointer group"
+            onClick={() => setSelectedImage(photo.imageUrl)}
+          >
+            <Image
+              src={photo.imageUrl}
+              alt={photo.alt}
+              fill
+              className="!relative object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              data-ai-hint="musician photo"
+            />
+             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+        ))}
+      </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] p-2 bg-transparent border-none shadow-none">
+          {selectedImage && (
+            <Image
+              src={selectedImage}
+              alt="Enlarged gallery view"
+              width={1600}
+              height={900}
+              className="w-full h-full object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
@@ -90,21 +119,21 @@ function VideoGallery() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      async function loadVideos() {
-          try {
-              const fetchedVideos = await getVideos();
-              setVideos(fetchedVideos);
-          } catch (error) {
-              console.error("Failed to fetch videos:", error);
-          } finally {
-              setLoading(false);
-          }
+    async function loadVideos() {
+      try {
+        const fetchedVideos = await getVideos();
+        setVideos(fetchedVideos);
+      } catch (error) {
+        console.error("Failed to fetch videos:", error);
+      } finally {
+        setLoading(false);
       }
-      loadVideos();
+    }
+    loadVideos();
   }, []);
 
   if (loading) {
-      return <div className="text-center">Loading videos...</div>
+    return <div className="text-center">Loading videos...</div>;
   }
 
   return (
