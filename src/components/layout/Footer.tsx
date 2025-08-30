@@ -1,5 +1,5 @@
+
 import Link from 'next/link';
-import { SOCIAL_LINKS } from '@/lib/constants';
 
 export function Footer() {
   const footerNavLinks = [
@@ -7,7 +7,7 @@ export function Footer() {
     { href: '/bio', label: 'Bio' },
     { href: '/concerti', label: 'Agenda' },
     { href: '/media', label: 'Media' },
-    { href: '/discography', label: 'Discography' },
+    { href: '/discografia', label: 'Discography' },
     { href: '/press', label: 'Press' },
     { href: '/philosophy', label: 'Philosophy' },
     { href: '/contatti', label: 'Contacts' },
