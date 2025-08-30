@@ -1,3 +1,4 @@
+
 import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 
 export const NAV_LINKS = [
@@ -72,35 +73,33 @@ export const CONCERTS = [
 export const DISCOGRAPHY = [
   {
     id: 1,
-    title: 'Nocturnes & Preludes',
-    year: 2023,
+    title: 'LISZT: PIANO WORKS (2CD)',
+    recordLabel: 'BORGATO COLLECTION',
     imageUrl: 'https://picsum.photos/500/500?random=1',
-    streamLink: '#',
-    buyLink: '#',
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/3xQ1sWgCHzLeX21n4d1P9P?utm_source=generator',
+    copyEmail: 'info@borgato.it',
+    awards: [
+      'ICMA Nomination 2024',
+      '"TOP" Album MusicPaper Magazine',
+      '5 Stars Rivista MUSICA',
+      '5 Stars PIZZICATO Magazine'
+    ],
+    awardImageUrl: 'https://picsum.photos/120/120?random=10',
   },
   {
     id: 2,
-    title: 'Sonatas of Light',
-    year: 2021,
+    title: 'LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE\'S SONETT',
+    recordLabel: 'BORGATO COLLECTION',
     imageUrl: 'https://picsum.photos/500/500?random=2',
-    streamLink: '#',
-    buyLink: '#',
-  },
-  {
-    id: 3,
-    title: 'Baroque Reflections',
-    year: 2019,
-    imageUrl: 'https://picsum.photos/500/500?random=3',
-    streamLink: '#',
-    buyLink: '#',
-  },
-  {
-    id: 4,
-    title: 'An Italian Journey',
-    year: 2017,
-    imageUrl: 'https://picsum.photos/500/500?random=4',
-    streamLink: '#',
-    buyLink: '#',
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/0pVsDPAv2K6g4h3MiJ4aA4?utm_source=generator',
+    copyEmail: 'info@borgato.it',
+    awards: [
+        'ICMA Nomination 2023',
+        'SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)',
+        '5 Stars Rivista MUSICA',
+        '43rd "Liszt Ferenc Grand Prix du Disque" from Budapest Liszt Society (2024)'
+    ],
+    awardImageUrl: 'https://picsum.photos/120/120?random=11',
   },
 ];
 
