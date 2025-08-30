@@ -24,7 +24,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 items-center h-full">
             <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-24 sm:pt-16">
               <div>
-                <h1 className="text-6xl sm:text-7xl md:text-9xl font-headline tracking-tight text-white">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl font-headline tracking-tight text-white">
                   <span className="font-normal">Giovanni</span>
                   <br />
                   <span className="font-semibold">Bertolazzi</span>
