@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center bg-background">
         <div className="absolute inset-0 z-0">
              <Image
-                src="https://storage.googleapis.com/studiostack-asset-3b22b2f6-3507-4223-9a3e-6a3f5a119782/pianist-hero.png"
+                src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Giovanni%20Bertolazzi%20Home.png?alt=media&token=7299ea71-e78f-4a3f-bea0-45df6064aa02"
                 alt="Giovanni Bertolazzi"
                 fill
                 priority
