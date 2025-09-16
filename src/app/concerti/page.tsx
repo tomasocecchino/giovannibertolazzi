@@ -31,7 +31,7 @@ export default function ConcertsPage() {
       try {
         setLoading(true);
         const fetchedConcerts = await getConcerts();
-        // Convert Firestore Timestamps to JS Dates
+        // Convert ISO date strings from firebase.ts back to JS Dates for client-side manipulation
         const formattedConcerts = fetchedConcerts.map(c => ({
           ...c,
           date: new Date(c.date),

@@ -2,7 +2,7 @@
 import { initializeApp, getApps, getApp, FirebaseOptions } from "firebase/app";
 import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
 
-// IMPORTANT: Replace this with your actual Firebase configuration
+// IMPORTANT: This is the actual Firebase configuration for your project.
 const firebaseConfig: FirebaseOptions = {
   apiKey: "AIzaSyAdg0NHtJXf4bcieJIRIrKpZphj-DV_T_0",
   authDomain: "giovanni-bertolazzi.firebaseapp.com",
@@ -115,17 +115,24 @@ export async function getConcerts(): Promise<Concert[]> {
             if (data.date instanceof Timestamp) {
                 date = data.date.toDate();
             } else if (typeof data.date === 'string') {
+                // Attempt to parse a string date. This is less reliable than Timestamps.
                 date = new Date(data.date);
             } else {
                 // If date is in another format or missing, log a warning and use current date as fallback
-                console.warn(`Invalid date format for concert ${doc.id}:`, data.date);
-                date = new Date();
+                console.warn(`Invalid or missing date format for concert ${doc.id}:`, data.date);
+                date = new Date(); // Fallback to now
             }
             
+            // Check if the parsed date is valid
+            if (isNaN(date.getTime())) {
+                console.warn(`Could not parse a valid date for concert ${doc.id}. Using current date as fallback.`);
+                date = new Date();
+            }
+
             return {
                 id: doc.id,
                 ...data,
-                date: date.toISOString(), // Standardize to ISO string
+                date: date.toISOString(), // Standardize to ISO string for consistency
             } as Concert;
         });
 
