@@ -37,6 +37,15 @@ export interface Video {
     thumbnailUrl: string;
 }
 
+export interface Concert {
+    id: string;
+    date: string;
+    city: string;
+    venue: string;
+    ticketLink: string;
+    imageUrl?: string;
+}
+
 
 // --- DATA FETCHING FUNCTIONS ---
 
@@ -86,5 +95,36 @@ export async function getVideos(): Promise<Video[]> {
     } catch (error) {
         console.error("Error fetching videos from Firestore:", error);
         return [];
+    }
+}
+
+/**
+ * Fetches concerts from the 'concerts' collection in Firestore,
+ * ordered by the 'date' field.
+ */
+export async function getConcerts(): Promise<Concert[]> {
+    try {
+        const concertsCollection = collection(db, "concerts");
+        // Firestore requires an index for orderBy on a different field than a range comparison.
+        // Assuming date is stored in a format that can be sorted lexicographically (e.g., YYYY-MM-DD).
+        // For 'date' fields of type Timestamp, this works directly.
+        const q = query(concertsCollection, orderBy("date", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        const concerts = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            // Convert Firestore Timestamp to a readable string if necessary
+            // For this example, we'll assume the date is stored as a string like "Month Day, Year"
+            return {
+                id: doc.id,
+                ...data
+            } as Concert;
+        });
+
+        return concerts;
+    } catch (error) {
+        console.error("Error fetching concerts from Firestore:", error);
+        // Throwing the error to be handled by the component
+        throw new Error('Could not fetch concerts. Please check Firestore permissions.');
     }
 }

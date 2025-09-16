@@ -1,6 +1,5 @@
 
 'use client';
-import { CONCERTS } from "@/lib/constants";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +10,63 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getConcerts } from "@/lib/firebase";
+import type { Concert } from "@/lib/firebase";
+import { Loader2 } from "lucide-react";
 
 export default function ConcertsPage() {
-    const [selectedYear, setSelectedYear] = useState('2025');
+  const [selectedYear, setSelectedYear] = useState('2025');
+  const [concerts, setConcerts] = useState<Concert[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    async function loadConcerts() {
+      try {
+        setLoading(true);
+        const fetchedConcerts = await getConcerts();
+        setConcerts(fetchedConcerts);
+        setError(null);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadConcerts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error) {
+      return (
+        <div className="bg-[#f0f0f0] text-black">
+            <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
+                <div className="max-w-4xl mx-auto text-center text-red-500 bg-red-100 p-8 rounded-md">
+                    <h2 className="text-xl font-bold mb-2">Error loading concerts</h2>
+                    <p>{error}</p>
+                    <p className="text-sm text-gray-600 mt-4">Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} { allow read; }`</p>
+                </div>
+            </div>
+        </div>
+      );
+  }
+  
+  const years = [...new Set(concerts.map(c => new Date(c.date).getFullYear().toString()))].sort((a, b) => b.localeCompare(a));
+
+  if (years.length > 0 && !years.includes(selectedYear)) {
+      setSelectedYear(years[0]);
+  }
+
+  const filteredConcerts = concerts.filter(c => new Date(c.date).getFullYear().toString() === selectedYear);
+  
   return (
     <div className="animate-in fade-in duration-500">
        {/* Hero Section */}
@@ -44,8 +95,9 @@ export default function ConcertsPage() {
                         <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-white text-black">
-                        <SelectItem value="2025">2025</SelectItem>
-                        <SelectItem value="2024">2024</SelectItem>
+                        {years.map(year => (
+                           <SelectItem key={year} value={year}>{year}</SelectItem>
+                        ))}
                     </SelectContent>
                 </Select>
             </div>
@@ -59,38 +111,40 @@ export default function ConcertsPage() {
       {/* Main Content */}
       <div className="bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 py-16 md:py-24">
-            <div className="max-w-4xl mx-auto space-y-4">
-                {CONCERTS.filter(c => c.date.includes(selectedYear)).map((concert) => {
-                    const dateParts = concert.date.split(' ');
-                    const month = dateParts[0].substring(0, 3);
-                    const day = dateParts[1].replace(',', '');
+              <div className="max-w-4xl mx-auto space-y-4">
+                  {filteredConcerts.length > 0 ? filteredConcerts.map((concert) => {
+                      const concertDate = new Date(concert.date);
+                      const month = concertDate.toLocaleString('default', { month: 'short' }).toUpperCase();
+                      const day = concertDate.getDate();
 
-                    return (
-                        <div key={concert.id} className="grid grid-cols-[100px_1fr_auto] items-center gap-6 p-4 border-b border-gray-300">
-                            <Image
-                                src={concert.imageUrl || "https://picsum.photos/100/100"}
-                                alt={`Concert at ${concert.venue}`}
-                                width={100}
-                                height={100}
-                                className="w-full h-auto object-cover aspect-square"
-                                data-ai-hint="musician portrait monochrome"
-                            />
-                            <div>
-                                <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concert.date.split(', ')[1]}</p>
-                                <h2 className="text-xl font-semibold my-1 text-[#004165] font-headline tracking-wide">{concert.venue}</h2>
-                                <p className="text-sm text-black/70 mb-2">Piano Recital</p>
-                                <Link href={concert.ticketLink} className="text-sm text-[#004a63] font-semibold hover:underline">
-                                    Buy Ticket <ArrowRight className="inline h-3 w-3" />
-                                </Link>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-lg text-[#008DDA] font-medium">{month}</p>
-                                <p className="text-6xl font-bold text-[#004a63]">{day}</p>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
+                      return (
+                          <div key={concert.id} className="grid grid-cols-[100px_1fr_auto] items-center gap-6 p-4 border-b border-gray-300">
+                              <Image
+                                  src={concert.imageUrl || "https://picsum.photos/seed/concert/100"}
+                                  alt={`Concert at ${concert.venue}`}
+                                  width={100}
+                                  height={100}
+                                  className="w-full h-auto object-cover aspect-square"
+                                  data-ai-hint="musician portrait monochrome"
+                              />
+                              <div>
+                                  <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concertDate.getFullYear()}</p>
+                                  <h2 className="text-xl font-semibold my-1 text-[#004165] font-headline tracking-wide">{concert.venue}</h2>
+                                  <p className="text-sm text-black/70 mb-2">Piano Recital</p>
+                                  <Link href={concert.ticketLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
+                                      Buy Ticket <ArrowRight className="inline h-3 w-3" />
+                                  </Link>
+                              </div>
+                              <div className="text-right">
+                                  <p className="text-lg text-[#008DDA] font-medium">{month}</p>
+                                  <p className="text-6xl font-bold text-[#004a63]">{day}</p>
+                              </div>
+                          </div>
+                      );
+                  }) : (
+                     <p className="text-center text-lg text-black/70">No concerts scheduled for {selectedYear}.</p>
+                  )}
+              </div>
         </div>
       </div>
     </div>
