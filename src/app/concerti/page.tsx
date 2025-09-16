@@ -143,9 +143,11 @@ export default function ConcertsPage() {
                                   <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concert.date.getFullYear()}</p>
                                   <h2 className="text-xl font-semibold my-1 text-[#004165] font-headline tracking-wide">{concert.venue}</h2>
                                   <p className="text-sm text-black/70 mb-2">Piano Recital</p>
-                                  <Link href={concert.ticketLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
-                                      Buy Ticket <ArrowRight className="inline h-3 w-3" />
-                                  </Link>
+                                  {concert.ticketLink && (
+                                    <Link href={concert.ticketLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
+                                        Buy Ticket <ArrowRight className="inline h-3 w-3" />
+                                    </Link>
+                                  )}
                               </div>
                               <div className="text-right">
                                   <p className="text-lg text-[#008DDA] font-medium">{month}</p>
