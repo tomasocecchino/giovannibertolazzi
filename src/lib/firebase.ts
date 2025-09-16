@@ -110,7 +110,17 @@ export async function getConcerts(): Promise<Concert[]> {
 
         const concerts = querySnapshot.docs.map(doc => {
             const data = doc.data();
-            const date = data.date instanceof Timestamp ? data.date.toDate() : new Date(data.date);
+            let date;
+
+            if (data.date instanceof Timestamp) {
+                date = data.date.toDate();
+            } else if (typeof data.date === 'string') {
+                date = new Date(data.date);
+            } else {
+                // If date is in another format or missing, log a warning and use current date as fallback
+                console.warn(`Invalid date format for concert ${doc.id}:`, data.date);
+                date = new Date();
+            }
             
             return {
                 id: doc.id,
@@ -120,9 +130,9 @@ export async function getConcerts(): Promise<Concert[]> {
         });
 
         return concerts;
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error fetching concerts from Firestore:", error);
-        // Throwing the error to be handled by the component
-        throw new Error('Could not fetch concerts. Please check Firestore permissions and data format.');
+        // Throwing a more detailed error to be handled by the component
+        throw new Error(`Could not fetch concerts. Please check Firestore permissions and data format. Original error: ${error.message}`);
     }
 }
