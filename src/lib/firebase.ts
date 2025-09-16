@@ -42,11 +42,11 @@ export interface Concert {
     date: any; // Can be a Timestamp from Firestore
     city: string;
     venue: string;
-    title?: string;
-    orchestra?: string;
-    conductor?: string;
-    ticketLink?: string; // Renamed from ticketUrl to match component
+    ticketUrl?: string; // Corrected from ticketLink and made optional
     imageUrl?: string;
+    title?: string;
+    conductor?: string;
+    orchestra?: string;
 }
 
 
@@ -136,7 +136,6 @@ export async function getConcerts(): Promise<Concert[]> {
                 id: doc.id,
                 ...data,
                 date: date.toISOString(), // Standardize to ISO string for consistency
-                ticketLink: data.ticketUrl || data.ticketLink, // Accept both ticketUrl and ticketLink
             } as Concert;
         });
 

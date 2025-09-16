@@ -67,17 +67,17 @@ export default function ConcertsPage() {
   }
 
   if (error) {
-      return (
-        <div className="bg-[#f0f0f0] text-black">
-            <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
-                <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-bold text-red-800 mb-4">Error Loading Concerts</h2>
-                    <p className="text-red-700 mb-4">{error}</p>
-                    <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} {'{ allow read; }'}`. Also, check that the `date` field is a valid Timestamp or a string that can be parsed into a Date.</p>
-                </div>
+    return (
+      <div className="bg-[#f0f0f0] text-black">
+        <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
+            <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
+                <h2 className="text-2xl font-bold text-red-800 mb-4">Error Loading Concerts</h2>
+                <p className="text-red-700 mb-4">{error}</p>
+                <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} {'{ allow read; }'}`. Also, check that the `date` field is a valid Timestamp or a string that can be parsed into a Date.</p>
             </div>
         </div>
-      );
+      </div>
+    );
   }
   
   return (
@@ -142,12 +142,12 @@ export default function ConcertsPage() {
                               <div>
                                   <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concert.date.getFullYear()}</p>
                                   <h2 className="text-xl font-semibold my-1 text-[#004165] font-headline tracking-wide">{concert.title || concert.venue}</h2>
-                                  <div className="text-sm text-black/70 mb-2">
-                                    {concert.orchestra && <p>{concert.orchestra}</p>}
+                                  <div className="text-sm text-black/70 mb-2 space-y-1">
+                                    {concert.orchestra && <p>Orchestra: {concert.orchestra}</p>}
                                     {concert.conductor && <p>Conductor: {concert.conductor}</p>}
                                   </div>
-                                  {concert.ticketLink && (
-                                    <Link href={concert.ticketLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
+                                  {concert.ticketUrl && (
+                                    <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
                                         Buy Ticket <ArrowRight className="inline h-3 w-3" />
                                     </Link>
                                   )}
