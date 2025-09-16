@@ -1,9 +1,9 @@
 
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore, collection, getDocs, query, orderBy } from "firebase/firestore";
+import { initializeApp, getApps, getApp, FirebaseOptions } from "firebase/app";
+import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
 
 // IMPORTANT: Replace this with your actual Firebase configuration
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey: "AIzaSyAdg0NHtJXf4bcieJIRIrKpZphj-DV_T_0",
   authDomain: "giovanni-bertolazzi.firebaseapp.com",
   projectId: "giovanni-bertolazzi",
@@ -39,7 +39,7 @@ export interface Video {
 
 export interface Concert {
     id: string;
-    date: string;
+    date: any; // Can be a Timestamp from Firestore
     city: string;
     venue: string;
     ticketLink: string;
@@ -105,19 +105,17 @@ export async function getVideos(): Promise<Video[]> {
 export async function getConcerts(): Promise<Concert[]> {
     try {
         const concertsCollection = collection(db, "concerts");
-        // Firestore requires an index for orderBy on a different field than a range comparison.
-        // Assuming date is stored in a format that can be sorted lexicographically (e.g., YYYY-MM-DD).
-        // For 'date' fields of type Timestamp, this works directly.
         const q = query(concertsCollection, orderBy("date", "desc"));
         const querySnapshot = await getDocs(q);
 
         const concerts = querySnapshot.docs.map(doc => {
             const data = doc.data();
-            // Convert Firestore Timestamp to a readable string if necessary
-            // For this example, we'll assume the date is stored as a string like "Month Day, Year"
+            const date = data.date instanceof Timestamp ? data.date.toDate() : new Date(data.date);
+            
             return {
                 id: doc.id,
-                ...data
+                ...data,
+                date: date.toISOString(), // Standardize to ISO string
             } as Concert;
         });
 
@@ -125,6 +123,6 @@ export async function getConcerts(): Promise<Concert[]> {
     } catch (error) {
         console.error("Error fetching concerts from Firestore:", error);
         // Throwing the error to be handled by the component
-        throw new Error('Could not fetch concerts. Please check Firestore permissions.');
+        throw new Error('Could not fetch concerts. Please check Firestore permissions and data format.');
     }
 }

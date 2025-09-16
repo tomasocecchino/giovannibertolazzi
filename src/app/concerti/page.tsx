@@ -12,12 +12,17 @@ import {
 } from '@/components/ui/select';
 import { useState, useEffect } from "react";
 import { getConcerts } from "@/lib/firebase";
-import type { Concert } from "@/lib/firebase";
+import type { Concert as RawConcert } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
 
+// Extend the concert type to work with JS Date objects
+interface Concert extends Omit<RawConcert, 'date'> {
+  date: Date;
+}
+
 export default function ConcertsPage() {
-  const [selectedYear, setSelectedYear] = useState('2025');
-  const [concerts, setConcerts] = useState<Concert[]>([]);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
+  const [allConcerts, setAllConcerts] = useState<Concert[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,20 +31,36 @@ export default function ConcertsPage() {
       try {
         setLoading(true);
         const fetchedConcerts = await getConcerts();
-        setConcerts(fetchedConcerts);
+        // Convert Firestore Timestamps to JS Dates
+        const formattedConcerts = fetchedConcerts.map(c => ({
+          ...c,
+          date: new Date(c.date),
+        }));
+        setAllConcerts(formattedConcerts);
         setError(null);
       } catch (err: any) {
-        setError(err.message);
+        setError(err.message || 'An unknown error occurred.');
       } finally {
         setLoading(false);
       }
     }
     loadConcerts();
   }, []);
-
+  
+  const years = [...new Set(allConcerts.map(c => c.date.getFullYear().toString()))].sort((a, b) => b.localeCompare(a));
+  
+  // Set initial year to the latest year with concerts if available
+  useEffect(() => {
+    if (!loading && years.length > 0 && !years.includes(selectedYear)) {
+      setSelectedYear(years[0]);
+    }
+  }, [loading, years, selectedYear]);
+  
+  const filteredConcerts = allConcerts.filter(c => c.date.getFullYear().toString() === selectedYear);
+  
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-[#f0f0f0]">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
@@ -49,23 +70,15 @@ export default function ConcertsPage() {
       return (
         <div className="bg-[#f0f0f0] text-black">
             <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
-                <div className="max-w-4xl mx-auto text-center text-red-500 bg-red-100 p-8 rounded-md">
-                    <h2 className="text-xl font-bold mb-2">Error loading concerts</h2>
-                    <p>{error}</p>
-                    <p className="text-sm text-gray-600 mt-4">Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} { allow read; }`</p>
+                <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
+                    <h2 className="text-2xl font-bold text-red-800 mb-4">Error Loading Concerts</h2>
+                    <p className="text-red-700 mb-4">{error}</p>
+                    <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} {'{ allow read; }'}`. Also, check that the `date` field is a valid Timestamp or a string that can be parsed into a Date.</p>
                 </div>
             </div>
         </div>
       );
   }
-  
-  const years = [...new Set(concerts.map(c => new Date(c.date).getFullYear().toString()))].sort((a, b) => b.localeCompare(a));
-
-  if (years.length > 0 && !years.includes(selectedYear)) {
-      setSelectedYear(years[0]);
-  }
-
-  const filteredConcerts = concerts.filter(c => new Date(c.date).getFullYear().toString() === selectedYear);
   
   return (
     <div className="animate-in fade-in duration-500">
@@ -113,9 +126,8 @@ export default function ConcertsPage() {
         <div className="container mx-auto px-4 py-16 md:py-24">
               <div className="max-w-4xl mx-auto space-y-4">
                   {filteredConcerts.length > 0 ? filteredConcerts.map((concert) => {
-                      const concertDate = new Date(concert.date);
-                      const month = concertDate.toLocaleString('default', { month: 'short' }).toUpperCase();
-                      const day = concertDate.getDate();
+                      const month = concert.date.toLocaleString('default', { month: 'short' }).toUpperCase();
+                      const day = concert.date.getDate();
 
                       return (
                           <div key={concert.id} className="grid grid-cols-[100px_1fr_auto] items-center gap-6 p-4 border-b border-gray-300">
@@ -128,7 +140,7 @@ export default function ConcertsPage() {
                                   data-ai-hint="musician portrait monochrome"
                               />
                               <div>
-                                  <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concertDate.getFullYear()}</p>
+                                  <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concert.date.getFullYear()}</p>
                                   <h2 className="text-xl font-semibold my-1 text-[#004165] font-headline tracking-wide">{concert.venue}</h2>
                                   <p className="text-sm text-black/70 mb-2">Piano Recital</p>
                                   <Link href={concert.ticketLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
