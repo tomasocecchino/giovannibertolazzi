@@ -134,12 +134,7 @@ export default function ConcertsPage() {
 
                       return (
                           <div key={concert.id}>
-                              <div className="grid grid-cols-[auto_1fr] items-center gap-6 p-4">
-                                   <div className="text-center w-24 shrink-0">
-                                      <p className="text-xl text-[#008DDA] font-medium">{month}</p>
-                                      <p className="text-6xl font-semibold text-[#004a63] leading-none my-1">{day}</p>
-                                      <p className="text-lg text-[#008DDA] font-medium">{time}</p>
-                                  </div>
+                              <div className="grid grid-cols-[1fr_auto] items-center gap-6 p-4">
                                   <div>
                                       <h2 className="text-xl font-semibold my-1 text-[#004a63] font-headline tracking-wide">{concert.title}</h2>
                                       <p className="text-base text-black/80 font-medium">{concert.music}</p>
@@ -149,6 +144,11 @@ export default function ConcertsPage() {
                                             Info & Tickets <ArrowRight className="inline h-3 w-3" />
                                         </Link>
                                       )}
+                                  </div>
+                                   <div className="text-center w-24 shrink-0">
+                                      <p className="text-xl text-[#008DDA] font-medium">{month}</p>
+                                      <p className="text-6xl font-semibold text-[#004a63] leading-none my-1">{day}</p>
+                                      <p className="text-lg text-[#008DDA] font-medium">{time}</p>
                                   </div>
                               </div>
                               {index < filteredConcerts.length - 1 && <hr className="border-t-2 border-black/80 max-w-5xl mx-auto" />}
