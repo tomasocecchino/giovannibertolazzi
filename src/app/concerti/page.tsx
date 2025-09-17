@@ -135,15 +135,15 @@ export default function ConcertsPage() {
                               <div className="grid grid-cols-[120px_1fr_auto] items-center gap-6 p-4">
                                   <Image
                                       src={concert.imageUrl || "https://picsum.photos/seed/concert/120"}
-                                      alt={`Concert at ${concert.venue}`}
+                                      alt={`Concert at ${concert.title}`}
                                       width={120}
                                       height={120}
                                       className="w-full h-auto object-cover aspect-square"
                                       data-ai-hint="musician portrait monochrome"
                                   />
                                   <div>
-                                      <h2 className="text-xl font-bold my-1 text-[#004165] font-headline tracking-wide">{concert.city}, {concert.venue}</h2>
-                                      <p className="text-base text-black/80">{concert.title}</p>
+                                      <h2 className="text-xl font-semibold my-1 text-[#004a63] font-headline tracking-wide">{concert.title}</h2>
+                                      <p className="text-base text-black/80 font-medium">{concert.music}</p>
                                       {concert.people && <p className="text-sm text-black/60 mt-1">{concert.people}</p>}
                                       {concert.ticketUrl && (
                                         <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline mt-3 inline-block">
@@ -151,10 +151,10 @@ export default function ConcertsPage() {
                                         </Link>
                                       )}
                                   </div>
-                                  <div className="text-right">
-                                      <p className="text-xl text-[#008DDA] font-semibold">{month}</p>
-                                      <p className="text-6xl font-bold text-[#004a63] leading-none my-1">{day}</p>
-                                      <p className="text-lg text-[#004a63] font-semibold">{time}</p>
+                                  <div className="text-center">
+                                      <p className="text-xl text-[#008DDA] font-medium">{month}</p>
+                                      <p className="text-6xl font-semibold text-[#004a63] leading-none my-1">{day}</p>
+                                      <p className="text-lg text-[#008DDA] font-medium">{time}</p>
                                   </div>
                               </div>
                               {index < filteredConcerts.length - 1 && <hr className="border-t-2 border-black/80 max-w-5xl mx-auto" />}

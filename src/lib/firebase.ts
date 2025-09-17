@@ -40,12 +40,11 @@ export interface Video {
 export interface Concert {
     id: string;
     date: any; // Can be a Timestamp from Firestore
-    city: string;
-    venue: string;
+    title: string;
+    music: string;
+    people: string;
     ticketUrl?: string;
     imageUrl?: string;
-    title?: string;
-    people?: string; // New unified field
 }
 
 
