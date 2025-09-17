@@ -42,11 +42,10 @@ export interface Concert {
     date: any; // Can be a Timestamp from Firestore
     city: string;
     venue: string;
-    ticketUrl?: string; // Corrected from ticketLink and made optional
+    ticketUrl?: string;
     imageUrl?: string;
     title?: string;
-    conductor?: string;
-    orchestra?: string;
+    people?: string; // New unified field
 }
 
 

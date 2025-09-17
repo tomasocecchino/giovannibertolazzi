@@ -124,38 +124,40 @@ export default function ConcertsPage() {
       {/* Main Content */}
       <div className="bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 py-16 md:py-24">
-              <div className="max-w-4xl mx-auto space-y-4">
-                  {filteredConcerts.length > 0 ? filteredConcerts.map((concert) => {
+              <div className="max-w-5xl mx-auto space-y-8">
+                  {filteredConcerts.length > 0 ? filteredConcerts.map((concert, index) => {
                       const month = concert.date.toLocaleString('default', { month: 'short' }).toUpperCase();
                       const day = concert.date.getDate();
+                      const time = concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 
                       return (
-                          <div key={concert.id} className="grid grid-cols-[100px_1fr_auto] items-center gap-6 p-4 border-b border-gray-300">
-                              <Image
-                                  src={concert.imageUrl || "https://picsum.photos/seed/concert/100"}
-                                  alt={`Concert at ${concert.venue}`}
-                                  width={100}
-                                  height={100}
-                                  className="w-full h-auto object-cover aspect-square"
-                                  data-ai-hint="musician portrait monochrome"
-                              />
-                              <div>
-                                  <p className="text-sm text-black/60 tracking-wider">{concert.city} - {concert.date.getFullYear()}</p>
-                                  <h2 className="text-xl font-semibold my-1 text-[#004165] font-headline tracking-wide">{concert.title || concert.venue}</h2>
-                                  <div className="text-sm text-black/70 mb-2 space-y-1">
-                                    {concert.orchestra && <p>Orchestra: {concert.orchestra}</p>}
-                                    {concert.conductor && <p>Conductor: {concert.conductor}</p>}
+                          <div key={concert.id}>
+                              <div className="grid grid-cols-[120px_1fr_auto] items-center gap-6 p-4">
+                                  <Image
+                                      src={concert.imageUrl || "https://picsum.photos/seed/concert/120"}
+                                      alt={`Concert at ${concert.venue}`}
+                                      width={120}
+                                      height={120}
+                                      className="w-full h-auto object-cover aspect-square"
+                                      data-ai-hint="musician portrait monochrome"
+                                  />
+                                  <div>
+                                      <h2 className="text-xl font-bold my-1 text-[#004165] font-headline tracking-wide">{concert.city}, {concert.venue}</h2>
+                                      <p className="text-base text-black/80">{concert.title}</p>
+                                      {concert.people && <p className="text-sm text-black/60 mt-1">{concert.people}</p>}
+                                      {concert.ticketUrl && (
+                                        <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline mt-3 inline-block">
+                                            Info & Tickets <ArrowRight className="inline h-3 w-3" />
+                                        </Link>
+                                      )}
                                   </div>
-                                  {concert.ticketUrl && (
-                                    <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline">
-                                        Buy Ticket <ArrowRight className="inline h-3 w-3" />
-                                    </Link>
-                                  )}
+                                  <div className="text-right">
+                                      <p className="text-xl text-[#008DDA] font-semibold">{month}</p>
+                                      <p className="text-6xl font-bold text-[#004a63] leading-none my-1">{day}</p>
+                                      <p className="text-lg text-[#004a63] font-semibold">{time}</p>
+                                  </div>
                               </div>
-                              <div className="text-right">
-                                  <p className="text-lg text-[#008DDA] font-medium">{month}</p>
-                                  <p className="text-6xl font-bold text-[#004a63]">{day}</p>
-                              </div>
+                              {index < filteredConcerts.length - 1 && <hr className="border-t-2 border-black/80 max-w-5xl mx-auto" />}
                           </div>
                       );
                   }) : (
