@@ -135,12 +135,12 @@ export default function ConcertsPage() {
                       return (
                           <div key={concert.id}>
                               <div className="grid grid-cols-[1fr_auto] items-center gap-6 p-4">
-                                  <div>
-                                      <h2 className="text-xl font-semibold my-1 text-[#004a63] font-headline tracking-wide">{concert.title}</h2>
+                                  <div className="flex flex-col justify-center h-full space-y-2">
+                                      <h2 className="text-xl font-semibold text-[#004a63] font-headline tracking-wide">{concert.title}</h2>
                                       <p className="text-base text-black/80 font-medium">{concert.music}</p>
-                                      {concert.people && <p className="text-sm text-black/60 mt-1">{concert.people}</p>}
+                                      {concert.people && <p className="text-sm text-black/60">{concert.people}</p>}
                                       {concert.ticketUrl && (
-                                        <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline mt-3 inline-block">
+                                        <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline inline-block pt-2">
                                             Info & Tickets <ArrowRight className="inline h-3 w-3" />
                                         </Link>
                                       )}
