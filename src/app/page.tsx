@@ -53,9 +53,9 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="bg-[#f0f0f0]">
-        <div className="container mx-auto px-4 text-center py-16 md:py-24">
+        <div className="container mx-auto px-4 py-16 md:py-24 text-left">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
-            <div className="max-w-3xl mx-auto text-[#333] space-y-4 text-lg text-left">
+            <div className="max-w-3xl text-[#333] space-y-4 text-lg">
               <p>Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.</p>
               <p>He officially performed on the World's longest Concert-grand Piano during its first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).</p>
               <p>In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.</p>
