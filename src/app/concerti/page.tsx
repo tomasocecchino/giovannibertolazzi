@@ -140,8 +140,8 @@ export default function ConcertsPage() {
                                       <p className="text-base text-black/80 font-medium">{concert.music}</p>
                                       {concert.people && <p className="text-sm text-black/60">{concert.people}</p>}
                                       {concert.ticketUrl && (
-                                        <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline inline-block pt-2 pb-2">
-                                            Info & Tickets <ArrowRight className="inline h-3 w-3" />
+                                        <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline inline-block pt-2 pb-4">
+                                            Info &amp; Tickets <ArrowRight className="inline h-3 w-3" />
                                         </Link>
                                       )}
                                   </div>
