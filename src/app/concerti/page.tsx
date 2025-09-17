@@ -126,8 +126,8 @@ export default function ConcertsPage() {
         <div className="container mx-auto px-4 py-16 md:py-24">
               <div className="max-w-5xl mx-auto space-y-8">
                   {filteredConcerts.length > 0 ? filteredConcerts.map((concert, index) => {
-                      const month = concert.date.toLocaleString('default', { month: 'short' }).toUpperCase();
-                      const day = concert.date.getDate();
+                      const month = concert.date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+                      const day = concert.date.getDate().toString().padStart(2, '0');
                       const time = concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 
                       return (
