@@ -76,21 +76,133 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* About Him Section */}
+      {/* Quotes Section */}
       <div className="bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 pb-16 md:pb-24">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">About him</h2>
-            <div className="space-y-8">
-              <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
-                <p className="text-lg text-gray-700">&quot;Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention.&quot;</p>
-                <cite className="block mt-2 not-italic text-sm text-gray-500">Bryce Morrison / The Art of Pianists</cite>
-              </blockquote>
-              <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
-                <p className="text-lg text-gray-700">&quot;The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.&quot;</p>
-                <cite className="block mt-2 not-italic text-sm text-gray-500">Remy Franck / PIZZICATO Magazine</cite>
-              </blockquote>
-            </div>
+          <div className="max-w-3xl mx-auto space-y-12">
+            
+            {/* Bryce Morrison */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;A clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention.&quot;</p>
+                <p>&quot;Listening to Bertolazzi it to confront one recreative triumph after another.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Bryce Morrison / The Art of Pianists</cite>
+            </blockquote>
+
+            {/* Remy Franck */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.&quot;</p>
+                <p>&quot;The unusually imaginative and personal interpretations grab you immediately.&quot;</p>
+                <p>&quot;A magnificent palette of colors, and a directly magical rhetoric.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Remy Franck / Pizzicato Magazine</cite>
+            </blockquote>
+
+            {/* Cyprien Katsaris */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <p className="text-lg text-gray-700">&quot;There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!&quot;</p>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Cyprien Katsaris – Concert-pianist</cite>
+            </blockquote>
+
+            {/* Jed Distler */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <p className="text-lg text-gray-700">&quot;One of his generation’s most gifted pianists, Giovanni Bertolazzi is Liszt interpreter to the manner born and mature beyond his years, consistently channeling his remarkable virtuosity and boundless coloristic resources towards musical ends. His fusion of poetry and scintillation falls directly in the tradition of great aristocratic Lisztians like Jorge Bolet and Claudio Arrau.&quot;</p>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Jed Distler – Composer/pianist, radio host and writer</cite>
+            </blockquote>
+
+            {/* Budapest Liszt Society */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <p className="text-lg text-gray-700">&quot;His level of playing the piano, which is outstanding even by the highest international standards, is enchanting, delightful, calling for meditation and entertaining at the same time, at the highest level of music performance.&quot;</p>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Budapest Liszt Society</cite>
+            </blockquote>
+
+            {/* Jean-Efflam Bavouzet */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <p className="text-lg text-gray-700">&quot;Giovanni Bertolazzi belongs to the best pianists of his generation. Not only his pianistic abilities and his formidable technique are of a superior level, but it is his deep musicality and search for musical truth I found so rare and inestimable.&quot;</p>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Jean-Efflam Bavouzet – Concert-pianist</cite>
+            </blockquote>
+
+            {/* Laszlo Gombos */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;From the first moment you start listening to any piece by choice, you realise that it’s an exceptional pianist playing an exceptional instrument, and moreover, the quality of the recording is also exceptional.&quot;</p>
+                <p>&quot;In Bertolazzi's playing, the music breathes continuously throughout the whole composition, especially in the singing moments.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Laszlo Gombos / Budapest Liszt Society Journal</cite>
+            </blockquote>
+            
+            {/* Anne Queffélec */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <p className="text-lg text-gray-700">&quot;He posseses remarkable qualities, musicianship, brilliant techinque, depth, beautiful sound, sensitivity, and maybe the most important, an artistic personality, which speaks on its own when he plays.&quot;</p>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Anne Queffélec – Concert-pianist</cite>
+            </blockquote>
+            
+            {/* Nicola Cattò */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;A huge success for a talent who is living up to every flattering promise.&quot;</p>
+                <p>&quot;Bertolazzi exalted both the original operatic dimension, with a truly acute sense of vocality, breathing and legato, and the “veil” of brilliant yet not superficial virtuosity added by Liszt, with a truly exciting sense of nonchalance and control.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Nicola Cattò / Rivista Musica</cite>
+            </blockquote>
+
+            {/* Fabio Bardelli */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;Bertolazzi displays great technique, accompanied by the ability to showcase expressiveness and sensitive, refined lyricism.&quot;</p>
+                <p>&quot;The pianist gives a beautiful interpretation of the piece.&quot;</p>
+                <p>&quot;He makes the magnificent instrument used on this occasion in Florence “sing” very well (a piano built by Luigi Borgato)...&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Fabio Bardelli / OperaClick</cite>
+            </blockquote>
+            
+            {/* Giuseppe Rossi */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;On this majestic instrument [BORGATO Grand-Prix 333], Giovanni Bertolazzi performed Rachmaninov's Third Concerto, showcasing its full range and richness of sound.&quot;</p>
+                <p>&quot;It was a richly colourful interpretation, inspired and moving.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Giuseppe Rossi / Rivista Musica</cite>
+            </blockquote>
+            
+            {/* Luca Segalla */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;A virtuoso who dominates the score with the authority of a Cziffra.&quot;</p>
+                <p>&quot;Bertolazzi is a phenomenal virtuoso.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Luca Segalla / Rivista Musica</cite>
+            </blockquote>
+            
+            {/* Silvia Del Zoppo */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;Not only a great virtuoso of the keyboard, but also an effective communicator, capable of enchanting audiences both in his live recitals and in the recording studio.&quot;</p>
+                <p>&quot;The pianist illuminates the inner exploration, harmonic boldness and experimentalism of the writing.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Silvia Del Zoppo / MusicPaper Magazine</cite>
+            </blockquote>
+            
+            {/* Dario Miozzi */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;His was an interpretation that was energetic and dynamic in the most brilliant passages, but performed with restraint in highlighting every expressive nuance of the phrasing.&quot;</p>
+                <p>&quot;Bertolazzi was able to display admirable expressive ideas.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Dario Miozzi / Rivista Musica</cite>
+            </blockquote>
+            
+            {/* Maria Zaleskaya */}
+            <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
+              <div className="space-y-4 text-lg text-gray-700">
+                <p>&quot;The name of Sviatoslav Richter inevitably comes to mind, paying tribute to the artistry and drama of Giovanni Bertolazzi.&quot;</p>
+                <p>&quot;He confidently and convincingly demonstrates his creative maturity.&quot;</p>
+              </div>
+              <cite className="block mt-4 not-italic text-sm text-gray-500">Maria Zaleskaya / MuzLife Magazine</cite>
+            </blockquote>
+
           </div>
         </div>
       </div>
