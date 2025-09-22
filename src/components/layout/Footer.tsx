@@ -9,7 +9,7 @@ export function Footer() {
     { href: '/media', label: 'Media' },
     { href: '/discografia', label: 'Discography' },
     { href: '/press', label: 'Press' },
-    { href: '/philosophy', label: 'Philosophy' },
+    { href: '/identity', label: 'Identity' },
     { href: '/contatti', label: 'Contacts' },
   ];
   

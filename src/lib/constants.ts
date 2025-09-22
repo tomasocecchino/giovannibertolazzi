@@ -8,7 +8,7 @@ export const NAV_LINKS = [
   { href: '/media', label: 'MEDIA' },
   { href: '/news', label: 'NEWS' },
   { href: '/discografia', label: 'DISCOGRAPHY' },
-  { href: '/philosophy', label: 'PHILOSOPHY' },
+  { href: '/identity', label: 'IDENTITY' },
   { href: '/contatti', label: 'CONTACTS' },
 ];
 
