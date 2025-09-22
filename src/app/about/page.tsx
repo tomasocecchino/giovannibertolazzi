@@ -99,77 +99,77 @@ Society of Budapest for his Liszt recordings.
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;A clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Bryce Morrison / The Art of Pianists</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Bryce Morrison</span><span className="text-gray-500"> / The Art of Pianists</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Remy Franck / Pizzicato Magazine</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Remy Franck</span><span className="text-gray-500"> / Pizzicato Magazine</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Cyprien Katsaris – Concert-pianist</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Cyprien Katsaris</span><span className="text-gray-500"> – Concert-pianist</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;One of his generation’s most gifted pianists, Giovanni Bertolazzi is Liszt interpreter to the manner born and mature beyond his years, consistently channeling his remarkable virtuosity and boundless coloristic resources towards musical ends. His fusion of poetry and scintillation falls directly in the tradition of great aristocratic Lisztians like Jorge Bolet and Claudio Arrau.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Jed Distler – Composer/pianist, radio host and writer</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Jed Distler</span><span className="text-gray-500"> – Composer/pianist, radio host and writer</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;His level of playing the piano, which is outstanding even by the highest international standards, is enchanting, delightful, calling for meditation and entertaining at the same time, at the highest level of music performance.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Budapest Liszt Society</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Budapest Liszt Society</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;Giovanni Bertolazzi belongs to the best pianists of his generation. Not only his pianistic abilities and his formidable technique are of a superior level, but it is his deep musicality and search for musical truth I found so rare and inestimable.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Jean-Efflam Bavouzet – Concert-pianist</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Jean-Efflam Bavouzet</span><span className="text-gray-500"> – Concert-pianist</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;From the first moment you start listening to any piece by choice, you realise that it’s an exceptional pianist playing an exceptional instrument, and moreover, the quality of the recording is also exceptional.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Laszlo Gombos / Budapest Liszt Society Journal</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Laszlo Gombos</span><span className="text-gray-500"> / Budapest Liszt Society Journal</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;He possesses remarkable qualities, musicianship, brilliant technique, depth, beautiful sound, sensitivity, and maybe the most important, an artistic personality, which speaks on its own when he plays.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Anne Queffélec – Concert-pianist</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Anne Queffélec</span><span className="text-gray-500"> – Concert-pianist</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;A huge success for a talent who is living up to every flattering promise.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Nicola Cattò / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Nicola Cattò</span><span className="text-gray-500"> / Rivista Musica</span></cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;Bertolazzi displays great technique, accompanied by the ability to showcase expressiveness and sensitive, refined lyricism.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Fabio Bardelli / OperaClick</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Fabio Bardelli</span><span className="text-gray-500"> / OperaClick</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;On this majestic instrument [BORGATO Grand-Prix 333], Giovanni Bertolazzi performed Rachmaninov's Third Concerto, showcasing its full range and richness of sound.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Giuseppe Rossi / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Giuseppe Rossi</span><span className="text-gray-500"> / Rivista Musica</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;A virtuoso who dominates the score with the authority of a Cziffra.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Luca Segalla / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Luca Segalla</span><span className="text-gray-500"> / Rivista Musica</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;Not only a great virtuoso of the keyboard, but also an effective communicator, capable of enchanting audiences both in his live recitals and in the recording studio.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Silvia Del Zoppo / MusicPaper Magazine</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Silvia Del Zoppo</span><span className="text-gray-500"> / MusicPaper Magazine</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;His was an interpretation that was energetic and dynamic in the most brilliant passages, but performed with restraint in highlighting every expressive nuance of the phrasing.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Dario Miozzi / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Dario Miozzi</span><span className="text-gray-500"> / Rivista Musica</span></cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;The name of Sviatoslav Richter inevitably comes to mind, paying tribute to the artistry and drama of Giovanni Bertolazzi.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Maria Zaleskaya / MuzLife Magazine</cite>
+              <cite className="block mt-4 not-italic text-sm"><span className="font-semibold text-[#004165]">Maria Zaleskaya</span><span className="text-gray-500"> / MuzLife Magazine</span></cite>
             </blockquote>
 
           </div>
