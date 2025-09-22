@@ -34,31 +34,43 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-3xl mx-auto space-y-6 text-base md:text-lg text-gray-800 leading-relaxed">
             <p>
-              Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the &apos;F. Liszt&apos; International Piano Competition in Budapest.
+              Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the prestigious “F. Liszt” International Piano Competition in Budapest.
             </p>
             <p>
-              This significant achievement came after winning more than 40 prizes in international piano competitions, including the &apos;S. Thalberg&apos; in Naples, the &apos;F. Busoni&apos; in Bolzano, and the &apos;Alkan Award for Piano Virtuosity&apos; in Milan. In 2022, he was awarded the &apos;Tabor Foundation Award&apos; at the Verbier Festival (Switzerland). The following year he received the &apos;Donna Gagliardi&apos; in an International Piano Award in Milan.
+              This significant achievement came after winning more than 40 prizes in international piano competitions, including the “Busoni” in Bolzano, the “Thalberg” in Naples, the “Alkan Award for Piano Virtuosity” in Milan.
             </p>
             <p>
-              Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the Kosice Philharmonic Orchestra, the Orchestra del Teatro La Fenice, the Orchestra del Teatro Bellini, the Orchestra Sinfonica Siciliana, the Orchestra of National Opera Theatre in Tirana.
+              In 2022, he was awarded the “Tabor Foundation Award” at the Verbier Festival (Switzerland). The following year he received the “Donna Guglielmina Durini Litta” International Piano Award in Milan.
             </p>
             <p>
-              Giovanni has performed at major venues including: Teatro del Maggio Musicale Fiorentino in Florence, Teatro La Fenice in Venice, Teatro Ponchielli in Cremona, Teatro Politeama Garibaldi in Palermo, Sala Verdi at the Milan Conservatory, Palazzo del Quirinale in Rome, the Franz Liszt Academy of Music in Budapest, the Liszt Ferenc Memorial Museum in Budapest, the National Theatre for Opera and Ballet in Tirana, the National Liberal Club in London, Eglise de Verbier, Castleton Theatre House in Virginia (USA).
+              Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra del Teatro Bellini, Orchestra Sinfonica Siciliana, Orchestra of National Opera Theatre of Tirana.
             </p>
-             <p>
-              He has been a guest of prestigious musical organizations such as the Società del Quartetto in Milan, Accademia Filarmonica of Verona, Amici della Musica of Padua, the Bologna Festival, Amici della Musica of Florence, the Verbier Festival, the Zoltán Kocsis Festival and the Cziffra Festival in Hungary, the Liszt-festival in Schilllingfürst, the Keyboard Trust (UK), the Phonos Arte Foundation (Cyprus), Castleton Festival in Virginia (USA).
+            <p>
+              He performs in important venues and for prestigious musical organisations including Teatro del Maggio Musicale Fiorentino in Florence, Società del Quartetto in Milan, Teatro La Fenice in Venice, Palazzo del Quirinale in Rome, Bologna Festival, “F. Liszt” Academy of Music and “F. Liszt” Memorial Museum in Budapest, National Liberal Club in London, National Opera House in Tirana, Verbier Festival, Pharos Arts Foundation (Cyprus), Castleton Festival Theatre House (Virginia, USA).
             </p>
             <p>
               He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).
             </p>
             <p>
-              On this extraordinary instrument, he rerecorded two albums devoted entirely to music by Franz Liszt and published by BORGATO COLLECTION. These recordings have received several awards from International critics (Supersonic Pizzicato Award, 5 Stars from MUSICA Magazine, Nomination at the International Classical Music Awards). His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni’s “Mestiere Teatro” programme on Sky Classical HD dedicated an episode to him. The authoritative music critic Bryce Morrison, after listening to Bertolazzi’s albums, wrote in "The Art of Pianists": “Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention”. Additionally, Remy Franck (PIZZICATO Magazine's Editor-in-Chief) wrote: “The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.”
-            </p>
-             <p>
-              Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly interested in culture, art and music. After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis, graduating in Piano Performance and Chamber Music with top honours.
+              On this extraordinary instrument, he recorded two albums devoted entirely to music by Franz Liszt and published by BORGATO COLLECTION. These recordings have received several awards from international critics (“Supersonic Pizzicato Award”, 5 Stars from MUSICA Magazine, Nomination at the “International Classical Music Awards”).
             </p>
             <p>
-              He holds main piano chairs at the "G. Frescobaldi" Conservatory of Music in Ferrara. Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen (Hungary), during the YMSA - Young Musicians Summer Academy. In 2024, he was awarded the 43rd "Liszt Ferenc International Grand Prix Du Disque" by the Liszt Society of Budapest for his Liszt recordings.
+              His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky Classica HD dedicated an episode to him.
+            </p>
+            <p>
+              Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly interested in culture, art and music.
+            </p>
+            <p>
+              After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis, graduating in Piano Performance and Chamber Music with top honours.
+            </p>
+            <p>
+              He holds a main piano chair at the “G. Frescobaldi” Conservatory of Music in Ferrara.
+            </p>
+            <p>
+              Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen (Hungary), during the YMSA - Young Musicians' Summer Academy.
+            </p>
+            <p>
+              In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.
             </p>
           </div>
         </div>
