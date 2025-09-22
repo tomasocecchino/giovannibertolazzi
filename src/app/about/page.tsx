@@ -46,31 +46,47 @@ export default function AboutPage() {
               Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra del Teatro Bellini, Orchestra Sinfonica Siciliana, Orchestra of National Opera Theatre of Tirana.
             </p>
             <p>
-              He performs in important venues and for prestigious musical organisations including Teatro del Maggio Musicale Fiorentino in Florence, Società del Quartetto in Milan, Teatro La Fenice in Venice, Palazzo del Quirinale in Rome, Bologna Festival, “F. Liszt” Academy of Music and “F. Liszt” Memorial Museum in Budapest, National Liberal Club in London, National Opera House in Tirana, Verbier Festival, Pharos Arts Foundation (Cyprus), Castleton Festival Theatre House (Virginia, USA).
+              He performs in important venues and for prestigious musical organisations including Teatro del
+Maggio Musicale Fiorentino in Florence, Società del Quartetto in Milan, Teatro La Fenice in
+Venice, Palazzo del Quirinale in Rome, Bologna Festival, “F. Liszt” Academy of Music and “F.
+Liszt” Memorial Museum in Budapest, National Liberal Club in London, National Opera House
+in Tirana, Verbier Festival, Pharos Arts Foundation (Cyprus), Castleton Festival Theatre House
+(Virginia, USA).
             </p>
             <p>
-              He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).
+              He officially performed on the world’s longest concert-grand piano during his first public
+presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).
             </p>
             <p>
-              On this extraordinary instrument, he recorded two albums devoted entirely to music by Franz Liszt and published by BORGATO COLLECTION. These recordings have received several awards from international critics (“Supersonic Pizzicato Award”, 5 Stars from MUSICA Magazine, Nomination at the “International Classical Music Awards”).
+              On this extraordinary instrument, he recorded two albums devoted entirely to music by Franz
+Liszt and published by BORGATO COLLECTION. These recordings have received several
+awards from international critics (“Supersonic Pizzicato Award”, 5 Stars from MUSICA
+Magazine, Nomination at the “International Classical Music Awards”).
             </p>
             <p>
-              His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky Classica HD dedicated an episode to him.
+              His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3,
+Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky
+Classica HD dedicated an episode to him.
             </p>
             <p>
-              Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly interested in culture, art and music.
+              Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly
+interested in culture, art and music.
             </p>
             <p>
-              After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis, graduating in Piano Performance and Chamber Music with top honours.
+              After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo
+Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis,
+graduating in Piano Performance and Chamber Music with top honours.
             </p>
             <p>
               He holds a main piano chair at the “G. Frescobaldi” Conservatory of Music in Ferrara.
             </p>
             <p>
-              Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen (Hungary), during the YMSA - Young Musicians' Summer Academy.
+              Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen
+(Hungary), during the YMSA - Young Musicians' Summer Academy.
             </p>
             <p>
-              In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.
+              In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt
+Society of Budapest for his Liszt recordings.
             </p>
           </div>
         </div>
@@ -83,77 +99,77 @@ export default function AboutPage() {
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;A clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Bryce Morrison / The Art of Pianists</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Bryce Morrison / The Art of Pianists</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Remy Franck / Pizzicato Magazine</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Remy Franck / Pizzicato Magazine</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Cyprien Katsaris – Concert-pianist</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Cyprien Katsaris – Concert-pianist</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;One of his generation’s most gifted pianists, Giovanni Bertolazzi is Liszt interpreter to the manner born and mature beyond his years, consistently channeling his remarkable virtuosity and boundless coloristic resources towards musical ends. His fusion of poetry and scintillation falls directly in the tradition of great aristocratic Lisztians like Jorge Bolet and Claudio Arrau.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Jed Distler – Composer/pianist, radio host and writer</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Jed Distler – Composer/pianist, radio host and writer</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;His level of playing the piano, which is outstanding even by the highest international standards, is enchanting, delightful, calling for meditation and entertaining at the same time, at the highest level of music performance.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Budapest Liszt Society</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Budapest Liszt Society</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;Giovanni Bertolazzi belongs to the best pianists of his generation. Not only his pianistic abilities and his formidable technique are of a superior level, but it is his deep musicality and search for musical truth I found so rare and inestimable.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Jean-Efflam Bavouzet – Concert-pianist</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Jean-Efflam Bavouzet – Concert-pianist</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;From the first moment you start listening to any piece by choice, you realise that it’s an exceptional pianist playing an exceptional instrument, and moreover, the quality of the recording is also exceptional.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Laszlo Gombos / Budapest Liszt Society Journal</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Laszlo Gombos / Budapest Liszt Society Journal</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;He possesses remarkable qualities, musicianship, brilliant technique, depth, beautiful sound, sensitivity, and maybe the most important, an artistic personality, which speaks on its own when he plays.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Anne Queffélec – Concert-pianist</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Anne Queffélec – Concert-pianist</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
               <p className="text-lg text-gray-700">&quot;A huge success for a talent who is living up to every flattering promise.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Nicola Cattò / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Nicola Cattò / Rivista Musica</cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;Bertolazzi displays great technique, accompanied by the ability to showcase expressiveness and sensitive, refined lyricism.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Fabio Bardelli / OperaClick</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Fabio Bardelli / OperaClick</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;On this majestic instrument [BORGATO Grand-Prix 333], Giovanni Bertolazzi performed Rachmaninov's Third Concerto, showcasing its full range and richness of sound.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Giuseppe Rossi / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Giuseppe Rossi / Rivista Musica</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;A virtuoso who dominates the score with the authority of a Cziffra.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Luca Segalla / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Luca Segalla / Rivista Musica</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;Not only a great virtuoso of the keyboard, but also an effective communicator, capable of enchanting audiences both in his live recitals and in the recording studio.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Silvia Del Zoppo / MusicPaper Magazine</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Silvia Del Zoppo / MusicPaper Magazine</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;His was an interpretation that was energetic and dynamic in the most brilliant passages, but performed with restraint in highlighting every expressive nuance of the phrasing.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Dario Miozzi / Rivista Musica</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Dario Miozzi / Rivista Musica</cite>
             </blockquote>
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
                 <p className="text-lg text-gray-700">&quot;The name of Sviatoslav Richter inevitably comes to mind, paying tribute to the artistry and drama of Giovanni Bertolazzi.&quot;</p>
-              <cite className="block mt-4 not-italic text-sm text-gray-500">Maria Zaleskaya / MuzLife Magazine</cite>
+              <cite className="block mt-4 not-italic text-sm text-[#008DDA] font-semibold">Maria Zaleskaya / MuzLife Magazine</cite>
             </blockquote>
 
           </div>
@@ -162,5 +178,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
