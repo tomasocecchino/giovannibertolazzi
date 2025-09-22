@@ -1,11 +1,28 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, ArrowRight, Calendar, MapPin, Ticket } from 'lucide-react';
-import { CONCERTS, DISCOGRAPHY } from '@/lib/constants';
+import { DISCOGRAPHY } from '@/lib/constants';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { getConcerts } from '@/lib/firebase';
+import type { Concert as RawConcert } from "@/lib/firebase";
 
-export default function Home() {
+interface Concert extends Omit<RawConcert, 'date'> {
+  date: Date;
+}
+
+export default async function Home() {
+  const allConcerts: Concert[] = (await getConcerts()).map(c => ({
+    ...c,
+    date: new Date(c.date),
+  }));
+
+  const upcomingConcerts = allConcerts
+    .filter(concert => concert.date.getTime() > new Date().getTime())
+    .sort((a, b) => a.date.getTime() - b.date.getTime());
+
+  const nextTwoConcerts = upcomingConcerts.slice(0, 2);
 
   return (
     <div className="flex flex-col">
@@ -111,24 +128,35 @@ export default function Home() {
             </Link>
           </div>
           <div className="space-y-4">
-            {CONCERTS.slice(0,2).map((concert) => (
-              <div key={concert.id} className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
-                <div className="flex items-center gap-4">
-                    <Image src="https://picsum.photos/100/100" width={80} height={80} alt="Concert venue" className="rounded-md" data-ai-hint="concert venue" />
-                    <div>
-                        <p className="text-sm text-gray-500">{concert.location} - {concert.date.split(' ')[2]}</p>
-                        <p className="font-bold text-lg text-[#333]">{concert.venue}, "F. LISZT" MUSIC ACADEMY</p>
-                         <Link href={concert.ticketLink} className="text-sm text-[#004a63] hover:underline">
-                            Buy Ticket <ArrowRight className="inline h-3 w-3"/>
-                         </Link>
+            {nextTwoConcerts.length > 0 ? (
+              nextTwoConcerts.map((concert) => {
+                const month = concert.date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+                const day = concert.date.getDate().toString().padStart(2, '0');
+                const time = concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+                
+                return (
+                  <div key={concert.id} className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                    <div className="flex items-center gap-4">
+                        <Image src={concert.imageUrl || 'https://picsum.photos/seed/concert/100/100'} width={80} height={80} alt={concert.title} className="rounded-md object-cover" data-ai-hint="concert venue" />
+                        <div>
+                            <p className="text-sm text-gray-500">{concert.title}</p>
+                            <p className="font-bold text-lg text-[#333]">{concert.music}</p>
+                             <Link href={concert.ticketUrl || '#'} className="text-sm text-[#004a63] hover:underline">
+                                Buy Ticket <ArrowRight className="inline h-3 w-3"/>
+                             </Link>
+                        </div>
                     </div>
-                </div>
-                <div className="text-right">
-                    <div className="text-sm text-gray-500">{concert.date.split(' ')[0].substring(0,3)}</div>
-                    <div className="text-4xl font-bold text-[#004a63]">{concert.date.split(' ')[1].replace(',', '')}</div>
-                </div>
-              </div>
-            ))}
+                    <div className="text-right">
+                        <div className="text-sm text-gray-500">{month}</div>
+                        <div className="text-4xl font-bold text-[#004a63]">{day}</div>
+                        <div className="text-sm text-gray-500">{time}</div>
+                    </div>
+                  </div>
+                )
+              })
+            ) : (
+              <p className="text-center text-gray-600">No upcoming concerts scheduled. Please check back soon.</p>
+            )}
           </div>
         </div>
       </section>
