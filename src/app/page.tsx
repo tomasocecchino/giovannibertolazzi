@@ -136,17 +136,14 @@ export default async function Home() {
                 
                 return (
                   <div key={concert.id} className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
-                    <div className="flex items-center gap-4">
-                        <Image src={concert.imageUrl || 'https://picsum.photos/seed/concert/100/100'} width={80} height={80} alt={concert.title} className="rounded-md object-cover" data-ai-hint="concert venue" />
-                        <div>
-                            <p className="text-sm text-gray-500">{concert.title}</p>
-                            <p className="font-bold text-lg text-[#333]">{concert.music}</p>
-                             <Link href={concert.ticketUrl || '#'} className="text-sm text-[#004a63] hover:underline">
-                                Buy Ticket <ArrowRight className="inline h-3 w-3"/>
-                             </Link>
-                        </div>
+                    <div className="flex-grow">
+                        <p className="text-sm text-gray-500">{concert.title}</p>
+                        <p className="font-bold text-lg text-[#333]">{concert.music}</p>
+                         <Link href={concert.ticketUrl || '#'} className="text-sm text-[#004a63] hover:underline">
+                            Buy Ticket <ArrowRight className="inline h-3 w-3"/>
+                         </Link>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right shrink-0 w-24">
                         <div className="text-sm text-gray-500">{month}</div>
                         <div className="text-4xl font-bold text-[#004a63]">{day}</div>
                         <div className="text-sm text-gray-500">{time}</div>
