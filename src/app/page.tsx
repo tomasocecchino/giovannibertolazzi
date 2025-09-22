@@ -61,9 +61,9 @@ export default function Home() {
               <p>In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.</p>
               <p>Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the MAV Symphony Orchestra, the Orchestra del Teatro La Fenice.</p>
             </div>
-          <div className="text-right mt-8">
-            <Link href="/bio" className="text-[#004a63] font-semibold hover:underline">
-              Read Bio <ArrowRight className="inline h-4 w-4" />
+          <div className="text-left mt-8">
+            <Link href="/about" className="text-[#004a63] font-semibold hover:underline">
+              Read About <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
         </div>

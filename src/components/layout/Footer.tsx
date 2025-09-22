@@ -4,7 +4,7 @@ import Link from 'next/link';
 export function Footer() {
   const footerNavLinks = [
     { href: '/', label: 'Home' },
-    { href: '/bio', label: 'Bio' },
+    { href: '/about', label: 'About' },
     { href: '/concerti', label: 'Agenda' },
     { href: '/media', label: 'Media' },
     { href: '/discografia', label: 'Discography' },

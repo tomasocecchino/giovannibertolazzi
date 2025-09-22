@@ -3,7 +3,7 @@ import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 
 export const NAV_LINKS = [
   { href: '/', label: 'HOME' },
-  { href: '/bio', label: 'BIO' },
+  { href: '/about', label: 'ABOUT' },
   { href: '/concerti', label: 'AGENDA' },
   { href: '/media', label: 'MEDIA' },
   { href: '/news', label: 'NEWS' },

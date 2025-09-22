@@ -2,7 +2,7 @@
 'use client';
 import Image from "next/image";
 
-export default function BioPage() {
+export default function AboutPage() {
   return (
     <div className="animate-in fade-in duration-500">
       {/* Hero Section */}
@@ -20,7 +20,7 @@ export default function BioPage() {
         </div>
         <div className="container mx-auto px-4 z-10 text-left relative pt-24">
           <h1 className="text-5xl md:text-7xl font-semibold font-headline text-[#008DDA] mb-4">
-            Bio
+            About
           </h1>
           <blockquote className="max-w-xl text-lg md:text-xl text-white/80 italic">
             <p>&quot;Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force(though also with poetic delicacy) that rivets your attention.&quot;</p>
