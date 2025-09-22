@@ -135,7 +135,7 @@ export default async function Home() {
                 const time = concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
                 
                 return (
-                  <div key={concert.id} className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                  <div key={concert.id} className="flex items-center justify-between p-6 bg-white rounded-lg shadow-sm">
                     <div className="flex-grow">
                         <p className="text-sm text-gray-500">{concert.title}</p>
                         <p className="font-bold text-lg text-[#333]">{concert.music}</p>
