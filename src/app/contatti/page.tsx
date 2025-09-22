@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const socialLinks = [
-    { name: 'facebook', href: 'https://facebook.com' },
-    { name: 'instagram', href: 'https://instagram.com' },
-    { name: 'linkedin', href: '#' },
-    { name: 'tiktok', href: '#' },
-    { name: 'rednote', href: '#' },
+    { name: 'YouTube', href: 'https://www.youtube.com/c/GiovanniBertolazzi' },
+    { name: 'Spotify', href: 'https://open.spotify.com/intl-it/artist/0hTYzTsC0XcD8VrJ8dkQoE?si=th8oRqSUTIKQeLwLsyk7Ww' },
+    { name: 'Facebook', href: 'https://www.facebook.com/giovanni.bertolazzi.7/' },
+    { name: 'Instagram', href: 'https://www.instagram.com/giovanni_bertolazzi/' },
+    { name: 'Tiktok', href: 'https://www.tiktok.com/@giovannibertolazzi_piano' },
+    { name: 'Rednote', href: 'https://www.xiaohongshu.com/user/profile/680343f5000000000d008ea6' },
 ];
 
 export default function ContactPage() {
