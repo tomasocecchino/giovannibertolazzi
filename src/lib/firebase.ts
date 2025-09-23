@@ -55,7 +55,7 @@ export interface NewsArticle {
     text: string;
     link?: string;
     buttonText?: string;
-    awardImageUrl?: string;
+    image?: string;
 }
 
 

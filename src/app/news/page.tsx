@@ -67,10 +67,10 @@ export default function NewsPage() {
               <div key={item.id} className="grid grid-cols-1 gap-y-4 items-start border-b border-black/10 pb-12">
                 <div className="flex flex-col h-full justify-center">
                   <div className="flex items-center gap-3 mb-2">
-                    {item.awardImageUrl && (
+                    {item.image && (
                         <div className="relative w-10 h-10">
                             <Image 
-                                src={item.awardImageUrl} 
+                                src={item.image} 
                                 alt="Award Badge" 
                                 fill
                                 className="object-contain"
