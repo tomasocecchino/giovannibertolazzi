@@ -4,6 +4,7 @@ import { getNews } from "@/lib/firebase";
 import type { NewsArticle } from "@/lib/firebase";
 import { ArrowRight, Loader2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { format } from 'date-fns';
 import { useEffect, useState } from "react";
 
@@ -65,7 +66,20 @@ export default function NewsPage() {
             return (
               <div key={item.id} className="grid grid-cols-1 gap-y-4 items-start border-b border-black/10 pb-12">
                 <div className="flex flex-col h-full justify-center">
-                  <p className="text-black/60 font-medium tracking-wider mb-2">{formattedDate}</p>
+                  <div className="flex items-center gap-3 mb-2">
+                    {item.awardImageUrl && (
+                        <div className="relative w-10 h-10">
+                            <Image 
+                                src={item.awardImageUrl} 
+                                alt="Award Badge" 
+                                fill
+                                className="object-contain"
+                                data-ai-hint="award badge" 
+                            />
+                        </div>
+                    )}
+                    <p className="text-black/60 font-medium tracking-wider">{formattedDate}</p>
+                  </div>
                   <h2 className="text-xl font-semibold text-black/80 font-headline tracking-wide mb-1">{item.title}</h2>
                   {item.subtitle && <p className="text-black/70 font-medium text-base mb-2">{item.subtitle}</p>}
                   <p className="text-black/70 text-base mb-4 flex-grow">{item.text}</p>
