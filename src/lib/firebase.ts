@@ -52,9 +52,9 @@ export interface NewsArticle {
     date: any; // Can be a Timestamp from Firestore
     title: string;
     subtitle?: string;
-    excerpt: string;
-    link: string;
-    imageUrl: string;
+    text: string; // Changed from excerpt
+    link?: string;
+    buttonText?: string; // Added for dynamic button text
 }
 
 

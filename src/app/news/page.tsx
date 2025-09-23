@@ -3,7 +3,6 @@
 import { getNews } from "@/lib/firebase";
 import type { NewsArticle } from "@/lib/firebase";
 import { ArrowRight, Loader2 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { format } from 'date-fns';
 import { useEffect, useState } from "react";
@@ -44,7 +43,7 @@ export default function NewsPage() {
             <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold text-red-800 mb-4">Error Loading News</h2>
                 <p className="text-red-700 mb-4">{error}</p>
-                <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `newsArticle` collection allow public read access. For example: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Also, check that all required fields (`date`, `title`, `excerpt`, `link`, `imageUrl`) are present and correctly formatted in your documents.</p>
+                <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `newsArticle` collection allow public read access. For example: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Also, check that all required fields (`date`, `title`, `text`) are present and correctly formatted in your documents.</p>
             </div>
         </div>
       </div>
@@ -64,28 +63,19 @@ export default function NewsPage() {
             const formattedDate = format(dateObj, 'dd/MM/yyyy');
 
             return (
-              <div key={item.id} className="grid md:grid-cols-[200px_1fr] gap-x-8 gap-y-4 items-start border-b border-black/10 pb-12">
-                <div>
-                   <p className="text-black/60 font-medium tracking-wider mb-2">{formattedDate}</p>
-                   <Image
-                      src={item.imageUrl || "https://picsum.photos/200/200"}
-                      alt={`News item: ${item.title}`}
-                      width={200}
-                      height={200}
-                      className="w-full h-auto object-cover aspect-square"
-                      data-ai-hint="news placeholder"
-                    />
-                </div>
-
+              <div key={item.id} className="grid grid-cols-1 gap-y-4 items-start border-b border-black/10 pb-12">
                 <div className="flex flex-col h-full justify-center">
+                  <p className="text-black/60 font-medium tracking-wider mb-2">{formattedDate}</p>
                   <h2 className="text-xl font-semibold text-black/80 font-headline tracking-wide mb-1">{item.title}</h2>
                   {item.subtitle && <p className="text-black/70 font-medium text-base mb-2">{item.subtitle}</p>}
-                  <p className="text-black/70 text-base mb-4 flex-grow">{item.excerpt}</p>
-                  <div className="text-right">
-                     <Link href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#004a63] font-semibold hover:underline text-sm">
-                        View article <ArrowRight className="inline h-3 w-3" />
-                     </Link>
-                  </div>
+                  <p className="text-black/70 text-base mb-4 flex-grow">{item.text}</p>
+                  {item.link && item.buttonText && (
+                    <div className="text-right">
+                       <Link href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#004a63] font-semibold hover:underline text-sm">
+                          {item.buttonText} <ArrowRight className="inline h-3 w-3" />
+                       </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             );
