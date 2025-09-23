@@ -47,8 +47,61 @@ export interface Concert {
     imageUrl?: string;
 }
 
+export interface NewsArticle {
+    id: string;
+    date: any; // Can be a Timestamp from Firestore
+    title: string;
+    subtitle?: string;
+    excerpt: string;
+    link: string;
+    imageUrl: string;
+}
+
 
 // --- DATA FETCHING FUNCTIONS ---
+
+/**
+ * Fetches news articles from the 'news' collection in Firestore,
+ * ordered by date descending.
+ */
+export async function getNews(): Promise<NewsArticle[]> {
+    try {
+        const newsCollection = collection(db, "news");
+        const q = query(newsCollection, orderBy("date", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        const articles = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            let date;
+
+            if (data.date instanceof Timestamp) {
+                date = data.date.toDate();
+            } else if (typeof data.date === 'string') {
+                date = new Date(data.date);
+            } else {
+                console.warn(`Invalid or missing date format for news article ${doc.id}:`, data.date);
+                date = new Date(); // Fallback to now
+            }
+            
+            if (isNaN(date.getTime())) {
+                console.warn(`Could not parse a valid date for news article ${doc.id}. Using current date as fallback.`);
+                date = new Date();
+            }
+
+            return {
+                id: doc.id,
+                ...data,
+                date: date.toISOString(),
+            } as NewsArticle;
+        });
+
+        return articles;
+    } catch (error: any) {
+        console.error("Error fetching news from Firestore:", error);
+        throw new Error(`Could not fetch news. Please check Firestore permissions and data format. Original error: ${error.message}`);
+    }
+}
+
 
 /**
  * Fetches gallery images from the 'galleryImages' collection in Firestore,
