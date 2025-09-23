@@ -61,12 +61,12 @@ export interface NewsArticle {
 // --- DATA FETCHING FUNCTIONS ---
 
 /**
- * Fetches news articles from the 'news' collection in Firestore,
+ * Fetches news articles from the 'newsArticle' collection in Firestore,
  * ordered by date descending.
  */
 export async function getNews(): Promise<NewsArticle[]> {
     try {
-        const newsCollection = collection(db, "news");
+        const newsCollection = collection(db, "newsArticle");
         const q = query(newsCollection, orderBy("date", "desc"));
         const querySnapshot = await getDocs(q);
 

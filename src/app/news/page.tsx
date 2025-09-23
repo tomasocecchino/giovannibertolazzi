@@ -44,7 +44,7 @@ export default function NewsPage() {
             <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold text-red-800 mb-4">Error Loading News</h2>
                 <p className="text-red-700 mb-4">{error}</p>
-                <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `news` collection allow public read access. For example: `match /news/{'articleId'} {'{ allow read; }'}`. Also, check that all required fields (`date`, `title`, `excerpt`, `link`, `imageUrl`) are present and correctly formatted in your documents.</p>
+                <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `newsArticle` collection allow public read access. For example: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Also, check that all required fields (`date`, `title`, `excerpt`, `link`, `imageUrl`) are present and correctly formatted in your documents.</p>
             </div>
         </div>
       </div>
