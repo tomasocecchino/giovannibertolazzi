@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ChevronDown } from "lucide-react";
 
 const languages = [
   { code: "it", name: "Italiano", flag: "/flags/it.svg" },
@@ -40,10 +39,10 @@ export default function LanguageSwitcher() {
 
   return (
     <Select onValueChange={onSelectChange} defaultValue={locale} disabled={isPending}>
-      <SelectTrigger className="w-auto bg-transparent border-none text-white/80 p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none gap-2">
+      <SelectTrigger className="w-auto bg-transparent border-none text-white/80 p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none">
         <SelectValue>
            {selectedLanguage && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
                 <Image
                     src={selectedLanguage.flag}
                     alt={selectedLanguage.name}
@@ -51,7 +50,6 @@ export default function LanguageSwitcher() {
                     height={15}
                     className="w-5 h-auto"
                 />
-                <span className="text-sm">{selectedLanguage.code.toUpperCase()}</span>
             </div>
            )}
         </SelectValue>
