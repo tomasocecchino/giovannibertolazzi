@@ -11,5 +11,23 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  return children;
+  return (
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,300&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-body antialiased bg-[#0e141a]">
+        {children}
+      </body>
+    </html>
+  );
 }
