@@ -163,6 +163,32 @@ function PhotoGallery() {
   );
 }
 
+function getYouTubeThumbnail(url: string): string {
+    let videoId: string | null = null;
+    try {
+        const urlObj = new URL(url);
+        if (urlObj.hostname === 'youtu.be') {
+            videoId = urlObj.pathname.slice(1);
+        } else if (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com') {
+            if (urlObj.pathname === '/watch') {
+                videoId = urlObj.searchParams.get('v');
+            } else if (urlObj.pathname.startsWith('/embed/')) {
+                videoId = urlObj.pathname.split('/')[2];
+            }
+        }
+    } catch (e) {
+        console.error('Invalid URL for YouTube thumbnail:', url);
+        return `https://picsum.photos/seed/${url}/180/101`;
+    }
+
+    if (videoId) {
+        return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+    }
+
+    // Fallback if no videoId could be extracted
+    return `https://picsum.photos/seed/${url}/180/101`;
+}
+
 function VideoGallery() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
@@ -191,7 +217,7 @@ function VideoGallery() {
             <Link href={video.link} key={video.id} target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 group p-3 hover:bg-black/5 rounded-lg transition-colors">
                 <div className="relative shrink-0">
                     <Image
-                        src={`https://picsum.photos/seed/${video.id}/180/101`}
+                        src={getYouTubeThumbnail(video.link)}
                         alt={`Thumbnail for ${video.title}`}
                         width={180}
                         height={101}
