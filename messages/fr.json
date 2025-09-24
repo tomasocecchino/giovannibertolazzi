@@ -8,5 +8,28 @@
     "discography": "DISCOGRAPHIE",
     "identity": "IDENTITÉ",
     "contacts": "CONTACTS"
+  },
+  "Home": {
+    "title": "CONCERT-PIANIST",
+    "quote": "\"The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.\"",
+    "quoteCite": "PIZZICATO Magazine",
+    "scrollDown": "Scroll Down",
+    "explore": "& Explore",
+    "aboutTitle": "ABOUT",
+    "aboutText1": "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.",
+    "aboutText2": "He officially performed on the World's longest Concert-grand Piano during its first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).",
+    "aboutText3": "In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.",
+    "aboutText4": "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the MAV Symphony Orchestra, the Orchestra del Teatro La Fenice.",
+    "readAbout": "Read About",
+    "exploreCDsTitle": "EXPLORE CDs",
+    "viewDiscography": "View Discography",
+    "nextConcertsTitle": "NEXT CONCERTS",
+    "allConcerts": "All Concerts",
+    "buyTicket": "Buy Ticket",
+    "noConcerts": "No upcoming concerts scheduled. Please check back soon.",
+    "videosTitle": "VIDEOS",
+    "viewVideos": "View Videos"
   }
 }
+
+    

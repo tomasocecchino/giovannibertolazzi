@@ -8,5 +8,28 @@
     "discography": "唱片",
     "identity": "理念",
     "contacts": "联系方式"
+  },
+  "Home": {
+    "title": "音乐会钢琴家",
+    "quote": "“其结果是一方面是压倒性的力量，另一方面是诗意的钢琴戏剧。”",
+    "quoteCite": "《PIZZICATO》杂志",
+    "scrollDown": "向下滚动",
+    "explore": "和探索",
+    "aboutTitle": "关于",
+    "aboutText1": "乔瓦尼·贝托拉齐（Giovanni Bertolazzi）在布达佩斯著名的“李斯特”国际钢琴比赛中获得二等奖和五项特别奖，从而在国际舞台上崭露头角。",
+    "aboutText2": "他在世界上最长的音乐会三角钢琴BORGATO GRAND-PRIX 333（长3.33米）的首次公开展示中正式演奏。",
+    "aboutText3": "2024年，他因其李斯特唱片而被布达佩斯李斯特协会授予第43届“李斯特·费伦茨国际唱片大奖”。",
+    "aboutText4": "他职业生涯的亮点包括与匈牙利爱乐乐团、佛罗伦萨五月音乐节管弦乐团、MAV交响乐团、凤凰剧院管弦乐团的合作演出。",
+    "readAbout": "阅读关于",
+    "exploreCDsTitle": "探索CD",
+    "viewDiscography": "查看唱片目录",
+    "nextConcertsTitle": "接下来的音乐会",
+    "allConcerts": "所有音乐会",
+    "buyTicket": "购买门票",
+    "noConcerts": "目前没有即将举行的音乐会。请稍后再回来查看。",
+    "videosTitle": "视频",
+    "viewVideos": "观看视频"
   }
 }
+
+    

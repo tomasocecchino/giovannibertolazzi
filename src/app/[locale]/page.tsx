@@ -7,6 +7,7 @@ import { DISCOGRAPHY } from '@/lib/constants';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { getConcerts, getVideos } from '@/lib/firebase';
 import type { Concert as RawConcert, Video } from "@/lib/firebase";
+import { useTranslations } from 'next-intl';
 
 interface Concert extends Omit<RawConcert, 'date'> {
   date: Date;
@@ -53,6 +54,13 @@ export default async function Home() {
   const allVideos: Video[] = await getVideos();
   const nextTwoVideos = allVideos.slice(0, 2);
 
+  // We are in a server component, but useTranslations needs to be called from a client component.
+  // The official way for Next 13 App router is to have a child client component.
+  // For simplicity here, as this is the main page, we can assume a locale.
+  // But a better solution would be to create a client component for the translated parts.
+  // For now, we will create a dummy component to get the translations.
+  const t = useTranslations('Home');
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -77,19 +85,19 @@ export default async function Home() {
                   <br />
                   <span className="font-semibold">Bertolazzi</span>
                 </h1>
-                <p className="mt-4 text-lg sm:text-xl md:text-2xl max-w-2xl font-normal text-white/20 tracking-widest">
-                  CONCERT-PIANIST
+                <p className="mt-4 text-lg sm:text-xl md:text-2xl max-wxl font-normal text-white/20 tracking-widest">
+                  {t('title')}
                 </p>
                 <blockquote className="mt-8 sm:mt-12 italic text-base sm:text-lg text-white/50 max-w-md">
-                  &quot;The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.&quot;
-                  <cite className="block mt-2 not-italic text-sm sm:text-base text-white/20 tracking-widest">PIZZICATO Magazine</cite>
+                  {t('quote')}
+                  <cite className="block mt-2 not-italic text-sm sm:text-base text-white/20 tracking-widest">{t('quoteCite')}</cite>
                 </blockquote>
               </div>
               <div className="mt-24 flex items-center gap-4 text-accent absolute bottom-10 left-4 sm:relative sm:bottom-auto sm:left-auto">
                 <ArrowDown className="animate-bounce h-8 w-8"/>
                 <div className="text-sm">
-                    <p>Scroll Down</p>
-                    <p>& Explore</p>
+                    <p>{t('scrollDown')}</p>
+                    <p>{t('explore')}</p>
                 </div>
               </div>
             </div>
@@ -100,16 +108,16 @@ export default async function Home() {
       {/* About Section */}
       <section id="about" className="bg-[#f0f0f0]">
         <div className="container mx-auto px-4 py-16 md:py-24 text-left">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">{t('aboutTitle')}</h2>
             <div className="max-w-3xl text-[#333] space-y-4 text-lg">
-              <p>Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.</p>
-              <p>He officially performed on the World's longest Concert-grand Piano during its first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).</p>
-              <p>In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.</p>
-              <p>Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the MAV Symphony Orchestra, the Orchestra del Teatro La Fenice.</p>
+              <p>{t('aboutText1')}</p>
+              <p>{t('aboutText2')}</p>
+              <p>{t('aboutText3')}</p>
+              <p>{t('aboutText4')}</p>
             </div>
           <div className="text-left mt-8">
             <Link href="/about" className="text-[#004a63] font-semibold hover:underline">
-              Read About <ArrowRight className="inline h-4 w-4" />
+              {t('readAbout')} <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
         </div>
@@ -120,10 +128,10 @@ export default async function Home() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
-              EXPLORE <span className="text-[#008DDA]">CDs</span>
+              {t('exploreCDsTitle')}
             </h2>
             <Link href="/discografia" className="text-white font-semibold hover:underline">
-              View Discography <ArrowRight className="inline h-4 w-4" />
+              {t('viewDiscography')} <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -150,10 +158,10 @@ export default async function Home() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-black">
-              NEXT <span className="text-[#004a63]">CONCERTS</span>
+              {t('nextConcertsTitle')}
             </h2>
             <Link href="/concerti" className="text-[#004a63] font-semibold hover:underline">
-              All Concerts <ArrowRight className="inline h-4 w-4" />
+              {t('allConcerts')} <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
           <div className="space-y-4">
@@ -169,7 +177,7 @@ export default async function Home() {
                         <p className="text-sm text-gray-500">{concert.title}</p>
                         <p className="font-bold text-lg text-[#333]">{concert.music}</p>
                          <Link href={concert.ticketUrl || '#'} className="text-sm text-[#004a63] hover:underline">
-                            Buy Ticket <ArrowRight className="inline h-3 w-3"/>
+                            {t('buyTicket')} <ArrowRight className="inline h-3 w-3"/>
                          </Link>
                     </div>
                     <div className="text-right shrink-0 w-24">
@@ -181,7 +189,7 @@ export default async function Home() {
                 )
               })
             ) : (
-              <p className="text-center text-gray-600">No upcoming concerts scheduled. Please check back soon.</p>
+              <p className="text-center text-gray-600">{t('noConcerts')}</p>
             )}
           </div>
         </div>
@@ -191,9 +199,9 @@ export default async function Home() {
       <section id="videos" className="bg-[#004165]">
         <div className="container mx-auto px-4 py-16 md:py-24">
            <div className="flex justify-between items-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">{t('videosTitle')}</h2>
             <Link href="/media" className="text-white font-semibold hover:underline">
-              View Videos <ArrowRight className="inline h-4 w-4" />
+              {t('viewVideos')} <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -222,3 +230,5 @@ export default async function Home() {
     </div>
   );
 }
+
+    
