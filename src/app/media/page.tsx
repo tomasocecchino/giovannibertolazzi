@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 
-type View = 'gallery' | 'shooting' | 'videos';
+type View = 'gallery' | 'videos';
 
 export default function MediaPage() {
   const [currentView, setCurrentView] = useState<View>('gallery');
@@ -61,7 +61,7 @@ export default function MediaPage() {
           <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
             <SelectTrigger className={cn(
               "w-auto bg-transparent border-none text-2xl md:text-3xl font-headline focus:ring-0 focus:ring-offset-0 p-2 h-auto",
-              currentView === 'gallery' ? "text-[#004a63]" : "text-black/80",
+               "text-[#004a63]",
               "shadow-none",
               "data-[state=open]:bg-white"
             )}>
@@ -69,14 +69,24 @@ export default function MediaPage() {
             </SelectTrigger>
             <SelectContent className="bg-white text-black">
               <SelectItem value="gallery">Gallery</SelectItem>
-              {shootingImages.length > 0 && <SelectItem value="shooting">Shooting</SelectItem>}
               <SelectItem value="videos">Videos</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
-        {currentView === 'gallery' && <PhotoGrid images={galleryImages} />}
-        {currentView === 'shooting' && <PhotoGrid images={shootingImages} />}
+        {currentView === 'gallery' && (
+          <div className="space-y-16">
+            <PhotoGrid images={galleryImages} />
+            {shootingImages.length > 0 && (
+              <div>
+                <h2 className="text-3xl md:text-4xl font-semibold font-headline text-[#004165] mb-8">
+                  Shooting
+                </h2>
+                <PhotoGrid images={shootingImages} />
+              </div>
+            )}
+          </div>
+        )}
         {currentView === 'videos' && <VideoGallery />}
       </div>
     </div>
