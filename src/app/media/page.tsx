@@ -152,13 +152,13 @@ function PhotoGrid({ images }: PhotoGridProps) {
       </div>
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-screen-xl w-[95%] h-[90vh] p-0 bg-transparent border-none shadow-none flex items-center justify-center">
+        <DialogContent className="max-w-none w-full h-full p-0 bg-black/80 border-none flex items-center justify-center">
            <DialogTitle className="sr-only">Image Gallery</DialogTitle>
             <Carousel setApi={setCarouselApi} className="w-full h-full">
               <CarouselContent className="h-full">
                 {images.map((photo) => (
-                  <CarouselItem key={photo.id} className="relative h-full flex items-center justify-center">
-                    {imageLoadingStates[photo.id] && (
+                  <CarouselItem key={photo.id} className="relative h-full flex items-center justify-center p-4">
+                    {imageLoadingStates[photo.id] !== false && (
                        <div className="absolute inset-0 flex items-center justify-center z-10">
                           <Loader2 className="w-10 h-10 animate-spin text-white/50" />
                        </div>
@@ -169,7 +169,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
                       fill
                       className={cn(
                         "object-contain transition-opacity duration-500",
-                        imageLoadingStates[photo.id] ? "opacity-0" : "opacity-100"
+                         imageLoadingStates[photo.id] === false ? "opacity-100" : "opacity-0"
                       )}
                       sizes="100vw"
                       onLoad={() => handleImageLoad(photo.id)}
