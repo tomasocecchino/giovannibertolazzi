@@ -187,7 +187,7 @@ function getYouTubeThumbnail(url: string): string {
             if (urlObj.pathname === '/watch') {
                 videoId = urlObj.searchParams.get('v');
             } else if (urlObj.pathname.startsWith('/embed/')) {
-                videoId = urlObj.pathname.split('/embed/')[2];
+                videoId = urlObj.pathname.split('/embed/')[1];
             }
         }
     } catch (e) {
