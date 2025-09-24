@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import Image from 'next/image';
-import { Link } from 'next-intl';
+import { Link } from '@/navigation';
 import { PlayCircle, Camera, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
@@ -332,5 +332,3 @@ function VideoGallery() {
     </div>
   );
 }
-
-    

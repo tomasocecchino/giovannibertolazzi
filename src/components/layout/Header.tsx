@@ -1,8 +1,6 @@
-
 'use client';
 
-import { Link } from 'next-intl';
-import { usePathname } from 'next-intl/navigation';
+import { usePathname, Link } from '@/navigation';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -122,5 +120,3 @@ export function Header() {
     </header>
   );
 }
-
-    

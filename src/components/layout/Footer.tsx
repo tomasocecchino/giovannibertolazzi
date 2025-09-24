@@ -1,5 +1,5 @@
 
-import { Link } from 'next-intl';
+import { Link } from '@/navigation';
 
 export function Footer() {
   const footerNavLinks = [
@@ -85,5 +85,3 @@ export function Footer() {
     </footer>
   );
 }
-
-    

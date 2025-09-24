@@ -3,7 +3,7 @@ import { PageTitle } from "@/components/PageTitle";
 import { DISCOGRAPHY } from "@/lib/constants";
 import { Mail, Award } from "lucide-react";
 import Image from "next/image";
-import { Link } from "next-intl";
+import { Link } from "@/navigation";
 
 export default function DiscographyPage() {
   return (
@@ -80,5 +80,3 @@ export default function DiscographyPage() {
     </div>
   );
 }
-
-    

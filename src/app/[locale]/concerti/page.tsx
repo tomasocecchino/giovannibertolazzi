@@ -2,7 +2,7 @@
 'use client';
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { Link } from "next-intl";
+import { Link } from '@/navigation';
 import {
   Select,
   SelectContent,
@@ -163,5 +163,3 @@ export default function ConcertsPage() {
     </div>
   );
 }
-
-    

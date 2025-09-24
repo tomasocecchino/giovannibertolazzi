@@ -3,8 +3,7 @@ import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Giovanni Bertolazzi",
@@ -16,11 +15,11 @@ type Props = {
   params: { locale: string };
 };
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children,
   params: { locale },
 }: Props) {
-  const messages = await getMessages();
+  const messages = useMessages();
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

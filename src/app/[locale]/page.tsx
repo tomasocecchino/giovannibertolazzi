@@ -1,6 +1,6 @@
 
 import Image from 'next/image';
-import { Link } from 'next-intl';
+import { Link } from '@/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, ArrowRight, Calendar, MapPin, Ticket, PlayCircle } from 'lucide-react';
 import { DISCOGRAPHY } from '@/lib/constants';
@@ -225,5 +225,3 @@ export default async function Home() {
     </div>
   );
 }
-
-    

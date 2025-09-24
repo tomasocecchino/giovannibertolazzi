@@ -1,7 +1,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { Link } from "next-intl";
+import { Link } from "@/navigation";
 
 const socialLinks = [
     { name: 'YouTube', href: 'https://www.youtube.com/c/GiovanniBertolazzi' },
@@ -40,15 +40,13 @@ export default function ContactPage() {
             </div>
             <div className="flex justify-center flex-wrap gap-x-8 gap-y-8 pt-8">
                 {socialLinks.map((social) => (
-                     <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center text-lg text-black/80 border-b border-black/20 pb-2 transition-colors hover:text-[#004a63] hover:border-[#004a63]">
+                     <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="flex items-center text-lg text-black/80 border-b border-black/20 pb-2 transition-colors hover:text-[#004a63] hover:border-[#004a63]">
                         <ArrowUpRight className="h-6 w-6 mr-3 text-[#008DDA]"/>
                         <span className="font-medium">{social.name}</span>
-                    </a>
+                    </Link>
                 ))}
             </div>
         </div>
     </div>
   );
 }
-
-    
