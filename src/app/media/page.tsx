@@ -104,7 +104,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
 
   const openModal = (index: number) => {
     setSelectedIndex(index);
-    setIsImageLoading(true); // Set loading true when new image is selected
+    setIsImageLoading(true);
   };
   
   const closeModal = () => {
@@ -191,7 +191,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
             onTouchMove={handleTouchMove}
         >
           <DialogTitle className="sr-only">Image Viewer</DialogTitle>
-           
+
           {selectedImage && (
             <>
               {/* Main content: Image and Text */}
@@ -251,15 +251,6 @@ function PhotoGrid({ images }: PhotoGridProps) {
           >
             <ChevronRight className="h-8 w-8" />
             <span className="sr-only">Next Image</span>
-          </Button>
-           <Button
-            variant="ghost"
-            size="icon"
-            onClick={closeModal}
-            className="absolute top-4 right-4 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
-          >
-            <X className="h-8 w-8" />
-            <span className="sr-only">Close</span>
           </Button>
         </DialogContent>
       </Dialog>
