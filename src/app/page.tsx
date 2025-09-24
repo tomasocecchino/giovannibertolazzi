@@ -2,14 +2,40 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, ArrowRight, Calendar, MapPin, Ticket } from 'lucide-react';
+import { ArrowDown, ArrowRight, Calendar, MapPin, Ticket, PlayCircle } from 'lucide-react';
 import { DISCOGRAPHY } from '@/lib/constants';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { getConcerts } from '@/lib/firebase';
-import type { Concert as RawConcert } from "@/lib/firebase";
+import { getConcerts, getVideos } from '@/lib/firebase';
+import type { Concert as RawConcert, Video } from "@/lib/firebase";
 
 interface Concert extends Omit<RawConcert, 'date'> {
   date: Date;
+}
+
+function getYouTubeThumbnail(url: string): string {
+    let videoId: string | null = null;
+    try {
+        const urlObj = new URL(url);
+        if (urlObj.hostname === 'youtu.be') {
+            videoId = urlObj.pathname.slice(1);
+        } else if (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com') {
+            if (urlObj.pathname === '/watch') {
+                videoId = urlObj.searchParams.get('v');
+            } else if (urlObj.pathname.startsWith('/embed/')) {
+                videoId = urlObj.pathname.split('/embed/')[1];
+            }
+        }
+    } catch (e) {
+        console.error('Invalid URL for YouTube thumbnail:', url);
+        return `https://picsum.photos/seed/${url}/600/338`;
+    }
+
+    if (videoId) {
+        return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    }
+
+    // Fallback if no videoId could be extracted
+    return `https://picsum.photos/seed/${url}/600/338`;
 }
 
 export default async function Home() {
@@ -23,6 +49,9 @@ export default async function Home() {
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
   const nextTwoConcerts = upcomingConcerts.slice(0, 2);
+
+  const allVideos: Video[] = await getVideos();
+  const nextTwoVideos = allVideos.slice(0, 2);
 
   return (
     <div className="flex flex-col">
@@ -168,20 +197,25 @@ export default async function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-             <div className="text-white">
-                <div className="aspect-video bg-black/30 rounded-lg mb-4">
-                   <Image src="https://picsum.photos/600/338" width={600} height={338} alt="Video thumbnail" className="rounded-lg w-full h-full object-cover" data-ai-hint="piano concert" />
-                </div>
-                <h3 className="text-xl font-semibold">TCHAIKOVSKY Piano Concerto</h3>
-                <p className="text-white/70">Piano Concerto live in Budapest Liszt Academy</p>
-             </div>
-             <div className="text-white">
-                <div className="aspect-video bg-black/30 rounded-lg mb-4">
-                   <Image src="https://picsum.photos/600/338?random=1" width={600} height={338} alt="Video thumbnail" className="rounded-lg w-full h-full object-cover" data-ai-hint="classical performance" />
-                </div>
-                <h3 className="text-xl font-semibold">TCHAIKOVSKY Piano Concerto</h3>
-                <p className="text-white/70">Piano Concerto live in Budapest Liszt Academy</p>
-             </div>
+            {nextTwoVideos.map((video) => (
+              <Link href={video.link} key={video.id} target="_blank" rel="noopener noreferrer" className="text-white group">
+                  <div className="relative aspect-video bg-black/30 rounded-lg mb-4 overflow-hidden">
+                    <Image 
+                      src={getYouTubeThumbnail(video.link)} 
+                      width={600} 
+                      height={338} 
+                      alt={`Thumbnail for ${video.title}`} 
+                      className="rounded-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                      data-ai-hint="piano concert" 
+                    />
+                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <PlayCircle className="w-12 h-12 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold">{video.title}</h3>
+                  <p className="text-white/70">{video.description}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
