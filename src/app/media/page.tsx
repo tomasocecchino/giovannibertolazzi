@@ -110,7 +110,8 @@ function PhotoGrid({ images }: PhotoGridProps) {
   const handleImageClick = (index: number) => {
     const initialLoadingStates: Record<string, boolean> = {};
     images.forEach(img => {
-      initialLoadingStates[img.id] = true;
+      // Set initial loading state to true only for the clicked image, others can load lazily
+      initialLoadingStates[img.id] = index === images.findIndex(i => i.id === img.id);
     });
     setImageLoadingStates(initialLoadingStates);
     setSelectedImageIndex(index);
