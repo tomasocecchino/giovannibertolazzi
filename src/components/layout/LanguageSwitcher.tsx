@@ -41,7 +41,7 @@ export default function LanguageSwitcher() {
     <Select onValueChange={onSelectChange} defaultValue={locale} disabled={isPending}>
       <SelectTrigger 
         className="w-auto bg-transparent border-none text-white/80 p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none"
-        icon={<></>}
+        icon={null}
       >
         <SelectValue>
            {selectedLanguage && (
