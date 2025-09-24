@@ -103,16 +103,18 @@ function PhotoGrid({ images }: PhotoGridProps) {
   const [imageLoadingStates, setImageLoadingStates] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    if (!carouselApi || selectedImageIndex === null) return;
-    carouselApi.scrollTo(selectedImageIndex, true);
+    if (carouselApi && selectedImageIndex !== null) {
+      carouselApi.scrollTo(selectedImageIndex, true);
+    }
   }, [carouselApi, selectedImageIndex]);
-
+  
   const handleImageClick = (index: number) => {
-    const initialLoadingStates: Record<string, boolean> = {};
-    images.forEach((img, i) => {
-      initialLoadingStates[img.id] = i === index;
+    // Set loading state only for the clicked image initially
+    const newLoadingStates: Record<string, boolean> = {};
+    images.forEach(img => {
+      newLoadingStates[img.id] = true; // Assume all are loading until proven otherwise
     });
-    setImageLoadingStates(initialLoadingStates);
+    setImageLoadingStates(newLoadingStates);
     setSelectedImageIndex(index);
   };
   
@@ -152,48 +154,48 @@ function PhotoGrid({ images }: PhotoGridProps) {
       </div>
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-none w-screen h-screen p-0 bg-black/80 border-none flex items-center justify-center">
+        <DialogContent className="max-w-none w-screen h-screen p-0 bg-black/80 border-none">
            <DialogTitle className="sr-only">Image Gallery</DialogTitle>
-            <Carousel setApi={setCarouselApi} className="w-full h-full max-w-7xl max-h-screen">
+            <Carousel setApi={setCarouselApi} className="w-full h-full max-w-7xl mx-auto">
               <CarouselContent className="h-full">
                 {images.map((photo) => (
-                  <CarouselItem key={photo.id} className="relative h-full w-full flex items-center justify-center p-4">
-                     <div className="relative w-full h-full flex items-center justify-center">
-                        {imageLoadingStates[photo.id] !== false && (
-                           <div className="absolute inset-0 flex items-center justify-center z-10">
-                              <Loader2 className="w-10 h-10 animate-spin text-white/50" />
-                           </div>
-                         )}
-                        <div className="relative w-full h-full">
-                            <Image
-                              src={photo.link}
-                              alt={photo.title || 'Enlarged gallery image'}
-                              fill
-                              className={cn(
-                                "object-contain transition-opacity duration-500",
-                                 imageLoadingStates[photo.id] === false ? "opacity-100" : "opacity-0"
-                              )}
-                              sizes="100vw"
-                              onLoad={() => handleImageLoad(photo.id)}
-                              onError={() => handleImageLoad(photo.id)}
-                            />
+                  <CarouselItem key={photo.id} className="h-full w-full">
+                    <div className="relative w-full h-full p-4">
+                       {imageLoadingStates[photo.id] !== false && (
+                         <div className="absolute inset-0 flex items-center justify-center z-10">
+                            <Loader2 className="w-10 h-10 animate-spin text-white/50" />
+                         </div>
+                       )}
+                      <div className="relative w-full h-full">
+                          <Image
+                            src={photo.link}
+                            alt={photo.title || 'Enlarged gallery image'}
+                            fill
+                            className={cn(
+                              "object-contain transition-opacity duration-500",
+                              imageLoadingStates[photo.id] === false ? "opacity-100" : "opacity-0"
+                            )}
+                            sizes="100vw"
+                            onLoad={() => handleImageLoad(photo.id)}
+                            onError={() => handleImageLoad(photo.id)} // Also hide loader on error
+                          />
+                      </div>
+                      {(photo.title || photo.photographer) && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-20">
+                          {photo.title && (
+                            <p className="text-base mb-1">{photo.title}</p>
+                          )}
+                          {photo.photographer && (
+                            <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {photo.photographer}</p>
+                          )}
                         </div>
-                        {(photo.title || photo.photographer) && (
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-20">
-                            {photo.title && (
-                              <p className="text-base mb-1">{photo.title}</p>
-                            )}
-                            {photo.photographer && (
-                              <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {photo.photographer}</p>
-                            )}
-                          </div>
-                        )}
+                      )}
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
-              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
+              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
+              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
             </Carousel>
         </DialogContent>
       </Dialog>
