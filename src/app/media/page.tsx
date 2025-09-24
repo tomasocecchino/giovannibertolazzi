@@ -109,12 +109,11 @@ function PhotoGrid({ images }: PhotoGridProps) {
   }, [carouselApi, selectedImageIndex]);
   
   const handleImageClick = (index: number) => {
-    // Set loading state only for the clicked image initially
-    const newLoadingStates: Record<string, boolean> = {};
+    const initialLoadingStates: Record<string, boolean> = {};
     images.forEach(img => {
-      newLoadingStates[img.id] = true; // Assume all are loading until proven otherwise
+      initialLoadingStates[img.id] = true;
     });
-    setImageLoadingStates(newLoadingStates);
+    setImageLoadingStates(initialLoadingStates);
     setSelectedImageIndex(index);
   };
   
@@ -154,43 +153,43 @@ function PhotoGrid({ images }: PhotoGridProps) {
       </div>
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-none w-screen h-screen p-0 bg-black/80 border-none">
+        <DialogContent className="max-w-none w-screen h-screen p-4 bg-black/80 border-none flex items-center justify-center">
            <DialogTitle className="sr-only">Image Gallery</DialogTitle>
             <Carousel setApi={setCarouselApi} className="w-full h-full max-w-7xl mx-auto">
               <CarouselContent className="h-full">
                 {images.map((photo) => (
-                  <CarouselItem key={photo.id} className="h-full w-full">
-                    <div className="relative w-full h-full p-4">
+                  <CarouselItem key={photo.id} className="h-full w-full flex flex-col">
+                    <div className="flex-1 relative w-full h-full">
                        {imageLoadingStates[photo.id] !== false && (
                          <div className="absolute inset-0 flex items-center justify-center z-10">
                             <Loader2 className="w-10 h-10 animate-spin text-white/50" />
                          </div>
                        )}
-                      <div className="relative w-full h-full">
-                          <Image
-                            src={photo.link}
-                            alt={photo.title || 'Enlarged gallery image'}
-                            fill
-                            className={cn(
-                              "object-contain transition-opacity duration-500",
-                              imageLoadingStates[photo.id] === false ? "opacity-100" : "opacity-0"
-                            )}
-                            sizes="100vw"
-                            onLoad={() => handleImageLoad(photo.id)}
-                            onError={() => handleImageLoad(photo.id)} // Also hide loader on error
-                          />
-                      </div>
-                      {(photo.title || photo.photographer) && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-20">
+                       <div className="relative w-full h-full">
+                           <Image
+                                src={photo.link}
+                                alt={photo.title || 'Enlarged gallery image'}
+                                fill
+                                className={cn(
+                                "object-contain transition-opacity duration-500",
+                                imageLoadingStates[photo.id] === false ? "opacity-100" : "opacity-0"
+                                )}
+                                sizes="100vw"
+                                onLoad={() => handleImageLoad(photo.id)}
+                                onError={() => handleImageLoad(photo.id)}
+                            />
+                       </div>
+                    </div>
+                    {(photo.title || photo.photographer) && (
+                        <div className="flex-shrink-0 pt-4 text-white text-center">
                           {photo.title && (
-                            <p className="text-base mb-1">{photo.title}</p>
+                            <p className="text-base font-semibold mb-1">{photo.title}</p>
                           )}
                           {photo.photographer && (
-                            <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {photo.photographer}</p>
+                            <p className="text-sm opacity-80 flex items-center justify-center gap-2"><Camera className="w-4 h-4" /> {photo.photographer}</p>
                           )}
                         </div>
-                      )}
-                    </div>
+                    )}
                   </CarouselItem>
                 ))}
               </CarouselContent>
