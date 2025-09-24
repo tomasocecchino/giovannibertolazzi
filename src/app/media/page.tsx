@@ -101,6 +101,7 @@ interface PhotoGridProps {
 function PhotoGrid({ images }: PhotoGridProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [imageLoadingStates, setImageLoadingStates] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     if (carouselApi && selectedImageIndex !== null) {
@@ -109,9 +110,19 @@ function PhotoGrid({ images }: PhotoGridProps) {
   }, [carouselApi, selectedImageIndex]);
 
   const handleImageClick = (index: number) => {
+    // Set initial loading states for all images in the carousel
+    const initialLoadingStates: Record<string, boolean> = {};
+    images.forEach(img => {
+      initialLoadingStates[img.id] = true;
+    });
+    setImageLoadingStates(initialLoadingStates);
     setSelectedImageIndex(index);
   };
   
+  const handleImageLoad = (id: string) => {
+    setImageLoadingStates(prev => ({ ...prev, [id]: false }));
+  };
+
   const currentImage = selectedImageIndex !== null ? images[selectedImageIndex] : null;
 
   if (images.length === 0) {
@@ -153,15 +164,22 @@ function PhotoGrid({ images }: PhotoGridProps) {
                 {images.map((photo) => (
                   <CarouselItem key={photo.id} className="h-full flex items-center justify-center">
                     <div className="relative w-full h-full flex items-center justify-center bg-black/10">
-                       <div className="absolute flex items-center justify-center">
-                          <Loader2 className="w-10 h-10 animate-spin text-white/50" />
-                       </div>
+                       {imageLoadingStates[photo.id] && (
+                         <div className="absolute inset-0 flex items-center justify-center z-10">
+                            <Loader2 className="w-10 h-10 animate-spin text-white/50" />
+                         </div>
+                       )}
                       <Image
                         src={photo.link}
                         alt={photo.title || 'Enlarged gallery image'}
                         fill
-                        className="object-contain z-10"
+                        className={cn(
+                          "object-contain transition-opacity duration-500",
+                          imageLoadingStates[photo.id] ? "opacity-0" : "opacity-100"
+                        )}
                         sizes="100vw"
+                        onLoad={() => handleImageLoad(photo.id)}
+                        onError={() => handleImageLoad(photo.id)} // Also hide spinner on error
                       />
                       {(photo.title || photo.photographer) && (
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-20">
