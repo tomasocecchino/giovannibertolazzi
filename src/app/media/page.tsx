@@ -133,7 +133,10 @@ function PhotoGrid({ images }: PhotoGridProps) {
               src={photo.link}
               alt={photo.title || 'Gallery image'}
               fill
-              className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              className={cn(
+                "object-cover transition-transform duration-300 group-hover:scale-105",
+                photo.link === 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Media%2FGallery%2FBERTOLAZZI_SHOOTING2.jpg?alt=media&token=6babd24b-ba57-41aa-bac4-b7b4094a9c1a' ? 'object-center' : 'object-top'
+              )}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               data-ai-hint="musician photo"
             />
