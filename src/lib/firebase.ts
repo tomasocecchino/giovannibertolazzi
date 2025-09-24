@@ -20,16 +20,15 @@ const db = getFirestore(app);
 
 export interface GalleryImage {
     id: string;
-    order: number;
-    imageUrl: string;
-    alt: string;
-    description?: string;
+    score: string;
+    link: string;
+    title?: string;
     photographer?: string;
 }
 
 export interface Video {
     id: string;
-    order: number;
+    order: string;
     title: string;
     description: string;
     link: string;
@@ -97,19 +96,19 @@ export async function getNews(): Promise<NewsArticle[]> {
         return articles;
     } catch (error: any) {
         console.error("Error fetching news from Firestore:", error);
-        throw new Error(`Could not fetch news. Please check Firestore permissions and data format. Original error: ${error.message}`);
+        throw new Error(`Could not fetch news. Please check Firestore permissions and data format for the 'newsArticle' collection. Original error: ${error.message}`);
     }
 }
 
 
 /**
  * Fetches gallery images from the 'galleryImages' collection in Firestore,
- * ordered by the 'order' field.
+ * ordered by the 'score' field descending.
  */
 export async function getGalleryImages(): Promise<GalleryImage[]> {
     try {
         const imagesCollection = collection(db, "galleryImages");
-        const q = query(imagesCollection, orderBy("order", "asc"));
+        const q = query(imagesCollection, orderBy("score", "desc"));
         const querySnapshot = await getDocs(q);
         
         const images = querySnapshot.docs.map(doc => ({
@@ -193,6 +192,6 @@ export async function getConcerts(): Promise<Concert[]> {
     } catch (error: any) {
         console.error("Error fetching concerts from Firestore:", error);
         // Throwing a more detailed error to be handled by the component
-        throw new Error(`Could not fetch concerts. Please check Firestore permissions and data format. Original error: ${error.message}`);
+        throw new Error(`Could not fetch concerts. Please check Firestore permissions and data format for the 'concerts' collection. Original error: ${error.message}`);
     }
 }

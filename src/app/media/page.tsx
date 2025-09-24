@@ -102,8 +102,8 @@ function PhotoGallery() {
             onClick={() => setSelectedImageIndex(index)}
           >
             <Image
-              src={photo.imageUrl}
-              alt={photo.alt}
+              src={photo.link}
+              alt={photo.title || 'Gallery image'}
               fill
               className="!relative object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -116,7 +116,7 @@ function PhotoGallery() {
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
         <DialogContent className="max-w-screen-xl w-[95%] max-h-[90vh] p-0 bg-transparent border-none shadow-none flex items-center justify-center">
-           <DialogTitle className="sr-only">Enlarged gallery image: {currentImage?.alt}</DialogTitle>
+           <DialogTitle className="sr-only">Enlarged gallery image: {currentImage?.title}</DialogTitle>
           {currentImage && (
             <div className="relative">
                 <Button 
@@ -129,8 +129,8 @@ function PhotoGallery() {
                     <ChevronLeft className="h-8 w-8" />
                 </Button>
                 <Image
-                    src={currentImage.imageUrl}
-                    alt={currentImage.alt}
+                    src={currentImage.link}
+                    alt={currentImage.title || 'Enlarged gallery image'}
                     width={1600}
                     height={900}
                     className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
@@ -145,10 +145,10 @@ function PhotoGallery() {
                     <ChevronRight className="h-8 w-8" />
                 </Button>
                 
-                {(currentImage.description || currentImage.photographer) && (
+                {(currentImage.title || currentImage.photographer) && (
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-10">
-                    {currentImage.description && (
-                      <p className="text-base mb-1">{currentImage.description}</p>
+                    {currentImage.title && (
+                      <p className="text-base mb-1">{currentImage.title}</p>
                     )}
                     {currentImage.photographer && (
                       <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {currentImage.photographer}</p>
