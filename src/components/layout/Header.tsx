@@ -1,6 +1,7 @@
 'use client';
 
-import { Link, usePathname } from 'next-intl/navigation';
+import { usePathname } from 'next-intl/navigation';
+import { Link } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';

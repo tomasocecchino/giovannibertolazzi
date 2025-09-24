@@ -2,7 +2,7 @@
 'use client';
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { Link } from "next-intl/navigation";
+import { Link } from "next-intl";
 import {
   Select,
   SelectContent,
