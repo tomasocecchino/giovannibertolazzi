@@ -17,6 +17,7 @@ import type { GalleryImage, Video } from '@/lib/firebase';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
 
 type View = 'gallery' | 'shooting' | 'videos';
 
@@ -30,8 +31,9 @@ export default function MediaPage() {
     async function loadImages() {
       try {
         const allImages = await getGalleryImages();
-        setGalleryImages(allImages.filter(img => img.type !== 'shooting'));
-        setShootingImages(allImages.filter(img => img.type === 'shooting'));
+        const validImages = allImages.filter(img => img.link && img.link.trim() !== '');
+        setGalleryImages(validImages.filter(img => img.type !== 'shooting'));
+        setShootingImages(validImages.filter(img => img.type === 'shooting'));
       } catch (error) {
         console.error("Failed to fetch gallery images:", error);
       } finally {
@@ -42,7 +44,11 @@ export default function MediaPage() {
   }, []);
 
   if (loading) {
-    return <div className="text-center pt-48">Loading media...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-[#f0f0f0]">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
   }
 
   return (
