@@ -126,14 +126,14 @@ function PhotoGrid({ images }: PhotoGridProps) {
         {images.map((photo, index) => (
           <div 
             key={photo.id} 
-            className="relative w-full aspect-[4/3] cursor-pointer group"
+            className="relative w-full aspect-[4/3] cursor-pointer group bg-black/5"
             onClick={() => setSelectedImageIndex(index)}
           >
             <Image
               src={photo.link}
               alt={photo.title || 'Gallery image'}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               data-ai-hint="musician photo"
             />
