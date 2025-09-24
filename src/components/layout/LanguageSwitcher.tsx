@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -67,3 +68,5 @@ export default function LanguageSwitcher() {
       </Select>
   );
 }
+
+    

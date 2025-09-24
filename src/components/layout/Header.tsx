@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Link } from 'next-intl';
@@ -36,7 +37,6 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // No need to strip locale from pathname with next-intl's usePathname
   const currentPath = pathname;
 
   return (
@@ -122,3 +122,5 @@ export function Header() {
     </header>
   );
 }
+
+    
