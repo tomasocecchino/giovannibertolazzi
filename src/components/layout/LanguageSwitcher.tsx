@@ -5,7 +5,14 @@ import { useLocale } from "next-intl";
 import { usePathname, useRouter } from '@/navigation';
 import { useTransition } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { ChevronDown } from "lucide-react";
 
 const languages = [
   { code: "it", name: "Italiano", flag: "/flags/it.svg" },
@@ -18,20 +25,53 @@ const languages = [
 ];
 
 export default function LanguageSwitcher() {
+  const [isPending, startTransition] = useTransition();
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const onSelectChange = (value: string) => {
+    startTransition(() => {
+      router.replace(pathname, { locale: value });
+    });
+  };
+
   const selectedLanguage = languages.find(lang => lang.code === locale);
 
   return (
-      <div className="flex items-center gap-2 text-white/80 p-2 h-auto">
-          {selectedLanguage && (
-            <Image
-              src={selectedLanguage.flag}
-              alt={selectedLanguage.name}
-              width={20}
-              height={15}
-            />
-          )}
-          <span className="text-sm">{selectedLanguage?.name}</span>
-      </div>
+    <Select onValueChange={onSelectChange} defaultValue={locale} disabled={isPending}>
+      <SelectTrigger className="w-auto bg-transparent border-none text-white/80 p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none gap-2">
+        <SelectValue>
+           {selectedLanguage && (
+            <div className="flex items-center gap-2">
+                <Image
+                    src={selectedLanguage.flag}
+                    alt={selectedLanguage.name}
+                    width={20}
+                    height={15}
+                    className="w-5 h-auto"
+                />
+                <span className="text-sm">{selectedLanguage.code.toUpperCase()}</span>
+            </div>
+           )}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent className="bg-primary border-white/20 text-white">
+        {languages.map((lang) => (
+          <SelectItem key={lang.code} value={lang.code}>
+             <div className="flex items-center gap-3">
+                <Image
+                    src={lang.flag}
+                    alt={lang.name}
+                    width={20}
+                    height={15}
+                    className="w-5 h-auto"
+                />
+                <span>{lang.name}</span>
+            </div>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 }
