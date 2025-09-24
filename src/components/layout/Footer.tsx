@@ -26,23 +26,23 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#f0f0f0] text-black py-16">
+    <footer className="bg-background text-foreground py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="md:col-span-1">
-             <Link href="/" className="text-4xl text-[#004165] font-headline tracking-tight">
+             <Link href="/" className="text-4xl text-primary font-headline tracking-tight">
                 <span className="font-normal">Giovanni</span>
                 <br />
                 <span className="font-semibold">Bertolazzi</span>
              </Link>
-            <p className="text-sm text-black mt-2">Pianista</p>
+            <p className="text-sm text-foreground mt-2">Pianista</p>
           </div>
           <div className="md:col-span-1">
-            <h3 className="font-semibold text-[#004165] mb-4 tracking-widest font-headline">MENU</h3>
+            <h3 className="font-semibold text-primary mb-4 tracking-widest font-headline">MENU</h3>
             <ul className="space-y-2">
               {footerNavLinks.map(link => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-black hover:text-[#004a63] transition-colors font-medium text-sm">
+                  <Link href={link.href} className="text-foreground hover:text-accent transition-colors font-medium text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -50,11 +50,11 @@ export function Footer() {
             </ul>
           </div>
           <div className='md:col-span-1'>
-            <h3 className="font-semibold text-[#004165] mb-4 tracking-widest font-headline">DATA PROTECTION</h3>
+            <h3 className="font-semibold text-primary mb-4 tracking-widest font-headline">DATA PROTECTION</h3>
              <ul className="space-y-2">
                  {dataProtectionLinks.map(link => (
                     <li key={link.label}>
-                        <Link href={link.href} className="text-black hover:text-[#004a63] transition-colors font-medium text-sm">
+                        <Link href={link.href} className="text-foreground hover:text-accent transition-colors font-medium text-sm">
                             {link.label}
                         </Link>
                     </li>
@@ -63,7 +63,7 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between mt-16 pt-8">
-          <p className="text-xs text-gray-700 mb-4 md:mb-0">
+          <p className="text-xs text-muted-foreground mb-4 md:mb-0">
             &copy; Giovanni Bertolazzi, 2025 - Designed by MeYou Srl
           </p>
            <div className="flex items-center space-x-6">
@@ -73,7 +73,7 @@ export function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-[#004a63] transition-colors text-sm font-semibold tracking-widest"
+                className="text-foreground hover:text-accent transition-colors text-sm font-semibold tracking-widest"
                 aria-label={`Visit Giovanni Bertolazzi on ${social.name}`}
               >
                 {social.name}

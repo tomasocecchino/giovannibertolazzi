@@ -42,7 +42,7 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-colors duration-300",
-      isScrolled ? "bg-black/80 backdrop-blur-sm" : "bg-transparent"
+      isScrolled ? "bg-primary/80 backdrop-blur-sm" : "bg-transparent"
     )}>
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -84,7 +84,7 @@ export function Header() {
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-[#0e141a]">
+            <SheetContent side="right" className="bg-primary">
               <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">

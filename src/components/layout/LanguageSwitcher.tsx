@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
           )}
           <SelectValue />
         </SelectTrigger>
-        <SelectContent className="bg-black/80 backdrop-blur-sm text-white border-white/20">
+        <SelectContent className="bg-primary/80 backdrop-blur-sm text-white border-white/20">
           {languages.map((language) => (
             <SelectItem key={language.code} value={language.code} className="cursor-pointer">
               <div className="flex items-center gap-2">
