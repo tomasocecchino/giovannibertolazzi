@@ -111,6 +111,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
   const handleImageClick = (index: number) => {
     const initialLoadingStates: Record<string, boolean> = {};
     images.forEach(img => {
+      // Set initial loading state to true only for images that will be loaded.
       initialLoadingStates[img.id] = true;
     });
     setImageLoadingStates(initialLoadingStates);
@@ -158,8 +159,8 @@ function PhotoGrid({ images }: PhotoGridProps) {
             <Carousel setApi={setCarouselApi} className="w-full h-full max-w-7xl mx-auto">
               <CarouselContent className="h-full">
                 {images.map((photo) => (
-                  <CarouselItem key={photo.id} className="h-full w-full flex flex-col">
-                    <div className="flex-1 relative w-full h-full">
+                  <CarouselItem key={photo.id} className="h-full w-full flex flex-col items-center justify-center">
+                    <div className="flex-1 w-full relative">
                        {imageLoadingStates[photo.id] !== false && (
                          <div className="absolute inset-0 flex items-center justify-center z-10">
                             <Loader2 className="w-10 h-10 animate-spin text-white/50" />
