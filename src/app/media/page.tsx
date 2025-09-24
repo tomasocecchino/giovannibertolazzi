@@ -101,7 +101,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [imageLoadingStates, setImageLoadingStates] = useState<Record<string, boolean>>({});
-
+  
   useEffect(() => {
     if (carouselApi && selectedImageIndex !== null) {
       carouselApi.scrollTo(selectedImageIndex, true);
