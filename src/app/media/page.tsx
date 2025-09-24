@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   Select,
   SelectContent,
@@ -11,13 +11,13 @@ import {
 } from '@/components/ui/select';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PlayCircle, Camera } from 'lucide-react';
+import { PlayCircle, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
+import { Button } from '@/components/ui/button';
 
 type View = 'gallery' | 'videos';
 
@@ -98,29 +98,60 @@ interface PhotoGridProps {
 }
 
 function PhotoGrid({ images }: PhotoGridProps) {
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-  const [imageLoadingStates, setImageLoadingStates] = useState<Record<string, boolean>>({});
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const openModal = (index: number) => {
+    setSelectedIndex(index);
+    setImageLoading(true);
+  };
   
+  const closeModal = () => {
+    setSelectedIndex(null);
+  };
+
+  const goToNext = useCallback(() => {
+    if (selectedIndex === null) return;
+    setSelectedIndex((prevIndex) => (prevIndex! + 1) % images.length);
+    setImageLoading(true);
+  }, [selectedIndex, images.length]);
+
+  const goToPrevious = useCallback(() => {
+    if (selectedIndex === null) return;
+    setSelectedIndex((prevIndex) => (prevIndex! - 1 + images.length) % images.length);
+    setImageLoading(true);
+  }, [selectedIndex, images.length]);
+
   useEffect(() => {
-    if (carouselApi && selectedImageIndex !== null) {
-      carouselApi.scrollTo(selectedImageIndex, true);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedIndex === null) return;
+      if (e.key === 'ArrowRight') goToNext();
+      if (e.key === 'ArrowLeft') goToPrevious();
+      if (e.key === 'Escape') closeModal();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedIndex, goToNext, goToPrevious]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.targetTouches[0].clientX;
+    if (touchStart - touchEnd > 75) { // Swipe left
+      goToNext();
+      setTouchStart(null);
     }
-  }, [carouselApi, selectedImageIndex]);
-  
-  const handleImageClick = (index: number) => {
-    const initialLoadingStates: Record<string, boolean> = {};
-    images.forEach(img => {
-      // Set initial loading state to true only for images that will be loaded.
-      initialLoadingStates[img.id] = true;
-    });
-    setImageLoadingStates(initialLoadingStates);
-    setSelectedImageIndex(index);
+    if (touchStart - touchEnd < -75) { // Swipe right
+      goToPrevious();
+      setTouchStart(null);
+    }
   };
-  
-  const handleImageLoad = (id: string) => {
-    setImageLoadingStates(prev => ({ ...prev, [id]: false }));
-  };
+
+  const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
 
   if (images.length === 0) {
     return <div className="text-center">No images in this section.</div>;
@@ -133,7 +164,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
           <div 
             key={photo.id} 
             className="relative w-full aspect-[4/3] cursor-pointer group bg-black/5"
-            onClick={() => handleImageClick(index)}
+            onClick={() => openModal(index)}
           >
             <Image
               src={photo.link}
@@ -153,50 +184,68 @@ function PhotoGrid({ images }: PhotoGridProps) {
         ))}
       </div>
 
-      <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-none w-screen h-screen p-4 bg-black/80 border-none flex items-center justify-center">
-           <DialogTitle className="sr-only">Image Gallery</DialogTitle>
-            <Carousel setApi={setCarouselApi} className="w-full h-full max-w-7xl mx-auto">
-              <CarouselContent className="h-full">
-                {images.map((photo) => (
-                  <CarouselItem key={photo.id} className="h-full w-full flex flex-col items-center justify-center">
-                    <div className="flex-1 w-full relative">
-                       {imageLoadingStates[photo.id] !== false && (
-                         <div className="absolute inset-0 flex items-center justify-center z-10">
-                            <Loader2 className="w-10 h-10 animate-spin text-white/50" />
-                         </div>
-                       )}
-                       <div className="relative w-full h-full">
-                           <Image
-                                src={photo.link}
-                                alt={photo.title || 'Enlarged gallery image'}
-                                fill
-                                className={cn(
-                                "object-contain transition-opacity duration-500",
-                                imageLoadingStates[photo.id] === false ? "opacity-100" : "opacity-0"
-                                )}
-                                sizes="100vw"
-                                onLoad={() => handleImageLoad(photo.id)}
-                                onError={() => handleImageLoad(photo.id)}
-                            />
-                       </div>
+      <Dialog open={selectedIndex !== null} onOpenChange={(isOpen) => !isOpen && closeModal()}>
+        <DialogContent 
+          className="max-w-none w-full h-full p-4 md:p-8 bg-black/90 border-none"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+        >
+           <DialogTitle className="sr-only">Image Viewer</DialogTitle>
+           
+           {selectedImage && (
+             <div className="w-full h-full flex flex-col items-center justify-center">
+                <div className="flex-1 w-full max-w-7xl relative">
+                  {imageLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                      <Loader2 className="w-10 h-10 animate-spin text-white/50" />
                     </div>
-                    {(photo.title || photo.photographer) && (
-                        <div className="flex-shrink-0 pt-4 text-white text-center">
-                          {photo.title && (
-                            <p className="text-base font-semibold mb-1">{photo.title}</p>
-                          )}
-                          {photo.photographer && (
-                            <p className="text-sm opacity-80 flex items-center justify-center gap-2"><Camera className="w-4 h-4" /> {photo.photographer}</p>
-                          )}
-                        </div>
+                  )}
+                  <Image
+                    key={selectedImage.id}
+                    src={selectedImage.link}
+                    alt={selectedImage.title || 'Enlarged gallery image'}
+                    fill
+                    className={cn(
+                      "object-contain transition-opacity duration-300",
+                      imageLoading ? "opacity-0" : "opacity-100"
                     )}
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
-              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
-            </Carousel>
+                    sizes="100vw"
+                    onLoad={() => setImageLoading(false)}
+                    onError={() => setImageLoading(false)}
+                  />
+                </div>
+
+                {(selectedImage.title || selectedImage.photographer) && (
+                  <div className="flex-shrink-0 pt-4 text-white text-center">
+                    {selectedImage.title && (
+                      <p className="text-base font-semibold mb-1">{selectedImage.title}</p>
+                    )}
+                    {selectedImage.photographer && (
+                      <p className="text-sm opacity-80 flex items-center justify-center gap-2"><Camera className="w-4 h-4" /> {selectedImage.photographer}</p>
+                    )}
+                  </div>
+                )}
+             </div>
+           )}
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={goToPrevious}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
+            >
+              <ChevronLeft className="h-8 w-8" />
+              <span className="sr-only">Previous Image</span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={goToNext}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
+            >
+              <ChevronRight className="h-8 w-8" />
+              <span className="sr-only">Next Image</span>
+            </Button>
         </DialogContent>
       </Dialog>
     </>
@@ -277,3 +326,5 @@ function VideoGallery() {
     </div>
   );
 }
+
+    
