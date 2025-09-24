@@ -32,9 +32,7 @@ export interface Video {
     order: number;
     title: string;
     description: string;
-    duration: string;
-    videoUrl: string;
-    thumbnailUrl: string;
+    link: string;
 }
 
 export interface Concert {
