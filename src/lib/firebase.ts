@@ -24,6 +24,7 @@ export interface GalleryImage {
     link: string;
     title?: string;
     photographer?: string;
+    type?: 'shooting';
 }
 
 export interface Video {

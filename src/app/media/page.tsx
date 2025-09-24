@@ -18,10 +18,32 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
-type View = 'gallery' | 'videos';
+type View = 'gallery' | 'shooting' | 'videos';
 
 export default function MediaPage() {
   const [currentView, setCurrentView] = useState<View>('gallery');
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+  const [shootingImages, setShootingImages] = useState<GalleryImage[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadImages() {
+      try {
+        const allImages = await getGalleryImages();
+        setGalleryImages(allImages.filter(img => img.type !== 'shooting'));
+        setShootingImages(allImages.filter(img => img.type === 'shooting'));
+      } catch (error) {
+        console.error("Failed to fetch gallery images:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadImages();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center pt-48">Loading media...</div>;
+  }
 
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
@@ -41,36 +63,26 @@ export default function MediaPage() {
             </SelectTrigger>
             <SelectContent className="bg-white text-black">
               <SelectItem value="gallery">Gallery</SelectItem>
+              {shootingImages.length > 0 && <SelectItem value="shooting">Shooting</SelectItem>}
               <SelectItem value="videos">Videos</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
-        {currentView === 'gallery' && <PhotoGallery />}
+        {currentView === 'gallery' && <PhotoGrid images={galleryImages} />}
+        {currentView === 'shooting' && <PhotoGrid images={shootingImages} />}
         {currentView === 'videos' && <VideoGallery />}
       </div>
     </div>
   );
 }
 
-function PhotoGallery() {
-  const [images, setImages] = useState<GalleryImage[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+interface PhotoGridProps {
+  images: GalleryImage[];
+}
 
-  useEffect(() => {
-    async function loadImages() {
-      try {
-        const fetchedImages = await getGalleryImages();
-        setImages(fetchedImages);
-      } catch (error) {
-        console.error("Failed to fetch gallery images:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadImages();
-  }, []);
+function PhotoGrid({ images }: PhotoGridProps) {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -88,8 +100,8 @@ function PhotoGallery() {
   
   const currentImage = selectedImageIndex !== null ? images[selectedImageIndex] : null;
 
-  if (loading) {
-    return <div className="text-center">Loading gallery...</div>;
+  if (images.length === 0) {
+    return <div className="text-center">No images in this section.</div>;
   }
 
   return (
