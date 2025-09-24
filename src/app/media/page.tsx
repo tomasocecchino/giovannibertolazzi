@@ -106,18 +106,18 @@ function PhotoGrid({ images }: PhotoGridProps) {
 
   return (
     <>
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((photo, index) => (
           <div 
             key={photo.id} 
-            className="break-inside-avoid relative w-full h-auto cursor-pointer group"
+            className="relative w-full aspect-[4/3] cursor-pointer group"
             onClick={() => setSelectedImageIndex(index)}
           >
             <Image
               src={photo.link}
               alt={photo.title || 'Gallery image'}
               fill
-              className="!relative object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               data-ai-hint="musician photo"
             />
@@ -187,7 +187,7 @@ function getYouTubeThumbnail(url: string): string {
             if (urlObj.pathname === '/watch') {
                 videoId = urlObj.searchParams.get('v');
             } else if (urlObj.pathname.startsWith('/embed/')) {
-                videoId = urlObj.pathname.split('/')[2];
+                videoId = urlObj.pathname.split('/embed/')[2];
             }
         }
     } catch (e) {
