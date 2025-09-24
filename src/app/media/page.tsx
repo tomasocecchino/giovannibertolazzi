@@ -109,7 +109,9 @@ function PhotoGallery() {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               data-ai-hint="musician photo"
             />
-             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+             <div className="absolute inset-0 bg-black/50 flex items-center justify-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {photo.title && <span className="text-white text-lg font-semibold">{photo.title}</span>}
+             </div>
           </div>
         ))}
       </div>
