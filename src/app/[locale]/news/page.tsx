@@ -3,7 +3,7 @@
 import { getNews } from "@/lib/firebase";
 import type { NewsArticle } from "@/lib/firebase";
 import { ArrowRight, Loader2 } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next-intl/navigation";
 import Image from "next/image";
 import { format } from 'date-fns';
 import { useEffect, useState } from "react";

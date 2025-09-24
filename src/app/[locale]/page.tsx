@@ -1,6 +1,6 @@
 
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, ArrowRight, Calendar, MapPin, Ticket, PlayCircle } from 'lucide-react';
 import { DISCOGRAPHY } from '@/lib/constants';

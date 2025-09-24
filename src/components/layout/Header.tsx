@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from 'next-intl/navigation';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,8 +35,8 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Strip the locale from the pathname for comparison
-  const currentPath = pathname.substring(3) || '/';
+  // No need to strip locale from pathname with next-intl's usePathname
+  const currentPath = pathname;
 
   return (
     <header className={cn(

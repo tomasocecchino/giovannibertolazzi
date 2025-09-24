@@ -1,7 +1,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "next-intl";
 
 const socialLinks = [
     { name: 'YouTube', href: 'https://www.youtube.com/c/GiovanniBertolazzi' },

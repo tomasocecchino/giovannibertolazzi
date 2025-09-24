@@ -1,5 +1,5 @@
 
-import Link from 'next/link';
+import { Link } from 'next-intl';
 
 export function Footer() {
   const footerNavLinks = [
