@@ -1,36 +1,15 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { Toaster } from "@/components/ui/toaster"
+// This is the root layout component for your Next.js app.
+// It applies to all routes in your application.
+//
+// Read more about routing and layouts in Next.js:
+// https://nextjs.org/docs/getting-started/react-essentials#layouts
 
-export const metadata: Metadata = {
-  title: 'Giovanni Bertolazzi',
-  description: 'The official website of Giovanni Bertolazzi, Concert-Pianist',
+import type { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,300&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased bg-[#0e141a]">
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow -mt-24">
-            {children}
-          </main>
-          <Footer />
-        </div>
-        <Toaster />
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Props) {
+  return children;
 }

@@ -1,16 +1,8 @@
 
 import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 
-export const NAV_LINKS = [
-  { href: '/', label: 'HOME' },
-  { href: '/about', label: 'ABOUT' },
-  { href: '/concerti', label: 'AGENDA' },
-  { href: '/media', label: 'MEDIA' },
-  { href: '/news', label: 'NEWS' },
-  { href: '/discografia', label: 'DISCOGRAPHY' },
-  { href: '/identity', label: 'IDENTITY' },
-  { href: '/contatti', label: 'CONTACTS' },
-];
+// NAV_LINKS is now handled dynamically in the Header component using translations.
+export const NAV_LINKS = [];
 
 export const SOCIAL_LINKS = [
   { name: 'Facebook', href: 'https://facebook.com', icon: Facebook },

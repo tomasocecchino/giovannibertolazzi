@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "agenda": "AGENDA",
+    "media": "MEDIA",
+    "news": "NEWS",
+    "discography": "DISCOGRAPHY",
+    "identity": "IDENTITY",
+    "contacts": "CONTACTS"
+  }
+}

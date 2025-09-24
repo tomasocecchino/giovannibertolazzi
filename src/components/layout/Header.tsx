@@ -6,14 +6,27 @@ import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { NAV_LINKS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const t = useTranslations('Header');
+
+  const NAV_LINKS = [
+    { href: '/', label: t('home') },
+    { href: '/about', label: t('about') },
+    { href: '/concerti', label: t('agenda') },
+    { href: '/media', label: t('media') },
+    { href: '/news', label: t('news') },
+    { href: '/discografia', label: t('discography') },
+    { href: '/identity', label: t('identity') },
+    { href: '/contatti', label: t('contacts') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +35,9 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Strip the locale from the pathname for comparison
+  const currentPath = pathname.substring(3) || '/';
 
   return (
     <header className={cn(
@@ -48,12 +64,15 @@ export function Header() {
               href={link.href}
               className={cn(
                 'transition-colors hover:text-white',
-                pathname === link.href ? 'text-white' : 'text-white/60'
+                (link.href === '/' && currentPath === '/') || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'text-white'
+                  : 'text-white/60'
               )}
             >
               {link.label}
             </Link>
           ))}
+          <LanguageSwitcher />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -85,13 +104,16 @@ export function Header() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
                         'flex items-center text-lg font-semibold text-white/70 hover:text-white',
-                         pathname === link.href && 'text-white'
+                         (link.href === '/' && currentPath === '/') || (link.href !== '/' && currentPath.startsWith(link.href)) && 'text-white'
                       )}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
+                 <div className="mt-8">
+                    <LanguageSwitcher />
+                  </div>
               </div>
             </SheetContent>
           </Sheet>
