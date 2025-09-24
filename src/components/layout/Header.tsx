@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, Link } from '@/navigation';
+import { usePathname, Link, useRouter } from '@/navigation';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -40,7 +40,7 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-colors duration-300",
-      isScrolled ? "bg-primary/80 backdrop-blur-sm" : "bg-transparent"
+      isScrolled ? "bg-black/80 backdrop-blur-sm" : "bg-transparent"
     )}>
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
