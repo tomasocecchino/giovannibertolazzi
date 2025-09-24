@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PlayCircle, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PlayCircle, Camera, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
@@ -99,12 +99,12 @@ interface PhotoGridProps {
 
 function PhotoGrid({ images }: PhotoGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [imageLoading, setImageLoading] = useState(true);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const openModal = (index: number) => {
     setSelectedIndex(index);
-    setImageLoading(true);
+    setIsImageLoading(true); // Set loading true when new image is selected
   };
   
   const closeModal = () => {
@@ -114,13 +114,13 @@ function PhotoGrid({ images }: PhotoGridProps) {
   const goToNext = useCallback(() => {
     if (selectedIndex === null) return;
     setSelectedIndex((prevIndex) => (prevIndex! + 1) % images.length);
-    setImageLoading(true);
+    setIsImageLoading(true);
   }, [selectedIndex, images.length]);
 
   const goToPrevious = useCallback(() => {
     if (selectedIndex === null) return;
     setSelectedIndex((prevIndex) => (prevIndex! - 1 + images.length) % images.length);
-    setImageLoading(true);
+    setIsImageLoading(true);
   }, [selectedIndex, images.length]);
 
   useEffect(() => {
@@ -139,7 +139,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
+    if (touchStart === null || selectedIndex === null) return;
     const touchEnd = e.targetTouches[0].clientX;
     if (touchStart - touchEnd > 75) { // Swipe left
       goToNext();
@@ -163,7 +163,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
         {images.map((photo, index) => (
           <div 
             key={photo.id} 
-            className="relative w-full aspect-[4/3] cursor-pointer group bg-black/5"
+            className="relative w-full aspect-[4/3] cursor-pointer group bg-black/5 overflow-hidden"
             onClick={() => openModal(index)}
           >
             <Image
@@ -186,66 +186,81 @@ function PhotoGrid({ images }: PhotoGridProps) {
 
       <Dialog open={selectedIndex !== null} onOpenChange={(isOpen) => !isOpen && closeModal()}>
         <DialogContent 
-          className="max-w-7xl w-full h-full md:h-auto md:max-h-[90vh] p-4 md:p-6 bg-black/90 border-none flex flex-col"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
+            className="max-w-none w-screen h-screen p-4 md:p-8 bg-black/90 border-none flex flex-col"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
         >
-           <DialogTitle className="sr-only">Image Viewer</DialogTitle>
+          <DialogTitle className="sr-only">Image Viewer</DialogTitle>
            
-           {selectedImage && (
-             <div className="flex-1 min-h-0 flex flex-col items-center justify-center">
-                <div className="w-full h-full flex-1 relative">
-                  {imageLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <Loader2 className="w-10 h-10 animate-spin text-white/50" />
+          {selectedImage && (
+            <>
+              {/* Main content: Image and Text */}
+              <div className="relative flex-1 flex flex-col items-center justify-center min-h-0">
+                  {/* Image container */}
+                  <div className="relative w-full flex-1">
+                    {isImageLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <Loader2 className="w-10 h-10 animate-spin text-white/50" />
+                      </div>
+                    )}
+                    <Image
+                      key={selectedImage.id}
+                      src={selectedImage.link}
+                      alt={selectedImage.title || 'Enlarged gallery image'}
+                      fill
+                      className={cn(
+                        "object-contain transition-opacity duration-300",
+                        isImageLoading ? "opacity-0" : "opacity-100"
+                      )}
+                      sizes="100vw"
+                      onLoad={() => setIsImageLoading(false)}
+                      onError={() => setIsImageLoading(false)}
+                    />
+                  </div>
+
+                  {/* Text container */}
+                  {(selectedImage.title || selectedImage.photographer) && (
+                    <div className="flex-shrink-0 pt-4 text-white text-left w-full max-w-5xl">
+                      {selectedImage.title && (
+                        <p className="text-base font-semibold mb-1">{selectedImage.title}</p>
+                      )}
+                      {selectedImage.photographer && (
+                        <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {selectedImage.photographer}</p>
+                      )}
                     </div>
                   )}
-                  <Image
-                    key={selectedImage.id}
-                    src={selectedImage.link}
-                    alt={selectedImage.title || 'Enlarged gallery image'}
-                    fill
-                    className={cn(
-                      "object-contain transition-opacity duration-300",
-                      imageLoading ? "opacity-0" : "opacity-100"
-                    )}
-                    sizes="100vw"
-                    onLoad={() => setImageLoading(false)}
-                    onError={() => setImageLoading(false)}
-                  />
-                </div>
+              </div>
+            </>
+          )}
 
-                {(selectedImage.title || selectedImage.photographer) && (
-                  <div className="flex-shrink-0 pt-4 text-white text-left w-full">
-                    {selectedImage.title && (
-                      <p className="text-base font-semibold mb-1">{selectedImage.title}</p>
-                    )}
-                    {selectedImage.photographer && (
-                      <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {selectedImage.photographer}</p>
-                    )}
-                  </div>
-                )}
-             </div>
-           )}
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={goToPrevious}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
-            >
-              <ChevronLeft className="h-8 w-8" />
-              <span className="sr-only">Previous Image</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={goToNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
-            >
-              <ChevronRight className="h-8 w-8" />
-              <span className="sr-only">Next Image</span>
-            </Button>
+          {/* Navigation Buttons */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={goToPrevious}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
+          >
+            <ChevronLeft className="h-8 w-8" />
+            <span className="sr-only">Previous Image</span>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={goToNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
+          >
+            <ChevronRight className="h-8 w-8" />
+            <span className="sr-only">Next Image</span>
+          </Button>
+           <Button
+            variant="ghost"
+            size="icon"
+            onClick={closeModal}
+            className="absolute top-4 right-4 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
+          >
+            <X className="h-8 w-8" />
+            <span className="sr-only">Close</span>
+          </Button>
         </DialogContent>
       </Dialog>
     </>
