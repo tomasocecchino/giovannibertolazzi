@@ -186,15 +186,15 @@ function PhotoGrid({ images }: PhotoGridProps) {
 
       <Dialog open={selectedIndex !== null} onOpenChange={(isOpen) => !isOpen && closeModal()}>
         <DialogContent 
-          className="max-w-none w-full h-full p-4 md:p-8 bg-black/90 border-none"
+          className="max-w-7xl w-full h-full md:h-auto md:max-h-[90vh] p-4 md:p-6 bg-black/90 border-none flex flex-col"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
         >
            <DialogTitle className="sr-only">Image Viewer</DialogTitle>
            
            {selectedImage && (
-             <div className="w-full h-full flex flex-col items-center justify-center">
-                <div className="flex-1 w-full max-w-7xl relative">
+             <div className="flex-1 min-h-0 flex flex-col items-center justify-center">
+                <div className="w-full h-full flex-1 relative">
                   {imageLoading && (
                     <div className="absolute inset-0 flex items-center justify-center z-10">
                       <Loader2 className="w-10 h-10 animate-spin text-white/50" />
@@ -216,12 +216,12 @@ function PhotoGrid({ images }: PhotoGridProps) {
                 </div>
 
                 {(selectedImage.title || selectedImage.photographer) && (
-                  <div className="flex-shrink-0 pt-4 text-white text-center">
+                  <div className="flex-shrink-0 pt-4 text-white text-left w-full">
                     {selectedImage.title && (
                       <p className="text-base font-semibold mb-1">{selectedImage.title}</p>
                     )}
                     {selectedImage.photographer && (
-                      <p className="text-sm opacity-80 flex items-center justify-center gap-2"><Camera className="w-4 h-4" /> {selectedImage.photographer}</p>
+                      <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {selectedImage.photographer}</p>
                     )}
                   </div>
                 )}
@@ -326,5 +326,3 @@ function VideoGallery() {
     </div>
   );
 }
-
-    
