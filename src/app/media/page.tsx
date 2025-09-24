@@ -152,16 +152,19 @@ function PhotoGrid({ images }: PhotoGridProps) {
               <CarouselContent className="h-full">
                 {images.map((photo) => (
                   <CarouselItem key={photo.id} className="h-full flex items-center justify-center">
-                    <div className="relative w-full h-full">
+                    <div className="relative w-full h-full flex items-center justify-center bg-black/10">
+                       <div className="absolute flex items-center justify-center">
+                          <Loader2 className="w-10 h-10 animate-spin text-white/50" />
+                       </div>
                       <Image
                         src={photo.link}
                         alt={photo.title || 'Enlarged gallery image'}
                         fill
-                        className="object-contain"
+                        className="object-contain z-10"
                         sizes="100vw"
                       />
                       {(photo.title || photo.photographer) && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-10">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-20">
                           {photo.title && (
                             <p className="text-base mb-1">{photo.title}</p>
                           )}
