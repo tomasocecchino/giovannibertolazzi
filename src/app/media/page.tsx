@@ -18,6 +18,7 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 
 type View = 'gallery' | 'videos';
 
@@ -99,19 +100,16 @@ interface PhotoGridProps {
 
 function PhotoGrid({ images }: PhotoGridProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((prevIndex) => (prevIndex! + 1) % images.length);
+  useEffect(() => {
+    if (carouselApi && selectedImageIndex !== null) {
+      carouselApi.scrollTo(selectedImageIndex, true);
     }
-  };
+  }, [carouselApi, selectedImageIndex]);
 
-  const handlePrevious = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((prevIndex) => (prevIndex! - 1 + images.length) % images.length);
-    }
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
   };
   
   const currentImage = selectedImageIndex !== null ? images[selectedImageIndex] : null;
@@ -127,7 +125,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
           <div 
             key={photo.id} 
             className="relative w-full aspect-[4/3] cursor-pointer group bg-black/5"
-            onClick={() => setSelectedImageIndex(index)}
+            onClick={() => handleImageClick(index)}
           >
             <Image
               src={photo.link}
@@ -148,48 +146,37 @@ function PhotoGrid({ images }: PhotoGridProps) {
       </div>
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-screen-xl w-[95%] max-h-[90vh] p-0 bg-transparent border-none shadow-none flex items-center justify-center">
-           <DialogTitle className="sr-only">Enlarged gallery image: {currentImage?.title}</DialogTitle>
-          {currentImage && (
-            <div className="relative">
-                <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={handlePrevious}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
-                    aria-label="Previous image"
-                >
-                    <ChevronLeft className="h-8 w-8" />
-                </Button>
-                <Image
-                    src={currentImage.link}
-                    alt={currentImage.title || 'Enlarged gallery image'}
-                    width={1600}
-                    height={900}
-                    className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
-                />
-                <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={handleNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white"
-                    aria-label="Next image"
-                >
-                    <ChevronRight className="h-8 w-8" />
-                </Button>
-                
-                {(currentImage.title || currentImage.photographer) && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-10">
-                    {currentImage.title && (
-                      <p className="text-base mb-1">{currentImage.title}</p>
-                    )}
-                    {currentImage.photographer && (
-                      <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {currentImage.photographer}</p>
-                    )}
-                  </div>
-                )}
-            </div>
-          )}
+        <DialogContent className="max-w-screen-xl w-[95%] h-[90vh] p-0 bg-transparent border-none shadow-none flex items-center justify-center">
+           <DialogTitle className="sr-only">Image Gallery</DialogTitle>
+            <Carousel setApi={setCarouselApi} className="w-full h-full">
+              <CarouselContent className="h-full">
+                {images.map((photo) => (
+                  <CarouselItem key={photo.id} className="h-full flex items-center justify-center">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={photo.link}
+                        alt={photo.title || 'Enlarged gallery image'}
+                        fill
+                        className="object-contain"
+                        sizes="100vw"
+                      />
+                      {(photo.title || photo.photographer) && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white z-10">
+                          {photo.title && (
+                            <p className="text-base mb-1">{photo.title}</p>
+                          )}
+                          {photo.photographer && (
+                            <p className="text-sm opacity-80 flex items-center gap-2"><Camera className="w-4 h-4" /> {photo.photographer}</p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
+              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white hover:text-white hidden md:flex" />
+            </Carousel>
         </DialogContent>
       </Dialog>
     </>
