@@ -7,7 +7,7 @@ import { DISCOGRAPHY } from '@/lib/constants';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { getConcerts, getVideos } from '@/lib/firebase';
 import type { Concert as RawConcert, Video } from "@/lib/firebase";
-import { useTranslations } from 'next-intl';
+import {getTranslations} from 'next-intl/server';
 
 interface Concert extends Omit<RawConcert, 'date'> {
   date: Date;
@@ -54,12 +54,7 @@ export default async function Home() {
   const allVideos: Video[] = await getVideos();
   const nextTwoVideos = allVideos.slice(0, 2);
 
-  // We are in a server component, but useTranslations needs to be called from a client component.
-  // The official way for Next 13 App router is to have a child client component.
-  // For simplicity here, as this is the main page, we can assume a locale.
-  // But a better solution would be to create a client component for the translated parts.
-  // For now, we will create a dummy component to get the translations.
-  const t = useTranslations('Home');
+  const t = await getTranslations('Home');
 
   return (
     <div className="flex flex-col">
@@ -230,5 +225,3 @@ export default async function Home() {
     </div>
   );
 }
-
-    
