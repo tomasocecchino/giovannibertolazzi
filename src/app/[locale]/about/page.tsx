@@ -35,6 +35,7 @@ export default function AboutPage() {
       {/* Main Content */}
       <div className="bg-[#f0f0f0] text-black">
         <div className="container py-16 md:py-24">
+            <h2 className="text-3xl md:text-4xl font-headline font-semibold text-[#004a63] mb-8 max-w-3xl mx-auto">BIO</h2>
           <div className="max-w-3xl mx-auto space-y-6 text-base md:text-lg text-gray-800 leading-relaxed">
             <p>{t('p1')}</p>
             <p>{t('p2')}</p>
@@ -56,6 +57,7 @@ export default function AboutPage() {
       {/* Quotes Section */}
       <div className="bg-[#f0f0f0] text-black">
         <div className="container pb-16 md:pb-24">
+            <h2 className="text-3xl md:text-4xl font-headline font-semibold text-[#004a63] mb-12 max-w-3xl mx-auto">ABOUT HIM</h2>
           <div className="max-w-3xl mx-auto space-y-12">
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">
