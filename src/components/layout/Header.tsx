@@ -55,7 +55,7 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-colors duration-300',
-        isScrolled || isDiscographyPage ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+        isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
       )}
     >
       <div className="container flex h-24 items-center">
