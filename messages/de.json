@@ -11,15 +11,15 @@
     "contact": "CONTACT"
   },
   "Home": {
-    "title": "KONZERT-PIANIST",
+    "title": "CONCERT-PIANIST",
     "quote": "\"The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.\"",
     "quoteCite": "PIZZICATO Magazine",
     "scrollDown": "Scroll Down",
     "explore": "& Explore",
     "aboutTitle": "ÜBER MICH",
     "aboutText1": "Giovanni Bertolazzi hat sich auf der internationalen Bühne einen Namen gemacht, als er beim renommierten „F. Liszt“ Internationalen Klavierwettbewerb in Budapest den 2. Preis und 5 Sonderpreise gewann.",
-    "aboutText2": "Er trat offiziell auf dem längsten Konzertflügel der Welt bei dessen erster öffentlicher Präsentation auf, dem BORGATO GRAND-PRIX 333 (3,33 Meter lang).",
-    "aboutText3": "Im Jahr 2024 wurde er von der Liszt-Gesellschaft Budapest für seine Liszt-Aufnahmen mit dem 43. „Liszt Ferenc International Grand Prix Du Disque“ ausgezeichnet.",
+    "aboutText2": "Dieser bedeutende Erfolg folgte auf den Gewinn von mehr als 40 Preisen bei internationalen Klavierwettbewerben, darunter der „Busoni“ in Bozen, der „Thalberg“ in Neapel und der „Alkan Award for Piano Virtuosity“ in Mailand.",
+    "aboutText3": "Im Jahr 2022 wurde er beim Verbier Festival (Schweiz) mit dem „Tabor Foundation Award“ ausgezeichnet. Im folgenden Jahr erhielt er in Mailand den Internationalen Klavierpreis „Donna Guglielmina Durini Litta“.",
     "aboutText4": "Höhepunkte seiner Karriere sind Auftritte mit dem Ungarischen Philharmonischen Orchester, dem Orchester des Maggio Musicale Fiorentino, dem MAV Symphonieorchester und dem Orchester des Teatro La Fenice.",
     "readAbout": "Lesen Sie mehr",
     "exploreCDsTitle": "ENTDECKEN SIE CDs",
@@ -166,3 +166,5 @@
     "noNews": "Keine Nachrichtenartikel gefunden."
   }
 }
+
+    

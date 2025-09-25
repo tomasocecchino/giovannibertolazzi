@@ -2,13 +2,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import Image from 'next/image';
 import { Link } from '@/navigation';
 import { PlayCircle, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -19,6 +12,8 @@ import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
 
 type View = 'gallery' | 'videos';
 
@@ -60,36 +55,30 @@ export default function MediaPage() {
           <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
             Media
           </h1>
-          <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
-            <SelectTrigger className={cn(
-              "w-auto bg-transparent border-none text-2xl md:text-3xl font-headline focus:ring-0 focus:ring-offset-0 p-2 h-auto",
-               "text-[#004a63]",
-              "shadow-none",
-              "data-[state=open]:bg-white"
-            )}>
-              <SelectValue placeholder={t('selectView')} />
-            </SelectTrigger>
-            <SelectContent className="bg-white text-black">
-              <SelectItem value="gallery">{t('gallery')}</SelectItem>
-              <SelectItem value="videos">{t('videos')}</SelectItem>
-            </SelectContent>
-          </Select>
         </div>
 
-        {currentView === 'gallery' && (
-          <div className="space-y-16">
-            <PhotoGrid images={galleryImages} t={t} />
-            {shootingImages.length > 0 && (
-              <div>
-                <h2 className="text-3xl md:text-4xl font-semibold font-headline text-[#004165] mb-8">
-                  {t('shooting')}
-                </h2>
-                <PhotoGrid images={shootingImages} t={t} />
-              </div>
-            )}
-          </div>
-        )}
-        {currentView === 'videos' && <VideoGallery t={t}/>}
+        <Tabs defaultValue="gallery" value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
+          <TabsList className="mb-8 md:mb-12">
+            <TabsTrigger value="gallery">Gallery</TabsTrigger>
+            <TabsTrigger value="videos">Videos</TabsTrigger>
+          </TabsList>
+          <TabsContent value="gallery">
+            <div className="space-y-16">
+              <PhotoGrid images={galleryImages} t={t} />
+              {shootingImages.length > 0 && (
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-semibold font-headline text-[#004165] mb-8">
+                    {t('shooting')}
+                  </h2>
+                  <PhotoGrid images={shootingImages} t={t} />
+                </div>
+              )}
+            </div>
+          </TabsContent>
+          <TabsContent value="videos">
+            <VideoGallery t={t}/>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
@@ -335,3 +324,5 @@ function VideoGallery({t}: {t: (key:string) => string}) {
     </div>
   );
 }
+
+    
