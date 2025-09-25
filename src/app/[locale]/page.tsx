@@ -124,15 +124,16 @@ export default async function Home() {
                 const dateObj = new Date(item.date);
                 const formattedDate = format(dateObj, 'dd/MM/yyyy');
                 return (
-                  <div key={item.id} className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-x-6 gap-y-2 items-start p-4 bg-white rounded-lg shadow-sm">
+                  <div key={item.id} className="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-x-6 gap-y-4 items-start p-4 bg-white rounded-lg shadow-sm">
                      {item.image && (
-                        <div className="relative w-16 h-16 md:w-12 md:h-12 mr-4">
+                        <div className="relative w-full aspect-[4/3] rounded-md overflow-hidden">
                             <Image 
                                 src={item.image} 
-                                alt={tNews('awardBadgeAlt')} 
+                                alt={item.title} 
                                 fill
-                                className="object-contain"
-                                data-ai-hint="award badge" 
+                                className="object-cover"
+                                data-ai-hint="news article" 
+                                sizes="(max-width: 768px) 30vw, 150px"
                             />
                         </div>
                     )}

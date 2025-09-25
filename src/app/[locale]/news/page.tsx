@@ -67,21 +67,22 @@ export default function NewsPage() {
 
             return (
               <div key={item.id} className="grid grid-cols-1 gap-y-4 items-start border-b border-black/10 pb-12">
+                
+                {item.image && (
+                    <div className="relative w-full aspect-video bg-gray-200 rounded-lg overflow-hidden mb-4">
+                        <Image 
+                            src={item.image} 
+                            alt={item.title} 
+                            fill
+                            className="object-cover"
+                            data-ai-hint="news article" 
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                    </div>
+                )}
+
                 <div className="flex flex-col h-full justify-center">
-                  <div className="flex items-center gap-3 mb-2">
-                    {item.image && (
-                        <div className="relative w-10 h-10">
-                            <Image 
-                                src={item.image} 
-                                alt={t('awardBadgeAlt')} 
-                                fill
-                                className="object-contain"
-                                data-ai-hint="award badge" 
-                            />
-                        </div>
-                    )}
-                    <p className="text-black/60 font-medium tracking-wider">{formattedDate}</p>
-                  </div>
+                  <p className="text-black/60 font-medium tracking-wider mb-2">{formattedDate}</p>
                   <h2 className="text-xl font-semibold text-black/80 font-headline tracking-wide mb-1">{item.title}</h2>
                   {item.subtitle && <p className="text-black/70 font-medium text-base mb-2">{item.subtitle}</p>}
                   <p className="text-black/70 text-base mb-4 flex-grow">{item.text}</p>
