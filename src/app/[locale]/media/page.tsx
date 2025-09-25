@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Link } from '@/navigation';
 import { PlayCircle, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
-import type { GalleryImage, Video } from '@/lib/firebase';
+import type { GalleryImage, Video } from "@/lib/firebase";
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
@@ -57,7 +57,7 @@ export default function MediaPage() {
             <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
               Media
             </h1>
-            <TabsList className="relative -top-1.5">
+            <TabsList className="relative -top-2">
               <TabsTrigger value="gallery">Gallery</TabsTrigger>
               <TabsTrigger value="videos">Videos</TabsTrigger>
             </TabsList>
