@@ -25,23 +25,24 @@ export function Header() {
     setIsMounted(true);
   }, []);
 
-  const LIGHT_BG_PAGES = ['/news', '/media', '/identity', '/contact', '/press', '/philosophy'];
-  const isLightBgPage = LIGHT_BG_PAGES.some(p => pathname.startsWith(p));
-  
-  const showDarkText = !isScrolled && isLightBgPage;
-
   useEffect(() => {
-    if (!isMounted) return;
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     
-    handleScroll(); // Set initial state
+    if (isMounted) {
+      handleScroll(); // Set initial state on client
+    }
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
+  
+  const LIGHT_BG_PAGES = ['/news', '/media', '/identity', '/contact', '/press', '/philosophy'];
+  const isLightBgPage = LIGHT_BG_PAGES.some(p => pathname.startsWith(p));
+  
+  // Default to false on server and initial client render to avoid hydration mismatch
+  const showDarkText = isMounted && !isScrolled && isLightBgPage;
 
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
@@ -56,7 +57,7 @@ export function Header() {
 
   const currentPath = pathname;
   
-  const logoUrl = (isScrolled || !isLightBgPage)
+  const logoUrl = (isMounted && (isScrolled || !isLightBgPage))
     ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
     : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
     
