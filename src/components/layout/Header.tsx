@@ -20,6 +20,12 @@ export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  
+  const darkLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
+  const whiteLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
+  const mobileLogoUrl = whiteLogoUrl;
+  
+  const [logoUrl, setLogoUrl] = useState(darkLogoUrl);
 
   useEffect(() => {
     setIsMounted(true);
@@ -31,7 +37,7 @@ export function Header() {
     };
     
     if (isMounted) {
-      handleScroll(); // Set initial state on client
+      handleScroll();
     }
 
     window.addEventListener('scroll', handleScroll);
@@ -40,6 +46,16 @@ export function Header() {
   
   const isDiscographyPage = pathname.startsWith('/discografia');
   const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
+
+  useEffect(() => {
+    if (isMounted) {
+      if (isDiscographyPage) {
+        setLogoUrl(whiteLogoUrl);
+      } else {
+        setLogoUrl(darkLogoUrl);
+      }
+    }
+  }, [pathname, isDiscographyPage, isMounted, whiteLogoUrl, darkLogoUrl]);
 
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
@@ -53,10 +69,6 @@ export function Header() {
   ];
 
   const currentPath = pathname;
-
-  const darkLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
-  const whiteLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
-  const mobileLogoUrl = whiteLogoUrl;
 
   const showDarkHeader = isMounted && (isScrolled || isDiscographyPage);
   const showDarkTextOnLoad = isMounted && isLightPage && !isScrolled && !isDiscographyPage;
@@ -76,8 +88,6 @@ export function Header() {
   } else if (showDarkHeader) {
       headerTextHoverColorClass = 'text-white/60 hover:text-white';
   }
-
-  const logoUrl = isDiscographyPage || (isScrolled && isMounted) ? whiteLogoUrl : (isLightPage && isMounted ? darkLogoUrl : whiteLogoUrl);
 
   return (
     <header
