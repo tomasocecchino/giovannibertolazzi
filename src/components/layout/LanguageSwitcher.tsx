@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { cn } from "@/lib/utils";
 
 const languages = [
   { code: "it", name: "Italiano", flag: "/flags/it.svg" },
@@ -23,7 +24,7 @@ const languages = [
   { code: "zh", name: "中文", flag: "/flags/cn.svg" },
 ];
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ forceDark }: { forceDark?: boolean }) {
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
   const router = useRouter();
@@ -40,7 +41,10 @@ export default function LanguageSwitcher() {
   return (
     <Select onValueChange={onSelectChange} defaultValue={locale} disabled={isPending}>
       <SelectTrigger 
-        className="w-auto bg-transparent border-none text-white/80 p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none"
+        className={cn(
+            "w-auto bg-transparent border-none p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none",
+            forceDark ? "text-white/80" : "text-black/80"
+        )}
         icon={null}
       >
         <SelectValue>

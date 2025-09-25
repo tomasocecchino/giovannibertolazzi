@@ -25,6 +25,11 @@ export function Header() {
     setIsMounted(true);
   }, []);
 
+  const LIGHT_BG_PAGES = ['/news', '/media', '/identity', '/contact', '/press', '/philosophy'];
+  const isLightBgPage = LIGHT_BG_PAGES.some(p => pathname.startsWith(p));
+  
+  const showDarkText = !isScrolled && isLightBgPage;
+
   useEffect(() => {
     if (!isMounted) return;
 
@@ -32,8 +37,7 @@ export function Header() {
       setIsScrolled(window.scrollY > 20);
     };
     
-    // Set initial state after mount
-    handleScroll();
+    handleScroll(); // Set initial state
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -51,14 +55,14 @@ export function Header() {
   ];
 
   const currentPath = pathname;
-  const isDiscographyPage = currentPath.includes('/discografia');
-
-  const logoUrl = isDiscographyPage 
+  
+  const logoUrl = (isScrolled || !isLightBgPage)
     ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
     : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
-
+    
   const mobileLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
-
+  const mobileIconColor = showDarkText ? 'text-black' : 'text-white';
+  
   return (
     <header
       className={cn(
@@ -69,33 +73,36 @@ export function Header() {
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Image
-            src={isMounted && isDiscographyPage ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853" : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d"}
+            src={logoUrl}
             alt="Giovanni Bertolazzi Logo"
             width={250}
             height={24}
             className="h-auto"
             priority
+            key={logoUrl} // Force re-render on src change
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium ml-auto">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'transition-colors hover:text-white',
-                (link.href === '/' && currentPath === '/') ||
-                  (link.href !== '/' && currentPath.startsWith(link.href))
-                  ? 'text-white'
-                  : 'text-white/60'
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <LanguageSwitcher />
+          {NAV_LINKS.map((link) => {
+            const isActive = (link.href === '/' && currentPath === '/') || (link.href !== '/' && currentPath.startsWith(link.href));
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  'transition-colors duration-300',
+                  showDarkText 
+                    ? isActive ? 'text-black' : 'text-black/60 hover:text-black'
+                    : isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                )}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+          <LanguageSwitcher forceDark={!showDarkText} />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -103,7 +110,7 @@ export function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6 text-white" />
+                <Menu className={cn("h-6 w-6", mobileIconColor)} />
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
@@ -138,7 +145,7 @@ export function Header() {
                   ))}
                 </nav>
                 <div className="mt-8">
-                  <LanguageSwitcher />
+                  <LanguageSwitcher forceDark={true} />
                 </div>
               </div>
             </SheetContent>
