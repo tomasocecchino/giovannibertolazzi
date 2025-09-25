@@ -27,7 +27,7 @@ export function Footer() {
 
   return (
     <footer className="bg-background text-foreground py-16">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="md:col-span-1">
              <Link href="/" className="text-4xl text-primary font-headline tracking-tight">
@@ -35,7 +35,7 @@ export function Footer() {
                 <br />
                 <span className="font-semibold">Bertolazzi</span>
              </Link>
-            <p className="text-sm text-foreground mt-2">Concert Pianist</p>
+            <p className="text-sm text-foreground mt-2">Concert-Pianist</p>
           </div>
           <div className="md:col-span-1">
             <h3 className="font-semibold text-primary mb-4 tracking-widest font-headline">MENU</h3>
