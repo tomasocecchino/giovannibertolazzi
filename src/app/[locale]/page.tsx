@@ -3,15 +3,12 @@ import Image from 'next/image';
 import { Link } from '@/navigation';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { Card, CardHeader } from '@/components/ui/card';
-import { getConcerts, getVideos } from '@/lib/firebase';
-import type { Concert as RawConcert, Video } from "@/lib/firebase";
+import { getNews, getVideos } from '@/lib/firebase';
+import type { NewsArticle, Video } from "@/lib/firebase";
 import { getTranslations } from 'next-intl/server';
 import { DISCOGRAPHY_DATA } from '@/lib/discography-data';
 import { HomeHero } from '@/components/home/HomeHero';
-
-interface Concert extends Omit<RawConcert, 'date'> {
-  date: Date;
-}
+import { format } from 'date-fns';
 
 function getYouTubeThumbnail(url: string): string {
     let videoId: string | null = null;
@@ -40,22 +37,15 @@ function getYouTubeThumbnail(url: string): string {
 }
 
 export default async function Home() {
-  const allConcerts: Concert[] = (await getConcerts()).map(c => ({
-    ...c,
-    date: new Date(c.date),
-  }));
-
-  const upcomingConcerts = allConcerts
-    .filter(concert => concert.date.getTime() > new Date().getTime())
-    .sort((a, b) => a.date.getTime() - b.date.getTime());
-
-  const nextTwoConcerts = upcomingConcerts.slice(0, 2);
+  const homeNews: NewsArticle[] = await getNews({ onHomepage: true });
+  const latestNews = homeNews.slice(0, 3);
 
   const allVideos: Video[] = await getVideos();
   const nextTwoVideos = allVideos.slice(0, 2);
 
   const t = await getTranslations('Home');
   const d = await getTranslations('DiscographyData');
+  const tNews = await getTranslations('News');
 
   const DISCOGRAPHY = DISCOGRAPHY_DATA.map(album => ({
     ...album,
@@ -117,43 +107,50 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Next Concerts Section */}
-       <section id="concerts" className="bg-[#f0f0f0] py-16 md:py-24">
+      {/* News Section */}
+      <section id="news" className="bg-[#f0f0f0] py-16 md:py-24">
         <div className="container">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-black">
-              NEXT CONCERTS
+              NEWS
             </h2>
-            <Link href="/concerti" className="text-[#004a63] font-semibold hover:underline">
-              {t('allConcerts')} <ArrowRight className="inline h-4 w-4" />
+            <Link href="/news" className="text-[#004a63] font-semibold hover:underline">
+              All News <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
-          <div className="space-y-4">
-            {nextTwoConcerts.length > 0 ? (
-              nextTwoConcerts.map((concert) => {
-                const month = concert.date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-                const day = concert.date.getDate().toString().padStart(2, '0');
-                const time = concert.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-                
+          <div className="space-y-8">
+            {latestNews.length > 0 ? (
+              latestNews.map((item) => {
+                const dateObj = new Date(item.date);
+                const formattedDate = format(dateObj, 'dd/MM/yyyy');
                 return (
-                  <div key={concert.id} className="flex items-center justify-between p-6 bg-white rounded-lg shadow-sm">
-                    <div className="flex-grow">
-                        <p className="text-sm text-gray-500">{concert.title}</p>
-                        <p className="font-bold text-lg text-[#333]">{concert.music}</p>
-                         <Link href={concert.ticketUrl || '#'} className="text-sm text-[#004a63] hover:underline">
-                            {t('buyTicket')} <ArrowRight className="inline h-3 w-3"/>
+                  <div key={item.id} className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-x-6 gap-y-2 items-start p-4 bg-white rounded-lg shadow-sm">
+                     {item.image && (
+                        <div className="relative w-16 h-16 md:w-12 md:h-12 mr-4">
+                            <Image 
+                                src={item.image} 
+                                alt={tNews('awardBadgeAlt')} 
+                                fill
+                                className="object-contain"
+                                data-ai-hint="award badge" 
+                            />
+                        </div>
+                    )}
+                    <div className="flex flex-col">
+                        <p className="text-sm text-gray-500 mb-1">{formattedDate}</p>
+                        <h3 className="font-bold text-lg text-[#333] mb-1">{item.title}</h3>
+                        <p className="text-sm text-gray-600 line-clamp-2 mb-2">{item.text}</p>
+                        {item.link && item.buttonText && (
+                         <Link href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] hover:underline font-semibold self-start">
+                            {item.buttonText} <ArrowRight className="inline h-3 w-3"/>
                          </Link>
-                    </div>
-                    <div className="text-right shrink-0 w-24">
-                        <div className="text-sm text-gray-500">{month}</div>
-                        <div className="text-4xl font-bold text-[#004a63]">{day}</div>
-                        <div className="text-sm text-gray-500">{time}</div>
+                        )}
                     </div>
                   </div>
                 )
               })
             ) : (
-              <p className="text-center text-gray-600">{t('noConcerts')}</p>
+              <p className="text-center text-gray-600">{tNews('noNews')}</p>
             )}
           </div>
         </div>

@@ -1,6 +1,6 @@
 
 import { initializeApp, getApps, getApp, FirebaseOptions } from "firebase/app";
-import { getFirestore, collection, getDocs, query, orderBy, Timestamp } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, orderBy, Timestamp, where, WhereFilterOp } from "firebase/firestore";
 
 // IMPORTANT: This is the actual Firebase configuration for your project.
 const firebaseConfig: FirebaseOptions = {
@@ -54,19 +54,30 @@ export interface NewsArticle {
     link?: string;
     buttonText?: string;
     image?: string;
+    home?: boolean;
 }
 
 
 // --- DATA FETCHING FUNCTIONS ---
 
+interface GetNewsOptions {
+    onHomepage?: boolean;
+}
+
 /**
  * Fetches news articles from the 'newsArticle' collection in Firestore,
  * ordered by date descending.
  */
-export async function getNews(): Promise<NewsArticle[]> {
+export async function getNews(options: GetNewsOptions = {}): Promise<NewsArticle[]> {
     try {
         const newsCollection = collection(db, "newsArticle");
-        const q = query(newsCollection, orderBy("date", "desc"));
+        
+        const queryConstraints = [orderBy("date", "desc")];
+        if (options.onHomepage) {
+            queryConstraints.push(where("home", "==", true));
+        }
+
+        const q = query(newsCollection, ...queryConstraints);
         const querySnapshot = await getDocs(q);
 
         const articles = querySnapshot.docs.map(doc => {
