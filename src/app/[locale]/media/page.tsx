@@ -57,7 +57,7 @@ export default function MediaPage() {
             <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
               Media
             </h1>
-            <TabsList className="relative -top-1">
+            <TabsList className="relative -top-1.5">
               <TabsTrigger value="gallery">Gallery</TabsTrigger>
               <TabsTrigger value="videos">Videos</TabsTrigger>
             </TabsList>
