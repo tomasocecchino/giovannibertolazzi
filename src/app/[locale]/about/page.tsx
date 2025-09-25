@@ -39,16 +39,12 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto space-y-6 text-base md:text-lg text-gray-800 leading-relaxed">
             <p>{t('p1')}</p>
             <p>{t('p2')}</p>
-            <p>{t('p3')}</p>
             <p>{t('p4')}</p>
             <p>{t('p5')}</p>
             <p>{t('p6')}</p>
-            <p>{t('p7')}</p>
             <p>{t('p8')}</p>
             <p>{t('p9')}</p>
-            <p>{t('p10')}</p>
             <p>{t('p11')}</p>
-            <p>{t('p12')}</p>
             <p>{t('p13')}</p>
           </div>
         </div>
