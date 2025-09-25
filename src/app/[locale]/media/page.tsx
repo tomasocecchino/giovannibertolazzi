@@ -50,7 +50,7 @@ export default function MediaPage() {
 
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
-      <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
+      <div className="container py-16 md:py-24 pt-32">
 
         <Tabs defaultValue="gallery" value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
           <div className="flex items-baseline gap-x-6 mb-8 md:mb-12">
