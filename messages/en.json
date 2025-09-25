@@ -19,7 +19,6 @@
     "aboutTitle": "ABOUT",
     "aboutText1": "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the prestigious “F. Liszt” International Piano Competition in Budapest.",
     "aboutText2": "This significant achievement came after winning more than 40 prizes in international piano competitions, including the “Busoni” in Bolzano, the “Thalberg” in Naples, the “Alkan Award for Piano Virtuosity” in Milan. In 2022, he was awarded the “Tabor Foundation Award” at the Verbier Festival (Switzerland). The following year he received the “Donna Guglielmina Durini Litta” International Piano Award in Milan.",
-    "aboutText3": "In 2022, he was awarded the “Tabor Foundation Award” at the Verbier Festival (Switzerland). The following year he received the “Donna Guglielmina Durini Litta” International Piano Award in Milan.",
     "aboutText4": "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra del Teatro Bellini, Orchestra Sinfonica Siciliana, Orchestra of National Opera Theatre of Tirana.",
     "readAbout": "Read About",
     "exploreCDsTitle": "EXPLORE CDs",
@@ -42,9 +41,8 @@
     "p2": "This significant achievement came after winning more than 40 prizes in international piano competitions, including the “Busoni” in Bolzano, the “Thalberg” in Naples, the “Alkan Award for Piano Virtuosity” in Milan. In 2022, he was awarded the “Tabor Foundation Award” at the Verbier Festival (Switzerland). The following year he received the “Donna Guglielmina Durini Litta” International Piano Award in Milan.",
     "p4": "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra del Teatro Bellini, Orchestra Sinfonica Siciliana, Orchestra of National Opera Theatre of Tirana.",
     "p5": "He performs in important venues and for prestigious musical organisations including Teatro del Maggio Musicale Fiorentino in Florence, Società del Quartetto in Milan, Teatro La Fenice in Venice, Palazzo del Quirinale in Rome, Bologna Festival, “F. Liszt” Academy of Music and “F. Liszt” Memorial Museum in Budapest, National Liberal Club in London, National Opera House in Tirana, Verbier Festival, Pharos Arts Foundation (Cyprus), Castleton Festival Theatre House (Virginia, USA).",
-    "p6": "He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long). On this extraordinary instrument, he recorded two albums devoted entirely to music by Franz Liszt and published by BORGATO COLLECTION. These recordings have received several awards from international critics (“Supersonic Pizzicato Award”, 5 Stars from MUSICA Magazine, Nomination at the “International Classical Music Awards”). His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky Classica HD dedicated an episode to him.",
-    "p8": "His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky Classica HD dedicated an episode to him.",
-    "p9": "Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly interested in culture, art and music. After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis, graduating in Piano Performance and Chamber Music with top honours. He holds a main piano chair at the “G. Frescobaldi” Conservatory of Music in Ferrara. Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen (Hungary), during the YMSA - Young Musicians' Summer Academy.",
+    "p6": "He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND PRIX 333 (3.33 meters long). On this extraordinary instrument, he recorded two albums devoted entirely to music by Franz Liszt and published by BORGATO COLLECTION. These recordings have received several awards from international critics (“Supersonic Pizzicato Award”, 5 Stars from MUSICA Magazine, Nomination at the “International Classical Music Awards”). His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky Classica HD dedicated an episode to him.",
+    "p9": "Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly interested in culture, art and music. After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis, graduating in Piano Performance and Chamber Music with top honours.",
     "p11": "He holds a main piano chair at the “G. Frescobaldi” Conservatory of Music in Ferrara. Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen (Hungary), during the YMSA - Young Musicians' Summer Academy.",
     "p13": "In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.",
     "q1_text": "A clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention.",
@@ -76,8 +74,12 @@
     "q10_text": "Bertolazzi displays great technique, accompanied by the ability to showcase expressiveness and sensitive, refined lyricism.",
     "q10_cite_name": "Fabio Bardelli",
     "q10_cite_source": "OperaClick",
-    "q11_text": "On this majestic instrument [BORGATO Grand-Prix 333], Giovanni Bertolazzi performed Rachmaninov's Third Concerto, showcasing its full range and richness of sound. A virtuoso who dominates the score with the authority of a Cziffra.",
+    "q11_text": "On this majestic instrument [BORGATO Grand Prix 333], Giovanni Bertolazzi performed Rachmaninov's Third Concerto, showcasing its full range and richness of sound. A virtuoso who dominates the score with the authority of a Cziffra.",
+    "q11_cite_name": "Rivista Musica",
+    "q11_cite_source": "",
     "q12_text": "A virtuoso who dominates the score with the authority of a Cziffra.",
+    "q12_cite_name": "Rivista Musica",
+    "q12_cite_source": "",
     "q13_text": "Not only a great virtuoso of the keyboard, but also an effective communicator, capable of enchanting audiences both in his live recitals and in the recording studio.",
     "q13_cite_name": "Silvia Del Zoppo",
     "q13_cite_source": "MusicPaper Magazine",
@@ -158,5 +160,3 @@
     "noNews": "No news articles found."
   }
 }
-
-    

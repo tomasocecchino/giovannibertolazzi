@@ -66,7 +66,6 @@ export default async function Home() {
             <div className="max-w-3xl text-[#333] space-y-4 text-lg">
               <p>{t('aboutText1')}</p>
               <p>{t('aboutText2')}</p>
-              <p>{t('aboutText3')}</p>
               <p>{t('aboutText4')}</p>
             </div>
           <div className="text-left mt-8">

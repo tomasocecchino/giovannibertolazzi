@@ -42,7 +42,6 @@ export default function AboutPage() {
             <p>{t('p4')}</p>
             <p>{t('p5')}</p>
             <p>{t('p6')}</p>
-            <p>{t('p8')}</p>
             <p>{t('p9')}</p>
             <p>{t('p11')}</p>
             <p>{t('p13')}</p>
