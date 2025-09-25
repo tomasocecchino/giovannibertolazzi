@@ -57,8 +57,8 @@ export default async function DiscographyPage() {
                 <div className="mb-6 font-semibold text-lg">
                   {t('getYourCopy')} - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a>
                 </div>
-                <div className="grid md:grid-cols-3 items-center">
-                  <ul className="md:col-span-2 space-y-2 text-sm font-medium text-black/70">
+                <div>
+                  <ul className="space-y-2 text-sm font-medium text-black/70">
                     {album.awards.map((award, index) => (
                       <li key={index} className="flex items-start">
                         <span className="mr-2">-</span>
@@ -66,18 +66,6 @@ export default async function DiscographyPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="md:col-span-1 flex items-center justify-center mt-6 md:mt-0">
-                    {album.awardImageUrl && (
-                        <Image
-                        src={album.awardImageUrl}
-                        alt={t('awardSealAlt')}
-                        width={120}
-                        height={120}
-                        className="h-auto"
-                        data-ai-hint="award seal"
-                        />
-                    )}
-                  </div>
                 </div>
               </div>
             </div>
