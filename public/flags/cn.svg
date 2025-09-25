@@ -1,5 +1,19 @@
-<svg width="1000" height="667" viewBox="0 0 1000 667" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1000" height="667" fill="#EE1C25"/>
-  <path d="M 200 166.75 L 400 166.75 L 400 333.5 L 200 333.5 Z" fill="#FFFF00"/>
-  <path d="M 500 100 L 600 200 L 500 300 L 600 400 L 400 400 L 500 300 L 400 200 L 500 100 Z" fill="#FFFF00"/>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sfondo rosso -->
+  <rect width="100%" height="100%" fill="#EE1C25"/>
+
+  <!-- Stella grande (in giallo) -->
+  <polygon points="300,100 330,180 420,180 340,240 360,320 300,270 240,320 260,240 180,180 270,180" fill="#FFFF00"/>
+
+  <!-- Stella piccola 1 (in giallo) -->
+  <polygon points="460,180 475,210 500,215 475,230 480,255 460,240 440,255 445,230 425,210" fill="#FFFF00"/>
+
+  <!-- Stella piccola 2 (in giallo) -->
+  <polygon points="440,270 455,300 475,305 460,320 465,345 445,330 425,345" fill="#FFFF00"/>
+
+  <!-- Stella piccola 3 (in giallo) -->
+  <polygon points="300,330 310,360 330,365 315,375 320,400 300,385 280,400 285,375 270,365" fill="#FFFF00"/>
+
+  <!-- Stella piccola 4 (in giallo) -->
+  <polygon points="160,270 175,300 195,305 180,320 185,345 165,330 145,345" fill="#FFFF00"/>
 </svg>
