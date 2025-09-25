@@ -38,11 +38,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
   
-  const LIGHT_BG_PAGES = ['/news', '/media', '/identity', '/contact', '/press', '/philosophy'];
-  const isLightBgPage = LIGHT_BG_PAGES.some(p => pathname.startsWith(p));
-  
-  // Default to false on server and initial client render to avoid hydration mismatch
-  const showDarkText = isMounted && !isScrolled && isLightBgPage;
+  const isDiscographyPage = pathname.startsWith('/discografia');
 
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
@@ -56,19 +52,22 @@ export function Header() {
   ];
 
   const currentPath = pathname;
-  
-  const logoUrl = (isMounted && (isScrolled || !isLightBgPage))
+
+  const logoUrl = isDiscographyPage
     ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
     : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
-    
+
   const mobileLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
-  const mobileIconColor = showDarkText ? 'text-black' : 'text-white';
   
+  const headerBgClass = isMounted && (isScrolled || isDiscographyPage) ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
+  const headerTextColorClass = isMounted && (isScrolled || isDiscographyPage) ? 'text-white' : 'text-black';
+  const headerTextHoverColorClass = isMounted && (isScrolled || isDiscographyPage) ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black';
+
   return (
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-colors duration-300',
-        isScrolled ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+        headerBgClass
       )}
     >
       <div className="container flex h-24 items-center">
@@ -80,7 +79,7 @@ export function Header() {
             height={24}
             className="h-auto"
             priority
-            key={logoUrl} // Force re-render on src change
+            key={logoUrl} 
           />
         </Link>
 
@@ -94,16 +93,14 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   'transition-colors duration-300',
-                  showDarkText 
-                    ? isActive ? 'text-black' : 'text-black/60 hover:text-black'
-                    : isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                  isActive ? headerTextColorClass : headerTextHoverColorClass
                 )}
               >
                 {link.label}
               </Link>
             )
           })}
-          <LanguageSwitcher forceDark={!showDarkText} />
+          <LanguageSwitcher forceDark={isMounted && (isScrolled || isDiscographyPage)} />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -111,7 +108,7 @@ export function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className={cn("h-6 w-6", mobileIconColor)} />
+                <Menu className={cn("h-6 w-6", headerTextColorClass)} />
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
