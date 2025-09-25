@@ -66,17 +66,17 @@ export default function NewsPage() {
             const formattedDate = format(dateObj, 'dd/MM/yyyy');
 
             return (
-              <div key={item.id} className="grid grid-cols-1 gap-y-4 items-start border-b border-black/10 pb-12">
+              <div key={item.id} className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-x-8 gap-y-4 items-start border-b border-black/10 pb-12">
                 
                 {item.image && (
-                    <div className="relative w-full aspect-video bg-gray-200 rounded-lg overflow-hidden mb-4">
+                    <div className="relative w-full aspect-square bg-gray-200 rounded-lg overflow-hidden">
                         <Image 
                             src={item.image} 
                             alt={item.title} 
                             fill
                             className="object-cover"
                             data-ai-hint="news article" 
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            sizes="(max-width: 768px) 100vw, 180px"
                         />
                     </div>
                 )}
