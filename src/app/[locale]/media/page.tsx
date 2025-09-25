@@ -57,7 +57,7 @@ export default function MediaPage() {
             <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
               Media
             </h1>
-            <TabsList>
+            <TabsList className="relative -top-1">
               <TabsTrigger value="gallery">Gallery</TabsTrigger>
               <TabsTrigger value="videos">Videos</TabsTrigger>
             </TabsList>
@@ -324,5 +324,3 @@ function VideoGallery({t}: {t: (key:string) => string}) {
     </div>
   );
 }
-
-    
