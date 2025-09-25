@@ -19,6 +19,13 @@ export default function DiscographyPage() {
   return (
     <div className="bg-[#004165] text-white">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
+        <Image 
+            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
+            alt="Giovanni Bertolazzi Logo"
+            width={300}
+            height={40}
+            className="h-auto mb-8"
+        />
         <h1 className="text-4xl md:text-6xl font-semibold font-headline text-white mb-16 text-left">
           {t('title')}
         </h1>
@@ -90,5 +97,3 @@ export default function DiscographyPage() {
     </div>
   );
 }
-
-    
