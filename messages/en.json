@@ -8,7 +8,7 @@
     "news": "NEWS",
     "discography": "DISCOGRAPHY",
     "identity": "IDENTITY",
-    "contacts": "CONTACTS"
+    "contact": "CONTACT"
   },
   "Home": {
     "title": "CONCERT-PIANIST",
@@ -106,7 +106,7 @@
     "errorTitle": "Error Loading Concerts",
     "errorHint": "Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} {'{ allow read; }'}`. Also, check that the `date` field is a valid Timestamp or a string that can be parsed into a Date."
   },
-  "Contacts": {
+  "Contact": {
     "title": "Contact",
     "imageAlt": "Giovanni Bertolazzi",
     "emailLabel": "email"
@@ -141,7 +141,7 @@
   },
   "Identity": {
     "title": "Identity",
-    "subtitle": "We are working to better define this section. Come back soon to find out more about Giovanni Bertolazzi's musical philosophy."
+    "subtitle": "This section is under construction. Come back soon to find out more about Giovanni Bertolazzi's musical philosophy."
   },
   "Media": {
     "title": "Media",

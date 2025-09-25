@@ -8,7 +8,7 @@
     "news": "NEWS",
     "discography": "DISCOGRAPHY",
     "identity": "IDENTITY",
-    "contacts": "CONTACTS"
+    "contact": "CONTACT"
   },
   "Home": {
     "title": "音乐会钢琴家",
@@ -106,7 +106,7 @@
     "errorTitle": "加载音乐会时出错",
     "errorHint": "请确保您的Firestore安全规则允许对“concerts”集合进行公共读取访问。例如：`match /concerts/{'concertId'} {'{ allow read; }'}`。此外，请检查“date”字段是否为有效的时间戳或可以解析为日期的字符串。"
   },
-  "Contacts": {
+  "Contact": {
     "title": "Contact",
     "imageAlt": "乔瓦尼·贝托拉齐",
     "emailLabel": "电子邮件"
@@ -141,7 +141,7 @@
   },
   "Identity": {
     "title": "Identity",
-    "subtitle": "我们正在努力更好地定义此部分。请尽快回来，了解更多关于乔瓦尼·贝托拉齐的音乐理念。"
+    "subtitle": "本节正在建设中。请尽快回来，了解更多关于乔瓦尼·贝托拉齐的音乐理念。"
   },
   "Media": {
     "title": "Media",

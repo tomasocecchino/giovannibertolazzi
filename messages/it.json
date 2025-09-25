@@ -8,7 +8,7 @@
     "news": "NEWS",
     "discography": "DISCOGRAPHY",
     "identity": "IDENTITY",
-    "contacts": "CONTACTS"
+    "contact": "CONTACT"
   },
   "Home": {
     "title": "CONCERT-PIANIST",
@@ -106,7 +106,7 @@
     "errorTitle": "Errore nel caricamento dei concerti",
     "errorHint": "Assicurati che le regole di sicurezza di Firestore per la collezione `concerts` consentano l'accesso in lettura pubblico. Ad esempio: `match /concerts/{'concertId'} {'{ allow read; }'}`. Controlla anche che il campo `date` sia un Timestamp valido o una stringa che possa essere analizzata come una data."
   },
-  "Contacts": {
+  "Contact": {
     "title": "Contact",
     "imageAlt": "Giovanni Bertolazzi",
     "emailLabel": "email"
@@ -141,7 +141,7 @@
   },
   "Identity": {
     "title": "Identity",
-    "subtitle": "Stiamo lavorando per definire al meglio questa sezione. Torna a trovarci presto per scoprire di più sulla filosofia musicale di Giovanni Bertolazzi."
+    "subtitle": "Questa sezione è in costruzione. Torna a trovarci presto per scoprire di più sulla filosofia musicale di Giovanni Bertolazzi."
   },
   "Media": {
     "title": "Media",

@@ -19,19 +19,15 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-
-  const NAV_LINKS = [
-    { href: '/', label: 'HOME' },
-    { href: '/about', label: 'ABOUT' },
-    { href: '/concerti', label: 'AGENDA' },
-    { href: '/media', label: 'MEDIA' },
-    { href: '/news', label: 'NEWS' },
-    { href: '/discografia', label: 'DISCOGRAPHY' },
-    { href: '/identity', label: 'IDENTITY' },
-    { href: '/contatti', label: 'CONTACTS' },
-  ];
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -41,7 +37,18 @@ export function Header() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMounted]);
+
+  const NAV_LINKS = [
+    { href: '/', label: 'HOME' },
+    { href: '/about', label: 'ABOUT' },
+    { href: '/concerti', label: 'AGENDA' },
+    { href: '/media', label: 'MEDIA' },
+    { href: '/news', label: 'NEWS' },
+    { href: '/discografia', label: 'DISCOGRAPHY' },
+    { href: '/identity', label: 'IDENTITY' },
+    { href: '/contact', label: 'CONTACT' },
+  ];
 
   const currentPath = pathname;
   const isDiscographyPage = currentPath.includes('/discografia');
@@ -50,7 +57,7 @@ export function Header() {
     ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
     : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
 
-  const mobileLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
+  const mobileLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
 
   return (
     <header
@@ -62,7 +69,7 @@ export function Header() {
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Image
-            src={logoUrl}
+            src={isMounted && isDiscographyPage ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853" : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d"}
             alt="Giovanni Bertolazzi Logo"
             width={250}
             height={24}

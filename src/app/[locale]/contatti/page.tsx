@@ -15,7 +15,7 @@ const socialLinks = [
 ];
 
 export default function ContactPage() {
-  const t = useTranslations('Contacts');
+  const t = useTranslations('Contact');
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 py-16 md:py-24 pt-32">

@@ -14,7 +14,7 @@ export const pathnames = {
   '/': '/',
   '/about': '/about',
   '/concerti': '/concerti',
-  '/contatti': '/contatti',
+  '/contact': '/contact',
   '/discografia': '/discografia',
   '/identity': '/identity',
   '/media': '/media',

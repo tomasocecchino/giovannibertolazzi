@@ -10,7 +10,7 @@ export function Footer() {
     { href: '/discografia', label: 'Discography' },
     { href: '/press', label: 'Press' },
     { href: '/identity', label: 'Identity' },
-    { href: '/contatti', label: 'Contacts' },
+    { href: '/contact', label: 'Contact' },
   ];
   
   const dataProtectionLinks = [
