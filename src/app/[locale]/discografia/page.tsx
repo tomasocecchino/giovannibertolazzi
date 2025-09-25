@@ -1,12 +1,10 @@
-'use client';
-import { DISCOGRAPHY_DATA } from "@/lib/discography-data";
-import { Award } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { DISCOGRAPHY_DATA } from "@/lib/discography-data";
 
-export default function DiscographyPage() {
-  const t = useTranslations('Discography');
-  const d = useTranslations('DiscographyData');
+export default async function DiscographyPage() {
+  const t = await getTranslations('Discography');
+  const d = await getTranslations('DiscographyData');
 
   const DISCOGRAPHY = DISCOGRAPHY_DATA.map(album => ({
     ...album,
