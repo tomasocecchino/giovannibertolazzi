@@ -72,7 +72,7 @@ export default async function Home() {
       {/* About Section */}
       <section id="about" className="bg-[#f0f0f0]">
         <div className="container mx-auto px-4 py-16 md:py-24 text-left">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">{t('aboutTitle')}</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
             <div className="max-w-3xl text-[#333] space-y-4 text-lg">
               <p>{t('aboutText1')}</p>
               <p>{t('aboutText2')}</p>
@@ -92,7 +92,7 @@ export default async function Home() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
-              {t('exploreCDsTitle')}
+              EXPLORE CDs
             </h2>
             <Link href="/discografia" className="text-white font-semibold hover:underline">
               {t('viewDiscography')} <ArrowRight className="inline h-4 w-4" />
@@ -122,7 +122,7 @@ export default async function Home() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-black">
-              {t('nextConcertsTitle')}
+              NEXT CONCERTS
             </h2>
             <Link href="/concerti" className="text-[#004a63] font-semibold hover:underline">
               {t('allConcerts')} <ArrowRight className="inline h-4 w-4" />
@@ -163,7 +163,7 @@ export default async function Home() {
       <section id="videos" className="bg-[#004165]">
         <div className="container mx-auto px-4 py-16 md:py-24">
            <div className="flex justify-between items-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">{t('videosTitle')}</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
             <Link href="/media" className="text-white font-semibold hover:underline">
               {t('viewVideos')} <ArrowRight className="inline h-4 w-4" />
             </Link>
@@ -194,5 +194,3 @@ export default async function Home() {
     </div>
   );
 }
-
-    
