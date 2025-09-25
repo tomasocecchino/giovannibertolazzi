@@ -54,7 +54,7 @@ export default function MediaPage() {
 
         <Tabs defaultValue="gallery" value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
           <div className="flex items-baseline gap-x-6 mb-8 md:mb-12">
-            <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165] pb-2">
+            <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
               Media
             </h1>
             <TabsList>
@@ -324,5 +324,3 @@ function VideoGallery({t}: {t: (key:string) => string}) {
     </div>
   );
 }
-
-    
