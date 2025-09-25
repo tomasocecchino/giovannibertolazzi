@@ -23,9 +23,15 @@ export function Header() {
   
   const darkLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
   const whiteLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
-  const mobileLogoUrl = whiteLogoUrl;
   
   const [logoUrl, setLogoUrl] = useState(darkLogoUrl);
+  const [headerState, setHeaderState] = useState({
+      bgColor: 'bg-transparent',
+      textColor: 'text-white',
+      textHoverColor: 'text-white/60 hover:text-white',
+      forceDarkText: false,
+      forceLightText: false,
+  });
 
   useEffect(() => {
     setIsMounted(true);
@@ -43,19 +49,44 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
-  
-  const isDiscographyPage = pathname.startsWith('/discografia');
-  const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
 
   useEffect(() => {
-    if (isMounted) {
-      if (isDiscographyPage) {
-        setLogoUrl(whiteLogoUrl);
-      } else {
-        setLogoUrl(darkLogoUrl);
-      }
+    if (!isMounted) return;
+    
+    const isDiscographyPage = pathname.startsWith('/discografia');
+    const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
+    
+    const showDarkHeader = isScrolled || isDiscographyPage;
+    const showDarkTextOnLoad = isLightPage && !isScrolled && !isDiscographyPage;
+
+    // Determine logo
+    setLogoUrl(isDiscographyPage || isScrolled ? whiteLogoUrl : darkLogoUrl);
+
+    // Determine header classes
+    const newBgColor = showDarkHeader ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
+    let newTextColor = 'text-white';
+    if (showDarkTextOnLoad) {
+      newTextColor = 'text-black';
+    } else if (showDarkHeader) {
+      newTextColor = 'text-white';
     }
-  }, [pathname, isDiscographyPage, isMounted, whiteLogoUrl, darkLogoUrl]);
+
+    let newTextHoverColor = 'text-white/60 hover:text-white';
+    if (showDarkTextOnLoad) {
+      newTextHoverColor = 'text-black/60 hover:text-black';
+    } else if (showDarkHeader) {
+      newTextHoverColor = 'text-white/60 hover:text-white';
+    }
+    
+    setHeaderState({
+        bgColor: newBgColor,
+        textColor: newTextColor,
+        textHoverColor: newTextHoverColor,
+        forceDarkText: showDarkHeader,
+        forceLightText: showDarkTextOnLoad,
+    });
+
+  }, [pathname, isScrolled, isMounted, darkLogoUrl, whiteLogoUrl]);
 
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
@@ -70,30 +101,11 @@ export function Header() {
 
   const currentPath = pathname;
 
-  const showDarkHeader = isMounted && (isScrolled || isDiscographyPage);
-  const showDarkTextOnLoad = isMounted && isLightPage && !isScrolled && !isDiscographyPage;
-  
-  const headerBgClass = showDarkHeader ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
-  
-  let headerTextColorClass = 'text-white';
-  if (showDarkTextOnLoad) {
-      headerTextColorClass = 'text-black';
-  } else if (showDarkHeader) {
-      headerTextColorClass = 'text-white';
-  }
-
-  let headerTextHoverColorClass = 'text-white/60 hover:text-white';
-   if (showDarkTextOnLoad) {
-      headerTextHoverColorClass = 'text-black/60 hover:text-black';
-  } else if (showDarkHeader) {
-      headerTextHoverColorClass = 'text-white/60 hover:text-white';
-  }
-
   return (
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-colors duration-300',
-        headerBgClass
+        headerState.bgColor
       )}
     >
       <div className="container flex h-24 items-center">
@@ -119,14 +131,14 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   'transition-colors duration-300',
-                  isActive ? headerTextColorClass : headerTextHoverColorClass
+                  isActive ? headerState.textColor : headerState.textHoverColor
                 )}
               >
                 {link.label}
               </Link>
             )
           })}
-          <LanguageSwitcher forceDark={showDarkHeader} forceLight={showDarkTextOnLoad} />
+          <LanguageSwitcher forceDark={headerState.forceDarkText} forceLight={headerState.forceLightText} />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -134,7 +146,7 @@ export function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className={cn("h-6 w-6", headerTextColorClass)} />
+                <Menu className={cn("h-6 w-6", headerState.textColor)} />
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
@@ -143,7 +155,7 @@ export function Header() {
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">
                   <Image
-                    src={mobileLogoUrl}
+                    src={whiteLogoUrl}
                     alt="Giovanni Bertolazzi Logo"
                     width={200}
                     height={20}

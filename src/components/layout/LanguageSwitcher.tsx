@@ -3,7 +3,7 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from '@/navigation';
-import { useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import Image from "next/image";
 import {
   Select,
@@ -29,6 +29,11 @@ export default function LanguageSwitcher({ forceDark, forceLight }: { forceDark?
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+      setIsMounted(true);
+  }, []);
 
   const onSelectChange = (value: string) => {
     startTransition(() => {
@@ -38,14 +43,17 @@ export default function LanguageSwitcher({ forceDark, forceLight }: { forceDark?
 
   const selectedLanguage = languages.find(lang => lang.code === locale);
 
+  const className = isMounted && cn(
+      "w-auto bg-transparent border-none p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none",
+      forceDark && "text-white/80",
+      forceLight && "text-black/80",
+      !forceDark && !forceLight && "text-white/80" // Default color on server and initial client render
+  );
+
   return (
     <Select onValueChange={onSelectChange} defaultValue={locale} disabled={isPending}>
       <SelectTrigger 
-        className={cn(
-            "w-auto bg-transparent border-none p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none",
-            forceDark && "text-white/80",
-            forceLight && "text-black/80"
-        )}
+        className={className || "w-auto bg-transparent border-none p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none text-white/80"}
         icon={null}
       >
         <SelectValue>
