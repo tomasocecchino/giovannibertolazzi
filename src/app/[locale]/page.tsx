@@ -125,8 +125,8 @@ export default async function Home() {
                 const formattedDate = format(dateObj, 'dd/MM/yyyy');
                 return (
                   <div key={item.id} className="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-x-6 gap-y-4 items-start p-4 bg-white rounded-lg shadow-sm">
-                     {item.image && (
-                        <div className="relative w-full aspect-[4/3] rounded-md overflow-hidden">
+                    <div className="relative w-full aspect-square rounded-md overflow-hidden bg-gray-200">
+                        {item.image && (
                             <Image 
                                 src={item.image} 
                                 alt={item.title} 
@@ -135,8 +135,8 @@ export default async function Home() {
                                 data-ai-hint="news article" 
                                 sizes="(max-width: 768px) 30vw, 150px"
                             />
-                        </div>
-                    )}
+                        )}
+                    </div>
                     <div className="flex flex-col">
                         <p className="text-sm text-gray-500 mb-1">{formattedDate}</p>
                         <h3 className="font-bold text-lg text-[#333] mb-1">{item.title}</h3>
