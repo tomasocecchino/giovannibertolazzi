@@ -1,10 +1,15 @@
 'use client';
 
-import { usePathname, Link, useRouter } from '@/navigation';
+import { usePathname, Link } from '@/navigation';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -36,17 +41,28 @@ export function Header() {
   }, []);
 
   const currentPath = pathname;
+  const isDiscographyPage = currentPath.includes('/discografia');
+
+  const logoUrl = isDiscographyPage 
+    ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
+    : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
+
+  const mobileLogoUrl = isDiscographyPage
+    ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
+    : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
 
   return (
-    <header className={cn(
-      "sticky top-0 z-50 w-full transition-colors duration-300",
-      isScrolled ? "bg-black/80 backdrop-blur-sm" : "bg-transparent"
-    )}>
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full transition-colors duration-300',
+        isScrolled || isDiscographyPage ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent'
+      )}
+    >
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Image 
-            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d" 
-            alt="Giovanni Bertolazzi Logo" 
+          <Image
+            src={logoUrl}
+            alt="Giovanni Bertolazzi Logo"
             width={250}
             height={24}
             className="h-auto"
@@ -62,7 +78,8 @@ export function Header() {
               href={link.href}
               className={cn(
                 'transition-colors hover:text-white',
-                (link.href === '/' && currentPath === '/') || (link.href !== '/' && currentPath.startsWith(link.href))
+                (link.href === '/' && currentPath === '/') ||
+                  (link.href !== '/' && currentPath.startsWith(link.href))
                   ? 'text-white'
                   : 'text-white/60'
               )}
@@ -86,9 +103,9 @@ export function Header() {
               <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
               <div className="p-4">
                 <Link href="/" className="flex items-center space-x-2 mb-8">
-                  <Image 
-                    src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d" 
-                    alt="Giovanni Bertolazzi Logo" 
+                  <Image
+                    src={mobileLogoUrl}
+                    alt="Giovanni Bertolazzi Logo"
                     width={200}
                     height={20}
                     className="h-auto"
@@ -102,16 +119,19 @@ export function Header() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
                         'flex items-center text-lg font-semibold text-white/70 hover:text-white',
-                         (link.href === '/' && currentPath === '/') || (link.href !== '/' && currentPath.startsWith(link.href)) && 'text-white'
+                        ((link.href === '/' && currentPath === '/') ||
+                          (link.href !== '/' &&
+                            currentPath.startsWith(link.href))) &&
+                          'text-white'
                       )}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
-                 <div className="mt-8">
-                    <LanguageSwitcher />
-                  </div>
+                <div className="mt-8">
+                  <LanguageSwitcher />
+                </div>
               </div>
             </SheetContent>
           </Sheet>
