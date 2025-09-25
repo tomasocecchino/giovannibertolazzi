@@ -70,8 +70,8 @@ export default async function Home() {
       <HomeHero />
 
       {/* About Section */}
-      <section id="about" className="bg-[#f0f0f0]">
-        <div className="container mx-auto px-4 py-16 md:py-24 text-left">
+      <section id="about" className="bg-[#f0f0f0] py-16 md:py-24">
+        <div className="container">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-[#004a63] mb-8">ABOUT</h2>
             <div className="max-w-3xl text-[#333] space-y-4 text-lg">
               <p>{t('aboutText1')}</p>
@@ -88,8 +88,8 @@ export default async function Home() {
       </section>
 
       {/* Explore CDs Section */}
-      <section id="cds" className="bg-[#004165]">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+      <section id="cds" className="bg-[#004165] py-16 md:py-24">
+        <div className="container">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
               EXPLORE CDs
@@ -118,8 +118,8 @@ export default async function Home() {
       </section>
 
       {/* Next Concerts Section */}
-       <section id="concerts" className="bg-[#f0f0f0]">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+       <section id="concerts" className="bg-[#f0f0f0] py-16 md:py-24">
+        <div className="container">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-black">
               NEXT CONCERTS
@@ -160,8 +160,8 @@ export default async function Home() {
       </section>
 
       {/* Videos Section */}
-      <section id="videos" className="bg-[#004165]">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+      <section id="videos" className="bg-[#004165] py-16 md:py-24">
+        <div className="container">
            <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
             <Link href="/media" className="text-white font-semibold hover:underline">
