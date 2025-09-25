@@ -51,17 +51,17 @@ export default function MediaPage() {
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
-        <div className="flex items-baseline gap-4 mb-8 md:mb-12">
-          <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
-            Media
-          </h1>
-        </div>
 
         <Tabs defaultValue="gallery" value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
-          <TabsList className="mb-8 md:mb-12">
-            <TabsTrigger value="gallery">Gallery</TabsTrigger>
-            <TabsTrigger value="videos">Videos</TabsTrigger>
-          </TabsList>
+          <div className="flex items-baseline justify-between mb-8 md:mb-12">
+            <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
+              Media
+            </h1>
+            <TabsList>
+              <TabsTrigger value="gallery">Gallery</TabsTrigger>
+              <TabsTrigger value="videos">Videos</TabsTrigger>
+            </TabsList>
+          </div>
           <TabsContent value="gallery">
             <div className="space-y-16">
               <PhotoGrid images={galleryImages} t={t} />
@@ -324,5 +324,3 @@ function VideoGallery({t}: {t: (key:string) => string}) {
     </div>
   );
 }
-
-    
