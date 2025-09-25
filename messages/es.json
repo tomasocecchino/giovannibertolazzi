@@ -17,10 +17,10 @@
     "scrollDown": "Scroll Down",
     "explore": "& Explore",
     "aboutTitle": "SOBRE MÍ",
-    "aboutText1": "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.",
-    "aboutText2": "He officially performed on the World's longest Concert-grand Piano during its first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).",
-    "aboutText3": "In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.",
-    "aboutText4": "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the MAV Symphony Orchestra, the Orchestra del Teatro La Fenice.",
+    "aboutText1": "Giovanni Bertolazzi se dio a conocer en la escena internacional al ganar el 2º premio y 5 premios especiales en el prestigioso Concurso Internacional de Piano “F. Liszt” en Budapest.",
+    "aboutText2": "Actuó oficialmente en el piano de cola de concierto más largo del mundo durante su primera presentación pública, el BORGATO GRAND-PRIX 333 (de 3,33 metros de largo).",
+    "aboutText3": "En 2024, fue galardonado con el 43º 'Liszt Ferenc International Grand Prix Du Disque' por la Sociedad Liszt de Budapest por sus grabaciones de Liszt.",
+    "aboutText4": "Los momentos más destacados de su carrera incluyen apariciones con la Orquesta Filarmónica Húngara, la Orquesta del Maggio Musicale Fiorentino, la Orquesta Sinfónica MAV y la Orquesta del Teatro La Fenice.",
     "readAbout": "Leer más",
     "exploreCDsTitle": "EXPLORA CDs",
     "viewDiscography": "Ver discografía",
@@ -38,19 +38,19 @@
     "heroAlt": "Giovanni Bertolazzi actuando",
     "heroQuote": "Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force(though also with poetic delicacy) that rivets your attention.",
     "heroCite": "Bryce Morrison",
-    "p1": "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the prestigious “F. Liszt” International Piano Competition in Budapest.",
-    "p2": "This significant achievement came after winning more than 40 prizes in international piano competitions, including the “Busoni” in Bolzano, the “Thalberg” in Naples, the “Alkan Award for Piano Virtuosity” in Milan.",
-    "p3": "In 2022, he was awarded the “Tabor Foundation Award” at the Verbier Festival (Switzerland). The following year he received the “Donna Guglielmina Durini Litta” International Piano Award in Milan.",
-    "p4": "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra del Teatro Bellini, Orchestra Sinfonica Siciliana, Orchestra of National Opera Theatre of Tirana.",
-    "p5": "He performs in important venues and for prestigious musical organisations including Teatro del Maggio Musicale Fiorentino in Florence, Società del Quartetto in Milan, Teatro La Fenice in Venice, Palazzo del Quirinale in Rome, Bologna Festival, “F. Liszt” Academy of Music and “F. Liszt” Memorial Museum in Budapest, National Liberal Club in London, National Opera House in Tirana, Verbier Festival, Pharos Arts Foundation (Cyprus), Castleton Festival Theatre House (Virginia, USA).",
-    "p6": "He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).",
-    "p7": "On this extraordinary instrument, he recorded two albums devoted entirely to music by Franz Liszt and published by BORGATO COLLECTION. These recordings have received several awards from international critics (“Supersonic Pizzicato Award”, 5 Stars from MUSICA Magazine, Nomination at the “International Classical Music Awards”).",
-    "p8": "His concerts and recordings are broadcast by Radio France Musique, Bartók Rádió, Rai Radio3, Radio Romania Muzical. In addition, Paolo Gavazzeni's “Mestiere Teatro” programme on Sky Classica HD dedicated an episode to him.",
-    "p9": "Born in Verona in 1998, he approached the piano as a child, growing up in a family particularly interested in culture, art and music.",
-    "p10": "After brilliantly graduating from the Conservatory of Venice under the guidance of Massimo Somenzi, he continued his studies at the Conservatory of Catania with Epifanio Comis, graduating in Piano Performance and Chamber Music with top honours.",
-    "p11": "He holds a main piano chair at the “G. Frescobaldi” Conservatory of Music in Ferrara.",
-    "p12": "Since 2023, he has been regularly invited to hold Masterclasses at the University of Debrecen (Hungary), during the YMSA - Young Musicians' Summer Academy.",
-    "p13": "In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.",
+    "p1": "Giovanni Bertolazzi se dio a conocer en la escena internacional al ganar el 2º premio y 5 premios especiales en el prestigioso Concurso Internacional de Piano “F. Liszt” en Budapest.",
+    "p2": "Este significativo logro se produjo después de ganar más de 40 premios en concursos internacionales de piano, incluyendo el “Busoni” en Bolzano, el “Thalberg” en Nápoles y el “Premio Alkan a la Virtuosidad Pianística” en Milán.",
+    "p3": "En 2022, fue galardonado con el “Premio de la Fundación Tabor” en el Festival de Verbier (Suiza). Al año siguiente, recibió en Milán el Premio Internacional de Piano “Donna Guglielmina Durini Litta”.",
+    "p4": "Los momentos más destacados de su carrera incluyen apariciones con la Orquesta Filarmónica Húngara, la Orquesta del Maggio Musicale Fiorentino, la Orquesta Filarmónica Kodály, la Orquesta del Teatro La Fenice, la Orquesta del Teatro Bellini, la Orquesta Sinfónica Siciliana y la Orquesta del Teatro Nacional de la Ópera de Tirana.",
+    "p5": "Actúa en importantes salas y para prestigiosas organizaciones musicales, como el Teatro del Maggio Musicale Fiorentino en Florencia, la Società del Quartetto en Milán, el Teatro La Fenice en Venecia, el Palacio del Quirinal en Roma, el Festival de Bolonia, la Academia de Música “F. Liszt” y el Museo Conmemorativo “F. Liszt” en Budapest, el National Liberal Club en Londres, la Ópera Nacional en Tirana, el Festival de Verbier, la Pharos Arts Foundation (Chipre) y el Castleton Festival Theatre House (Virginia, EE. UU.).",
+    "p6": "Actuó oficialmente en el piano de cola de concierto más largo del mundo durante su primera presentación pública, el BORGATO GRAND-PRIX 333 (de 3,33 metros de largo).",
+    "p7": "En este extraordinario instrumento, grabó dos álbumes dedicados íntegramente a la música de Franz Liszt y publicados por BORGATO COLLECTION. Estas grabaciones han recibido varios premios de la crítica internacional (“Premio Supersonic Pizzicato”, 5 estrellas de la revista MUSICA, nominación a los “International Classical Music Awards”).",
+    "p8": "Sus conciertos y grabaciones son transmitidos por Radio France Musique, Bartók Rádió, Rai Radio3 y Radio Romania Muzical. Además, el programa “Mestiere Teatro” de Paolo Gavazzeni en Sky Classica HD le dedicó un episodio.",
+    "p9": "Nacido en Verona en 1998, se acercó al piano de niño, creciendo en una familia particularmente interesada en la cultura, el arte y la música.",
+    "p10": "Tras graduarse brillantemente en el Conservatorio de Venecia bajo la dirección de Massimo Somenzi, continuó sus estudios en el Conservatorio de Catania con Epifanio Comis, graduándose en Interpretación de Piano y Música de Cámara con las máximas calificaciones.",
+    "p11": "Ocupa una cátedra principal de piano en el Conservatorio de Música “G. Frescobaldi” de Ferrara.",
+    "p12": "Desde 2023, es invitado regularmente a impartir clases magistrales en la Universidad de Debrecen (Hungría), durante la YMSA - Young Musicians' Summer Academy.",
+    "p13": "En 2024, fue galardonado con el 43º “Liszt Ferenc International Grand Prix Du Disque” por la Sociedad Liszt de Budapest por sus grabaciones de Liszt.",
     "q1_text": "A clear possessor of talent, something that blazes out with a communicative force (though also with poetic delicacy) that rivets your attention.",
     "q1_cite_name": "Bryce Morrison",
     "q1_cite_source": "The Art of Pianists",
@@ -121,22 +121,22 @@
   },
   "DiscographyData": {
     "1": {
-        "title": "LISZT: PIANO WORKS (2CD)",
-        "awards": [
-            "ICMA Nomination 2024",
-            "\"TOP\" Album MusicPaper Magazine",
-            "5 Stars Rivista MUSICA",
-            "5 Stars PIZZICATO Magazine"
-        ]
+      "title": "LISZT: PIANO WORKS (2CD)",
+      "awards": [
+        "ICMA Nomination 2024",
+        "\"TOP\" Album MusicPaper Magazine",
+        "5 Stars Rivista MUSICA",
+        "5 Stars PIZZICATO Magazine"
+      ]
     },
     "2": {
-        "title": "LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE'S SONETT",
-        "awards": [
-            "ICMA Nomination 2023",
-            "SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)",
-            "5 Stars Rivista MUSICA",
-            "43rd \"Liszt Ferenc Grand Prix du Disque\" from Budapest Liszt Society (2024)"
-        ]
+      "title": "LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE'S SONETT",
+      "awards": [
+        "ICMA Nomination 2023",
+        "SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)",
+        "5 Stars Rivista MUSICA",
+        "43rd \"Liszt Ferenc Grand Prix du Disque\" from Budapest Liszt Society (2024)"
+      ]
     }
   },
   "Identity": {
@@ -163,6 +163,6 @@
     "errorTitle": "Error al cargar las noticias",
     "errorHint": "Por favor, asegúrese de que sus reglas de seguridad de Firestore para la colección `newsArticle` permitan el acceso de lectura público. Por ejemplo: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. También, compruebe que todos los campos obligatorios (`date`, `title`, `text`) estén presentes y con el formato correcto en sus documentos.",
     "awardBadgeAlt": "Insignia de premio",
-    "noNews": "No se encontraron artículos de noticias."
+    "noNews": "No se encontraron articles de noticias."
   }
 }

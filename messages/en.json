@@ -17,9 +17,9 @@
     "scrollDown": "Scroll Down",
     "explore": "& Explore",
     "aboutTitle": "ABOUT",
-    "aboutText1": "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the 'F. Liszt' International Piano Competition in Budapest.",
+    "aboutText1": "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the prestigious “F. Liszt” International Piano Competition in Budapest.",
     "aboutText2": "He officially performed on the World's longest Concert-grand Piano during its first public presentation, the BORGATO GRAND-PRIX 333 (3.33 meters long).",
-    "aboutText3": "In 2024, he was awarded the 43rd 'Liszt Ferenc International Grand Prix Du Disque' by the Liszt Society of Budapest for his Liszt recordings.",
+    "aboutText3": "In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.",
     "aboutText4": "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, the Orchestra del Maggio Musicale Fiorentino, the MAV Symphony Orchestra, the Orchestra del Teatro La Fenice.",
     "readAbout": "Read About",
     "exploreCDsTitle": "EXPLORE CDs",
@@ -121,22 +121,22 @@
   },
   "DiscographyData": {
     "1": {
-        "title": "LISZT: PIANO WORKS (2CD)",
-        "awards": [
-            "ICMA Nomination 2024",
-            "\"TOP\" Album MusicPaper Magazine",
-            "5 Stars Rivista MUSICA",
-            "5 Stars PIZZICATO Magazine"
-        ]
+      "title": "LISZT: PIANO WORKS (2CD)",
+      "awards": [
+        "ICMA Nomination 2024",
+        "\"TOP\" Album MusicPaper Magazine",
+        "5 Stars Rivista MUSICA",
+        "5 Stars PIZZICATO Magazine"
+      ]
     },
     "2": {
-        "title": "LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE'S SONETT",
-        "awards": [
-            "ICMA Nomination 2023",
-            "SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)",
-            "5 Stars Rivista MUSICA",
-            "43rd \"Liszt Ferenc Grand Prix du Disque\" from Budapest Liszt Society (2024)"
-        ]
+      "title": "LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE'S SONETT",
+      "awards": [
+        "ICMA Nomination 2023",
+        "SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)",
+        "5 Stars Rivista MUSICA",
+        "43rd \"Liszt Ferenc Grand Prix du Disque\" from Budapest Liszt Society (2024)"
+      ]
     }
   },
   "Identity": {
