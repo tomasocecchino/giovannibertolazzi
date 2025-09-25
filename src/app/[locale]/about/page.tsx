@@ -21,7 +21,7 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 z-10 text-left relative pt-24">
+        <div className="container z-10 text-left relative pt-24">
           <h1 className="text-5xl md:text-7xl font-semibold font-headline text-[#008DDA] mb-4">
             About
           </h1>
@@ -34,7 +34,7 @@ export default function AboutPage() {
 
       {/* Main Content */}
       <div className="bg-[#f0f0f0] text-black">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container py-16 md:py-24">
           <div className="max-w-3xl mx-auto space-y-6 text-base md:text-lg text-gray-800 leading-relaxed">
             <p>{t('p1')}</p>
             <p>{t('p2')}</p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
 
       {/* Quotes Section */}
       <div className="bg-[#f0f0f0] text-black">
-        <div className="container mx-auto px-4 pb-16 md:pb-24">
+        <div className="container pb-16 md:pb-24">
           <div className="max-w-3xl mx-auto space-y-12">
             
             <blockquote className="border-l-4 border-[#008DDA] pl-6 italic">

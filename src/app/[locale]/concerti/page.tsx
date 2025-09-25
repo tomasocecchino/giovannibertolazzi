@@ -73,7 +73,7 @@ export default function ConcertsPage() {
   if (error) {
     return (
       <div className="bg-[#f0f0f0] text-black">
-        <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
+        <div className="container py-16 md:py-24 pt-40">
             <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold text-red-800 mb-4">{t('errorTitle')}</h2>
                 <p className="text-red-700 mb-4">{error}</p>
@@ -99,7 +99,7 @@ export default function ConcertsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 z-10 text-left relative pt-24">
+        <div className="container z-10 text-left relative pt-24">
             <div className="flex items-end gap-4">
                  <h1 className="text-5xl md:text-7xl font-semibold font-headline text-white mb-4">
                     Concerts
@@ -127,7 +127,7 @@ export default function ConcertsPage() {
 
       {/* Main Content */}
       <div className="bg-[#f0f0f0] text-black">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container py-16 md:py-24">
               <div className="max-w-5xl mx-auto space-y-8">
                   {filteredConcerts.length > 0 ? filteredConcerts.map((concert, index) => {
                       const month = concert.date.toLocaleString('en-US', { month: 'short' }).toUpperCase();

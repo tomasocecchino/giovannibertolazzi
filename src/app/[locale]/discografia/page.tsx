@@ -15,7 +15,7 @@ export default async function DiscographyPage() {
 
   return (
     <div className="bg-[#004165] text-white">
-      <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
+      <div className="container py-16 md:py-24 pt-32">
         <h1 className="text-4xl md:text-6xl font-semibold font-headline text-white mb-16 text-left">
           Discography
         </h1>

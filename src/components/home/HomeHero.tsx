@@ -20,7 +20,7 @@ export function HomeHero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
             </div>
-            <div className="container mx-auto px-4 z-10 h-full">
+            <div className="container z-10 h-full">
                 <div className="grid md:grid-cols-2 items-center h-full">
                     <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-24 sm:pt-16">
                         <div>
@@ -50,5 +50,3 @@ export function HomeHero() {
         </section>
     );
 }
-
-    
