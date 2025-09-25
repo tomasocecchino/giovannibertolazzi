@@ -29,9 +29,9 @@ export function Header() {
       bgColor: 'bg-transparent',
       textColor: 'text-white',
       textHoverColor: 'text-white/60 hover:text-white',
-      forceDarkText: false,
-      forceLightText: false,
   });
+  const [languageSwitcherForces, setLanguageSwitcherForces] = useState({ forceDark: false, forceLight: false });
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -42,13 +42,9 @@ export function Header() {
       setIsScrolled(window.scrollY > 20);
     };
     
-    if (isMounted) {
-      handleScroll();
-    }
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMounted]);
+  }, []);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -56,34 +52,43 @@ export function Header() {
     const isDiscographyPage = pathname.startsWith('/discografia');
     const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
     
-    const showDarkHeader = isScrolled || isDiscographyPage;
-    const showDarkTextOnLoad = isLightPage && !isScrolled && !isDiscographyPage;
+    const showDarkHeader = isScrolled;
+    const showDarkTextOnLoad = isLightPage && !isScrolled;
 
-    // Determine logo
-    setLogoUrl(isDiscographyPage || isScrolled ? whiteLogoUrl : darkLogoUrl);
+    setLogoUrl(isDiscographyPage ? whiteLogoUrl : darkLogoUrl);
 
-    // Determine header classes
     const newBgColor = showDarkHeader ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
     let newTextColor = 'text-white';
     if (showDarkTextOnLoad) {
       newTextColor = 'text-black';
-    } else if (showDarkHeader) {
+    } else if (isScrolled) {
       newTextColor = 'text-white';
+    } else if (isDiscographyPage) {
+        newTextColor = 'text-white';
+    } else {
+        newTextColor = 'text-white'; // Default for home, about, etc.
     }
 
     let newTextHoverColor = 'text-white/60 hover:text-white';
     if (showDarkTextOnLoad) {
       newTextHoverColor = 'text-black/60 hover:text-black';
-    } else if (showDarkHeader) {
-      newTextHoverColor = 'text-white/60 hover:text-white';
+    } else if (isScrolled) {
+        newTextHoverColor = 'text-white/60 hover:text-white';
+    } else if (isDiscographyPage) {
+        newTextHoverColor = 'text-white/60 hover:text-white';
+    } else {
+        newTextHoverColor = 'text-white/60 hover:text-white';
     }
-    
+
     setHeaderState({
         bgColor: newBgColor,
         textColor: newTextColor,
         textHoverColor: newTextHoverColor,
-        forceDarkText: showDarkHeader,
-        forceLightText: showDarkTextOnLoad,
+    });
+    
+    setLanguageSwitcherForces({
+      forceDark: showDarkHeader || isDiscographyPage,
+      forceLight: showDarkTextOnLoad,
     });
 
   }, [pathname, isScrolled, isMounted, darkLogoUrl, whiteLogoUrl]);
@@ -110,14 +115,14 @@ export function Header() {
     >
       <div className="container flex h-24 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Image
-            src={logoUrl}
+           <Image
+            src={isMounted ? logoUrl : darkLogoUrl}
             alt="Giovanni Bertolazzi Logo"
             width={250}
             height={24}
             className="h-auto"
             priority
-            key={logoUrl} 
+            key={isMounted ? logoUrl : darkLogoUrl} 
           />
         </Link>
 
@@ -131,14 +136,17 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   'transition-colors duration-300',
-                  isActive ? headerState.textColor : headerState.textHoverColor
+                   isMounted ? (isActive ? headerState.textColor : headerState.textHoverColor) : 'text-white/60'
                 )}
               >
                 {link.label}
               </Link>
             )
           })}
-          <LanguageSwitcher forceDark={headerState.forceDarkText} forceLight={headerState.forceLightText} />
+          <LanguageSwitcher 
+             forceDark={languageSwitcherForces.forceDark} 
+             forceLight={languageSwitcherForces.forceLight} 
+          />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -146,7 +154,7 @@ export function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className={cn("h-6 w-6", headerState.textColor)} />
+                <Menu className={cn("h-6 w-6", isMounted ? headerState.textColor : 'text-white')} />
                 <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
