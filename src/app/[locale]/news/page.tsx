@@ -68,8 +68,8 @@ export default function NewsPage() {
             return (
               <div key={item.id} className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-x-8 gap-y-4 items-start border-b border-black/10 pb-12">
                 
-                {item.image && (
-                    <div className="relative w-full aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                <div className="relative w-full md:w-[180px] aspect-square bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                    {item.image && (
                         <Image 
                             src={item.image} 
                             alt={item.title} 
@@ -78,8 +78,8 @@ export default function NewsPage() {
                             data-ai-hint="news article" 
                             sizes="(max-width: 768px) 100vw, 180px"
                         />
-                    </div>
-                )}
+                    )}
+                </div>
 
                 <div className="flex flex-col h-full justify-center">
                   <p className="text-black/60 font-medium tracking-wider mb-2">{formattedDate}</p>
