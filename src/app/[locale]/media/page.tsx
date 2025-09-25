@@ -53,8 +53,8 @@ export default function MediaPage() {
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
 
         <Tabs defaultValue="gallery" value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
-          <div className="flex items-baseline gap-x-6 mb-8 md:mb-12">
-            <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
+          <div className="flex items-end gap-x-6 mb-8 md:mb-12">
+            <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165] pb-2">
               Media
             </h1>
             <TabsList>
