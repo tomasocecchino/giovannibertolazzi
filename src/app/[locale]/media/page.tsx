@@ -11,17 +11,19 @@ import {
 } from '@/components/ui/select';
 import Image from 'next/image';
 import { Link } from '@/navigation';
-import { PlayCircle, Camera, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { PlayCircle, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from '@/lib/firebase';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 type View = 'gallery' | 'videos';
 
 export default function MediaPage() {
+  const t = useTranslations('Media');
   const [currentView, setCurrentView] = useState<View>('gallery');
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [shootingImages, setShootingImages] = useState<GalleryImage[]>([]);
@@ -56,7 +58,7 @@ export default function MediaPage() {
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
         <div className="flex items-baseline gap-4 mb-8 md:mb-12">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
-            Media
+            {t('title')}
           </h1>
           <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
             <SelectTrigger className={cn(
@@ -65,29 +67,29 @@ export default function MediaPage() {
               "shadow-none",
               "data-[state=open]:bg-white"
             )}>
-              <SelectValue placeholder="Select view" />
+              <SelectValue placeholder={t('selectView')} />
             </SelectTrigger>
             <SelectContent className="bg-white text-black">
-              <SelectItem value="gallery">Gallery</SelectItem>
-              <SelectItem value="videos">Videos</SelectItem>
+              <SelectItem value="gallery">{t('gallery')}</SelectItem>
+              <SelectItem value="videos">{t('videos')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         {currentView === 'gallery' && (
           <div className="space-y-16">
-            <PhotoGrid images={galleryImages} />
+            <PhotoGrid images={galleryImages} t={t} />
             {shootingImages.length > 0 && (
               <div>
                 <h2 className="text-3xl md:text-4xl font-semibold font-headline text-[#004165] mb-8">
-                  Shooting
+                  {t('shooting')}
                 </h2>
-                <PhotoGrid images={shootingImages} />
+                <PhotoGrid images={shootingImages} t={t} />
               </div>
             )}
           </div>
         )}
-        {currentView === 'videos' && <VideoGallery />}
+        {currentView === 'videos' && <VideoGallery t={t}/>}
       </div>
     </div>
   );
@@ -95,9 +97,10 @@ export default function MediaPage() {
 
 interface PhotoGridProps {
   images: GalleryImage[];
+  t: (key: string) => string;
 }
 
-function PhotoGrid({ images }: PhotoGridProps) {
+function PhotoGrid({ images, t }: PhotoGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -154,7 +157,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
   const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
 
   if (images.length === 0) {
-    return <div className="text-center">No images in this section.</div>;
+    return <div className="text-center">{t('noImages')}</div>;
   }
 
   return (
@@ -168,7 +171,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
           >
             <Image
               src={photo.link}
-              alt={photo.title || 'Gallery image'}
+              alt={photo.title || t('galleryImageAlt')}
               fill
               className={cn(
                 "object-cover transition-transform duration-300 group-hover:scale-105",
@@ -190,7 +193,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
         >
-          <DialogTitle className="sr-only">Image Viewer</DialogTitle>
+          <DialogTitle className="sr-only">{t('imageViewerTitle')}</DialogTitle>
 
           {selectedImage && (
             <>
@@ -206,7 +209,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
                     <Image
                       key={selectedImage.id}
                       src={selectedImage.link}
-                      alt={selectedImage.title || 'Enlarged gallery image'}
+                      alt={selectedImage.title || t('enlargedGalleryImageAlt')}
                       fill
                       className={cn(
                         "object-contain transition-opacity duration-300",
@@ -241,7 +244,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
             className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
           >
             <ChevronLeft className="h-8 w-8" />
-            <span className="sr-only">Previous Image</span>
+            <span className="sr-only">{t('previousImage')}</span>
           </Button>
           <Button
             variant="ghost"
@@ -250,7 +253,7 @@ function PhotoGrid({ images }: PhotoGridProps) {
             className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
           >
             <ChevronRight className="h-8 w-8" />
-            <span className="sr-only">Next Image</span>
+            <span className="sr-only">{t('nextImage')}</span>
           </Button>
         </DialogContent>
       </Dialog>
@@ -284,7 +287,7 @@ function getYouTubeThumbnail(url: string): string {
     return `https://picsum.photos/seed/${url}/180/101`;
 }
 
-function VideoGallery() {
+function VideoGallery({t}: {t: (key:string) => string}) {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -303,7 +306,7 @@ function VideoGallery() {
   }, []);
 
   if (loading) {
-    return <div className="text-center">Loading videos...</div>;
+    return <div className="text-center">{t('loadingVideos')}</div>;
   }
 
   return (
@@ -313,7 +316,7 @@ function VideoGallery() {
                 <div className="relative shrink-0">
                     <Image
                         src={getYouTubeThumbnail(video.link)}
-                        alt={`Thumbnail for ${video.title}`}
+                        alt={t('videoThumbnailAlt', {videoTitle: video.title})}
                         width={180}
                         height={101}
                         className="w-[180px] h-auto object-cover rounded-md"
@@ -332,3 +335,5 @@ function VideoGallery() {
     </div>
   );
 }
+
+    

@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import { getConcerts } from "@/lib/firebase";
 import type { Concert as RawConcert } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 // Extend the concert type to work with JS Date objects
 interface Concert extends Omit<RawConcert, 'date'> {
@@ -21,6 +22,7 @@ interface Concert extends Omit<RawConcert, 'date'> {
 }
 
 export default function ConcertsPage() {
+  const t = useTranslations('Concerts');
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
   const [allConcerts, setAllConcerts] = useState<Concert[]>([]);
   const [loading, setLoading] = useState(true);
@@ -73,9 +75,9 @@ export default function ConcertsPage() {
       <div className="bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
             <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-red-800 mb-4">Error Loading Concerts</h2>
+                <h2 className="text-2xl font-bold text-red-800 mb-4">{t('errorTitle')}</h2>
                 <p className="text-red-700 mb-4">{error}</p>
-                <p className="text-sm text-gray-700">Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} {'{ allow read; }'}`. Also, check that the `date` field is a valid Timestamp or a string that can be parsed into a Date.</p>
+                <p className="text-sm text-gray-700">{t('errorHint')}</p>
             </div>
         </div>
       </div>
@@ -89,7 +91,7 @@ export default function ConcertsPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Agenda%2F17_MicheleMonasta_2M_09180%201.png?alt=media&token=fde8cce3-3f89-4123-bb0f-364cd05bfdf5"
-            alt="Giovanni Bertolazzi performing in a concert hall"
+            alt={t('heroAlt')}
             fill
             priority
             className="object-cover object-center opacity-40"
@@ -100,7 +102,7 @@ export default function ConcertsPage() {
         <div className="container mx-auto px-4 z-10 text-left relative pt-24">
             <div className="flex items-end gap-4">
                  <h1 className="text-5xl md:text-7xl font-semibold font-headline text-white mb-4">
-                    Concerts
+                    {t('title')}
                 </h1>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
                     <SelectTrigger 
@@ -117,8 +119,8 @@ export default function ConcertsPage() {
                 </Select>
             </div>
           <blockquote className="max-w-xl text-lg md:text-xl text-white/80 italic">
-            <p>&quot;On this majestic instrument, BORGATO Grand-Prix 333, Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.&quot;</p>
-            <cite className="block mt-2 not-italic text-sm text-white/50">Rivista Musica</cite>
+            <p>&quot;{t('heroQuote')}&quot;</p>
+            <cite className="block mt-2 not-italic text-sm text-white/50">{t('heroCite')}</cite>
           </blockquote>
         </div>
       </section>
@@ -141,7 +143,7 @@ export default function ConcertsPage() {
                                       {concert.people && <p className="text-sm text-black/60">{concert.people}</p>}
                                       {concert.ticketUrl && (
                                         <Link href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] font-semibold hover:underline inline-block pt-2 pb-8">
-                                            Info &amp; Tickets <ArrowRight className="inline h-3 w-3" />
+                                            {t('infoAndTickets')} <ArrowRight className="inline h-3 w-3" />
                                         </Link>
                                       )}
                                   </div>
@@ -155,7 +157,7 @@ export default function ConcertsPage() {
                           </div>
                       );
                   }) : (
-                     <p className="text-center text-lg text-black/70">No concerts scheduled for {selectedYear}.</p>
+                     <p className="text-center text-lg text-black/70">{t('noConcerts', { year: selectedYear })}</p>
                   )}
               </div>
         </div>
@@ -163,3 +165,5 @@ export default function ConcertsPage() {
     </div>
   );
 }
+
+    

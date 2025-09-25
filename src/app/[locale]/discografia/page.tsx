@@ -1,20 +1,30 @@
 
-import { PageTitle } from "@/components/PageTitle";
-import { DISCOGRAPHY } from "@/lib/constants";
-import { Mail, Award } from "lucide-react";
+'use client';
+import { DISCOGRAPHY_DATA } from "@/lib/discography-data";
+import { Award } from "lucide-react";
 import Image from "next/image";
-import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
 
 export default function DiscographyPage() {
+  const t = useTranslations('Discography');
+  const d = useTranslations('DiscographyData');
+
+  const DISCOGRAPHY = DISCOGRAPHY_DATA.map(album => ({
+    ...album,
+    title: d(`${album.id}.title`),
+    awards: album.awards.map((_, index) => d(`${album.id}.awards.${index}`))
+  }));
+
+
   return (
     <div className="bg-[#004165] text-white">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
         <h1 className="text-4xl md:text-6xl font-semibold font-headline text-white mb-16 text-left">
-          Discography
+          {t('title')}
         </h1>
         <blockquote className="max-w-2xl text-lg md:text-xl text-white/80 italic mt-4 mb-16">
-          <p>&quot;There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!&quot;</p>
-          <cite className="block mt-2 not-italic text-sm text-white/50">Cyprien Katsaris</cite>
+          <p>&quot;{t('heroQuote')}&quot;</p>
+          <cite className="block mt-2 not-italic text-sm text-white/50">{t('heroCite')}</cite>
         </blockquote>
 
         <div className="space-y-16">
@@ -24,7 +34,7 @@ export default function DiscographyPage() {
                 <div className="flex items-center justify-center">
                   <Image
                     src={album.imageUrl}
-                    alt={`Album cover for ${album.title}`}
+                    alt={t('albumCoverAlt', {albumTitle: album.title})}
                     width={500}
                     height={500}
                     className="w-full h-auto object-cover aspect-square shadow-lg"
@@ -48,7 +58,7 @@ export default function DiscographyPage() {
               </div>
               <div className="bg-[#f0f0f0] text-black p-4 md:p-8">
                 <div className="mb-6 font-semibold text-lg">
-                  Get your copy - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a>
+                  {t('getYourCopy')} - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a>
                 </div>
                 <div className="grid md:grid-cols-3 items-center">
                   <ul className="md:col-span-2 space-y-2 text-sm font-medium text-black/70">
@@ -63,7 +73,7 @@ export default function DiscographyPage() {
                     {album.awardImageUrl && (
                         <Image
                         src={album.awardImageUrl}
-                        alt="Award Seal"
+                        alt={t('awardSealAlt')}
                         width={120}
                         height={120}
                         className="h-auto"
@@ -80,3 +90,5 @@ export default function DiscographyPage() {
     </div>
   );
 }
+
+    
