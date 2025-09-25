@@ -72,15 +72,10 @@ export async function getNews(options: GetNewsOptions = {}): Promise<NewsArticle
     try {
         const newsCollection = collection(db, "newsArticle");
         
-        const queryConstraints = [orderBy("date", "desc")];
-        if (options.onHomepage) {
-            queryConstraints.push(where("home", "==", true));
-        }
-
-        const q = query(newsCollection, ...queryConstraints);
+        const q = query(newsCollection, orderBy("date", "desc"));
         const querySnapshot = await getDocs(q);
 
-        const articles = querySnapshot.docs.map(doc => {
+        let articles = querySnapshot.docs.map(doc => {
             const data = doc.data();
             let date;
 
@@ -104,6 +99,10 @@ export async function getNews(options: GetNewsOptions = {}): Promise<NewsArticle
                 date: date.toISOString(),
             } as NewsArticle;
         });
+
+        if (options.onHomepage) {
+            articles = articles.filter(article => article.home === true);
+        }
 
         return articles;
     } catch (error: any) {
