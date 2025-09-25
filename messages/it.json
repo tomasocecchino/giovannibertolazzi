@@ -6,9 +6,9 @@
     "agenda": "AGENDA",
     "media": "MEDIA",
     "news": "NEWS",
-    "discography": "DISCOGRAFIA",
-    "identity": "IDENTITÀ",
-    "contacts": "CONTATTI"
+    "discography": "DISCOGRAPHY",
+    "identity": "IDENTITY",
+    "contacts": "CONTACTS"
   },
   "Home": {
     "title": "CONCERT-PIANIST",
@@ -97,7 +97,7 @@
     "q15_cite_source": "MuzLife Magazine"
   },
   "Concerts": {
-    "title": "Concerti",
+    "title": "Concerts",
     "heroAlt": "Giovanni Bertolazzi si esibisce in una sala da concerto",
     "heroQuote": "On this majestic instrument, BORGATO Grand-Prix 333, Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.",
     "heroCite": "Rivista Musica",
@@ -107,12 +107,12 @@
     "errorHint": "Assicurati che le regole di sicurezza di Firestore per la collezione `concerts` consentano l'accesso in lettura pubblico. Ad esempio: `match /concerts/{'concertId'} {'{ allow read; }'}`. Controlla anche che il campo `date` sia un Timestamp valido o una stringa che possa essere analizzata come una data."
   },
   "Contacts": {
-    "title": "Contatti",
+    "title": "Contact",
     "imageAlt": "Giovanni Bertolazzi",
     "emailLabel": "email"
   },
   "Discography": {
-    "title": "Discografia",
+    "title": "Discography",
     "heroQuote": "There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!",
     "heroCite": "Cyprien Katsaris",
     "albumCoverAlt": "Copertina dell'album {albumTitle}",
@@ -140,7 +140,7 @@
     }
   },
   "Identity": {
-    "title": "Pagina in Costruzione",
+    "title": "Identity",
     "subtitle": "Stiamo lavorando per definire al meglio questa sezione. Torna a trovarci presto per scoprire di più sulla filosofia musicale di Giovanni Bertolazzi."
   },
   "Media": {

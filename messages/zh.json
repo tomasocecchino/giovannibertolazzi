@@ -1,14 +1,14 @@
 
 {
   "Header": {
-    "home": "首页",
-    "about": "关于",
-    "agenda": "日程",
-    "media": "媒体",
-    "news": "新闻",
-    "discography": "唱片",
-    "identity": "理念",
-    "contacts": "联系方式"
+    "home": "HOME",
+    "about": "ABOUT",
+    "agenda": "AGENDA",
+    "media": "MEDIA",
+    "news": "NEWS",
+    "discography": "DISCOGRAPHY",
+    "identity": "IDENTITY",
+    "contacts": "CONTACTS"
   },
   "Home": {
     "title": "音乐会钢琴家",
@@ -34,7 +34,7 @@
     "videoThumbnailAlt": "视频缩略图 {videoTitle}"
   },
   "About": {
-    "title": "关于",
+    "title": "About",
     "heroAlt": "乔瓦尼·贝托拉齐在表演",
     "heroQuote": "Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force(though also with poetic delicacy) that rivets your attention.",
     "heroCite": "Bryce Morrison",
@@ -97,7 +97,7 @@
     "q15_cite_source": "MuzLife Magazine"
   },
   "Concerts": {
-    "title": "音乐会",
+    "title": "Concerts",
     "heroAlt": "乔瓦尼·贝托拉齐在音乐厅表演",
     "heroQuote": "On this majestic instrument, BORGATO Grand-Prix 333, Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.",
     "heroCite": "Rivista Musica",
@@ -107,12 +107,12 @@
     "errorHint": "请确保您的Firestore安全规则允许对“concerts”集合进行公共读取访问。例如：`match /concerts/{'concertId'} {'{ allow read; }'}`。此外，请检查“date”字段是否为有效的时间戳或可以解析为日期的字符串。"
   },
   "Contacts": {
-    "title": "联系方式",
+    "title": "Contact",
     "imageAlt": "乔瓦尼·贝托拉齐",
     "emailLabel": "电子邮件"
   },
   "Discography": {
-    "title": "唱片",
+    "title": "Discography",
     "heroQuote": "There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!",
     "heroCite": "Cyprien Katsaris",
     "albumCoverAlt": "专辑封面 {albumTitle}",
@@ -140,11 +140,11 @@
     }
   },
   "Identity": {
-    "title": "页面建设中",
+    "title": "Identity",
     "subtitle": "我们正在努力更好地定义此部分。请尽快回来，了解更多关于乔瓦尼·贝托拉齐的音乐理念。"
   },
   "Media": {
-    "title": "媒体",
+    "title": "Media",
     "selectView": "选择视图",
     "gallery": "画廊",
     "videos": "视频",
@@ -159,7 +159,7 @@
     "videoThumbnailAlt": "视频缩略图 {videoTitle}"
   },
   "News": {
-    "title": "新闻",
+    "title": "News",
     "errorTitle": "加载新闻时出错",
     "errorHint": "请确保您的Firestore安全规则允许对 `newsArticle` 集合进行公共读取访问。例如：`match /newsArticle/{'articleId'} {'{ allow read; }'}`。另外，请检查您的文档中是否存在所有必填字段（`date`、`title`、`text`）并且格式正确。",
     "awardBadgeAlt": "奖励徽章",

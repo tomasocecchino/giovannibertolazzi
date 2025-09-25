@@ -17,7 +17,7 @@ export default async function DiscographyPage() {
     <div className="bg-[#004165] text-white">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
         <h1 className="text-4xl md:text-6xl font-semibold font-headline text-white mb-16 text-left">
-          {t('title')}
+          Discography
         </h1>
         <blockquote className="max-w-2xl text-lg md:text-xl text-white/80 italic mt-4 mb-16">
           <p>&quot;{t('heroQuote')}&quot;</p>

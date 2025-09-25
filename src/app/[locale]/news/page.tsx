@@ -57,7 +57,7 @@ export default function NewsPage() {
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
         <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165] mb-16 text-left">
-          {t('title')}
+          News
         </h1>
 
         <div className="max-w-4xl mx-auto space-y-12">
@@ -103,5 +103,3 @@ export default function NewsPage() {
     </div>
   );
 }
-
-    

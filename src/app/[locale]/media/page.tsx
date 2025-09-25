@@ -58,7 +58,7 @@ export default function MediaPage() {
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
         <div className="flex items-baseline gap-4 mb-8 md:mb-12">
           <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
-            {t('title')}
+            Media
           </h1>
           <Select value={currentView} onValueChange={(value) => setCurrentView(value as View)}>
             <SelectTrigger className={cn(
@@ -335,5 +335,3 @@ function VideoGallery({t}: {t: (key:string) => string}) {
     </div>
   );
 }
-
-    

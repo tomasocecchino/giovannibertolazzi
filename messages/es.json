@@ -1,14 +1,14 @@
 
 {
   "Header": {
-    "home": "INICIO",
-    "about": "SOBRE MÍ",
+    "home": "HOME",
+    "about": "ABOUT",
     "agenda": "AGENDA",
-    "media": "MEDIOS",
-    "news": "NOTICIAS",
-    "discography": "DISCOGRAFÍA",
-    "identity": "IDENTIDAD",
-    "contacts": "CONTACTO"
+    "media": "MEDIA",
+    "news": "NEWS",
+    "discography": "DISCOGRAPHY",
+    "identity": "IDENTITY",
+    "contacts": "CONTACTS"
   },
   "Home": {
     "title": "CONCERT-PIANIST",
@@ -34,7 +34,7 @@
     "videoThumbnailAlt": "Miniatura del vídeo {videoTitle}"
   },
   "About": {
-    "title": "Sobre mí",
+    "title": "About",
     "heroAlt": "Giovanni Bertolazzi actuando",
     "heroQuote": "Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force(though also with poetic delicacy) that rivets your attention.",
     "heroCite": "Bryce Morrison",
@@ -97,7 +97,7 @@
     "q15_cite_source": "MuzLife Magazine"
   },
   "Concerts": {
-    "title": "Conciertos",
+    "title": "Concerts",
     "heroAlt": "Giovanni Bertolazzi actuando en una sala de conciertos",
     "heroQuote": "On this majestic instrument, BORGATO Grand-Prix 333, Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.",
     "heroCite": "Rivista Musica",
@@ -107,12 +107,12 @@
     "errorHint": "Por favor, asegúrese de que sus reglas de seguridad de Firestore para la colección `concerts` permitan el acceso de lectura público. Por ejemplo: `match /concerts/{'concertId'} {'{ allow read; }'}`. También, verifique que el campo `date` sea una marca de tiempo válida o una cadena que se pueda analizar como una fecha."
   },
   "Contacts": {
-    "title": "Contacto",
+    "title": "Contact",
     "imageAlt": "Giovanni Bertolazzi",
     "emailLabel": "correo electrónico"
   },
   "Discography": {
-    "title": "Discografía",
+    "title": "Discography",
     "heroQuote": "There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!",
     "heroCite": "Cyprien Katsaris",
     "albumCoverAlt": "Portada del álbum {albumTitle}",
@@ -140,11 +140,11 @@
     }
   },
   "Identity": {
-    "title": "Página en construcción",
+    "title": "Identity",
     "subtitle": "Estamos trabajando para definir mejor esta sección. Vuelve pronto para descubrir más sobre la filosofía musical de Giovanni Bertolazzi."
   },
   "Media": {
-    "title": "Medios",
+    "title": "Media",
     "selectView": "Seleccionar vista",
     "gallery": "Galería",
     "videos": "Vídeos",
@@ -159,7 +159,7 @@
     "videoThumbnailAlt": "Miniatura del vídeo {videoTitle}"
   },
   "News": {
-    "title": "Noticias",
+    "title": "News",
     "errorTitle": "Error al cargar las noticias",
     "errorHint": "Por favor, asegúrese de que sus reglas de seguridad de Firestore para la colección `newsArticle` permitan el acceso de lectura público. Por ejemplo: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. También, compruebe que todos los campos obligatorios (`date`, `title`, `text`) estén presentes y con el formato correcto en sus documentos.",
     "awardBadgeAlt": "Insignia de premio",

@@ -1,13 +1,13 @@
 
 {
   "Header": {
-    "home": "ACCUEIL",
-    "about": "À PROPOS",
+    "home": "HOME",
+    "about": "ABOUT",
     "agenda": "AGENDA",
-    "media": "MÉDIAS",
-    "news": "ACTUALITÉS",
-    "discography": "DISCOGRAPHIE",
-    "identity": "IDENTITÉ",
+    "media": "MEDIA",
+    "news": "NEWS",
+    "discography": "DISCOGRAPHY",
+    "identity": "IDENTITY",
     "contacts": "CONTACTS"
   },
   "Home": {
@@ -34,7 +34,7 @@
     "videoThumbnailAlt": "Miniature de la vidéo {videoTitle}"
   },
   "About": {
-    "title": "À propos",
+    "title": "About",
     "heroAlt": "Giovanni Bertolazzi en concert",
     "heroQuote": "Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force(though also with poetic delicacy) that rivets your attention.",
     "heroCite": "Bryce Morrison",
@@ -112,7 +112,7 @@
     "emailLabel": "e-mail"
   },
   "Discography": {
-    "title": "Discographie",
+    "title": "Discography",
     "heroQuote": "There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!",
     "heroCite": "Cyprien Katsaris",
     "albumCoverAlt": "Pochette de l'album {albumTitle}",
@@ -140,11 +140,11 @@
     }
   },
   "Identity": {
-    "title": "Page en construction",
+    "title": "Identity",
     "subtitle": "Nous travaillons à mieux définir cette section. Revenez bientôt pour en savoir plus sur la philosophie musicale de Giovanni Bertolazzi."
   },
   "Media": {
-    "title": "Médias",
+    "title": "Media",
     "selectView": "Sélectionner la vue",
     "gallery": "Galerie",
     "videos": "Vidéos",
@@ -159,7 +159,7 @@
     "videoThumbnailAlt": "Miniature de la vidéo {videoTitle}"
   },
   "News": {
-    "title": "Actualités",
+    "title": "News",
     "errorTitle": "Erreur lors du chargement des actualités",
     "errorHint": "Veuillez vous assurer que vos règles de sécurité Firestore pour la collection `newsArticle` autorisent l'accès en lecture public. Par exemple : `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Assurez-vous également que tous les champs obligatoires (`date`, `title`, `text`) sont présents et correctement formatés dans vos documents.",
     "awardBadgeAlt": "Badge de récompense",

@@ -20,7 +20,7 @@ export default function ContactPage() {
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 py-16 md:py-24 pt-32">
             <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165] mb-16 text-left">
-                {t('title')}
+                Contact
             </h1>
             <div className="grid md:grid-cols-2 gap-x-16 gap-y-8 items-center mb-16">
                 <div className="max-w-[15rem] mx-auto">
@@ -53,5 +53,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
-    

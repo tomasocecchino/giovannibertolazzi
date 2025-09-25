@@ -1,14 +1,14 @@
 
 {
   "Header": {
-    "home": "STARTSEITE",
-    "about": "ÜBER MICH",
-    "agenda": "TERMINE",
-    "media": "MEDIEN",
-    "news": "NACHRICHTEN",
-    "discography": "DISKOGRAFIE",
-    "identity": "IDENTITÄT",
-    "contacts": "KONTAKT"
+    "home": "HOME",
+    "about": "ABOUT",
+    "agenda": "AGENDA",
+    "media": "MEDIA",
+    "news": "NEWS",
+    "discography": "DISCOGRAPHY",
+    "identity": "IDENTITY",
+    "contacts": "CONTACTS"
   },
   "Home": {
     "title": "KONZERT-PIANIST",
@@ -34,7 +34,7 @@
     "videoThumbnailAlt": "Vorschaubild für Video {videoTitle}"
   },
   "About": {
-    "title": "Über mich",
+    "title": "About",
     "heroAlt": "Giovanni Bertolazzi tritt auf",
     "heroQuote": "Bertolazzi is a clear possessor of talent, something that blazes out with a communicative force(though also with poetic delicacy) that rivets your attention.",
     "heroCite": "Bryce Morrison",
@@ -97,7 +97,7 @@
     "q15_cite_source": "MuzLife Magazine"
   },
   "Concerts": {
-    "title": "Konzerte",
+    "title": "Concerts",
     "heroAlt": "Giovanni Bertolazzi tritt in einer Konzerthalle auf",
     "heroQuote": "On this majestic instrument, BORGATO Grand-Prix 333, Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.",
     "heroCite": "Rivista Musica",
@@ -107,12 +107,12 @@
     "errorHint": "Bitte stellen Sie sicher, dass Ihre Firestore-Sicherheitsregeln für die Sammlung `concerts` öffentlichen Lesezugriff erlauben. Zum Beispiel: `match /concerts/{'concertId'} {'{ allow read; }'}`. Überprüfen Sie auch, dass das `date`-Feld ein gültiger Zeitstempel oder eine Zeichenfolge ist, die in ein Datum umgewandelt werden kann."
   },
   "Contacts": {
-    "title": "Kontakt",
+    "title": "Contact",
     "imageAlt": "Giovanni Bertolazzi",
     "emailLabel": "E-Mail"
   },
   "Discography": {
-    "title": "Diskografie",
+    "title": "Discography",
     "heroQuote": "There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!",
     "heroCite": "Cyprien Katsaris",
     "albumCoverAlt": "Albumcover für {albumTitle}",
@@ -140,11 +140,11 @@
     }
   },
   "Identity": {
-    "title": "Seite im Aufbau",
+    "title": "Identity",
     "subtitle": "Wir arbeiten daran, diesen Abschnitt besser zu definieren. Besuchen Sie uns bald wieder, um mehr über Giovanni Bertolazzis musikalische Philosophie zu erfahren."
   },
   "Media": {
-    "title": "Medien",
+    "title": "Media",
     "selectView": "Ansicht auswählen",
     "gallery": "Galerie",
     "videos": "Videos",
@@ -159,7 +159,7 @@
     "videoThumbnailAlt": "Vorschaubild für Video {videoTitle}"
   },
   "News": {
-    "title": "Nachrichten",
+    "title": "News",
     "errorTitle": "Fehler beim Laden der Nachrichten",
     "errorHint": "Bitte stellen Sie sicher, dass Ihre Firestore-Sicherheitsregeln für die Sammlung `newsArticle` öffentlichen Lesezugriff erlauben. Zum Beispiel: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Überprüfen Sie auch, ob alle erforderlichen Felder (`date`, `title`, `text`) in Ihren Dokumenten vorhanden und korrekt formatiert sind.",
     "awardBadgeAlt": "Auszeichnungsabzeichen",

@@ -13,24 +13,22 @@ import {
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const t = useTranslations('Header');
 
   const NAV_LINKS = [
-    { href: '/', label: t('home') },
-    { href: '/about', label: t('about') },
-    { href: '/concerti', label: t('agenda') },
-    { href: '/media', label: t('media') },
-    { href: '/news', label: t('news') },
-    { href: '/discografia', label: t('discography') },
-    { href: '/identity', label: t('identity') },
-    { href: '/contatti', label: t('contacts') },
+    { href: '/', label: 'HOME' },
+    { href: '/about', label: 'ABOUT' },
+    { href: '/concerti', label: 'AGENDA' },
+    { href: '/media', label: 'MEDIA' },
+    { href: '/news', label: 'NEWS' },
+    { href: '/discografia', label: 'DISCOGRAPHY' },
+    { href: '/identity', label: 'IDENTITY' },
+    { href: '/contatti', label: 'CONTACTS' },
   ];
 
   useEffect(() => {

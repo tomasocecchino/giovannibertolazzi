@@ -102,7 +102,7 @@ export default function ConcertsPage() {
         <div className="container mx-auto px-4 z-10 text-left relative pt-24">
             <div className="flex items-end gap-4">
                  <h1 className="text-5xl md:text-7xl font-semibold font-headline text-white mb-4">
-                    {t('title')}
+                    Concerts
                 </h1>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
                     <SelectTrigger 
@@ -165,5 +165,3 @@ export default function ConcertsPage() {
     </div>
   );
 }
-
-    

@@ -23,7 +23,7 @@ export default function AboutPage() {
         </div>
         <div className="container mx-auto px-4 z-10 text-left relative pt-24">
           <h1 className="text-5xl md:text-7xl font-semibold font-headline text-[#008DDA] mb-4">
-            {t('title')}
+            About
           </h1>
           <blockquote className="max-w-xl text-lg md:text-xl text-white/80 italic">
             <p>&quot;{t('heroQuote')}&quot;</p>
@@ -139,5 +139,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
