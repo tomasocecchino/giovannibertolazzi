@@ -24,7 +24,7 @@ const languages = [
   { code: "zh", name: "中文", flag: "/flags/cn.svg" },
 ];
 
-export default function LanguageSwitcher({ forceDark }: { forceDark?: boolean }) {
+export default function LanguageSwitcher({ forceDark, forceLight }: { forceDark?: boolean, forceLight?: boolean }) {
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
   const router = useRouter();
@@ -43,7 +43,8 @@ export default function LanguageSwitcher({ forceDark }: { forceDark?: boolean })
       <SelectTrigger 
         className={cn(
             "w-auto bg-transparent border-none p-2 h-auto focus:ring-0 focus:ring-offset-0 shadow-none",
-            forceDark ? "text-white/80" : "text-black/80"
+            forceDark && "text-white/80",
+            forceLight && "text-black/80"
         )}
         icon={null}
       >

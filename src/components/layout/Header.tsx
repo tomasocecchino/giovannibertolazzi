@@ -39,6 +39,7 @@ export function Header() {
   }, [isMounted]);
   
   const isDiscographyPage = pathname.startsWith('/discografia');
+  const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
 
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
@@ -53,15 +54,30 @@ export function Header() {
 
   const currentPath = pathname;
 
-  const logoUrl = isDiscographyPage
-    ? "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853"
-    : "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
+  const darkLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI.png?alt=media&token=aedad2ea-6e74-4ac4-ad4a-0619ffa2667d";
+  const whiteLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
+  const mobileLogoUrl = whiteLogoUrl;
 
-  const mobileLogoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GIOVANNI%20BERTOLAZZI%20W.png?alt=media&token=a2635b0b-7ee8-4e7b-928d-31cfcd761853";
+  const showDarkHeader = isMounted && (isScrolled || isDiscographyPage);
+  const showDarkTextOnLoad = isMounted && isLightPage && !isScrolled && !isDiscographyPage;
   
-  const headerBgClass = isMounted && (isScrolled || isDiscographyPage) ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
-  const headerTextColorClass = isMounted && (isScrolled || isDiscographyPage) ? 'text-white' : 'text-black';
-  const headerTextHoverColorClass = isMounted && (isScrolled || isDiscographyPage) ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black';
+  const headerBgClass = showDarkHeader ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
+  
+  let headerTextColorClass = 'text-white';
+  if (showDarkTextOnLoad) {
+      headerTextColorClass = 'text-black';
+  } else if (showDarkHeader) {
+      headerTextColorClass = 'text-white';
+  }
+
+  let headerTextHoverColorClass = 'text-white/60 hover:text-white';
+   if (showDarkTextOnLoad) {
+      headerTextHoverColorClass = 'text-black/60 hover:text-black';
+  } else if (showDarkHeader) {
+      headerTextHoverColorClass = 'text-white/60 hover:text-white';
+  }
+
+  const logoUrl = isDiscographyPage || (isScrolled && isMounted) ? whiteLogoUrl : (isLightPage && isMounted ? darkLogoUrl : whiteLogoUrl);
 
   return (
     <header
@@ -100,7 +116,7 @@ export function Header() {
               </Link>
             )
           })}
-          <LanguageSwitcher forceDark={isMounted && (isScrolled || isDiscographyPage)} />
+          <LanguageSwitcher forceDark={showDarkHeader} forceLight={showDarkTextOnLoad} />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
