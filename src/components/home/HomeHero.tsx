@@ -22,7 +22,7 @@ export function HomeHero() {
             </div>
             <div className="container z-10 h-full">
                 <div className="grid md:grid-cols-2 items-center h-full">
-                    <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-24 sm:pt-16">
+                    <div className="py-16 md:py-24 text-left flex flex-col justify-between h-full pt-48 sm:pt-16">
                         <div>
                             <h1 className="text-6xl sm:text-7xl font-headline tracking-tight text-white">
                                 <span className="font-normal">Giovanni</span>
