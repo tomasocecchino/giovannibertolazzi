@@ -81,7 +81,7 @@ export default async function Home() {
       <section id="cds" className="bg-[#004165] py-16 md:py-24">
         <div className="container">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-accent">
               EXPLORE CDs
             </h2>
             <Link href="/discografia" className="text-white font-semibold hover:underline">
@@ -126,7 +126,7 @@ export default async function Home() {
                 return (
                   <div key={item.id} className="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-x-6 gap-y-4 items-start p-4 bg-white rounded-lg shadow-sm">
                     <div className="relative w-full aspect-square rounded-md overflow-hidden bg-gray-200">
-                        {item.image && (
+                        {item.image ? (
                             <Image 
                                 src={item.image} 
                                 alt={item.title} 
@@ -135,6 +135,8 @@ export default async function Home() {
                                 data-ai-hint="news article" 
                                 sizes="(max-width: 768px) 30vw, 150px"
                             />
+                        ) : (
+                          <div className="w-full h-full bg-gray-200"></div>
                         )}
                     </div>
                     <div className="flex flex-col">
