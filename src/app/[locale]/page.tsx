@@ -81,8 +81,8 @@ export default async function Home() {
       <section id="cds" className="bg-[#004165] py-16 md:py-24">
         <div className="container">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-accent">
-              EXPLORE CDs
+            <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
+              EXPLORE <span className="text-accent">CDs</span>
             </h2>
             <Link href="/discografia" className="text-white font-semibold hover:underline">
               {t('viewDiscography')} <ArrowRight className="inline h-4 w-4" />
@@ -194,3 +194,4 @@ export default async function Home() {
     </div>
   );
 }
+
