@@ -4,15 +4,19 @@
 // Read more about routing and layouts in Next.js:
 // https://nextjs.org/docs/getting-started/react-essentials#layouts
 
-import type { ReactNode } from "react";
+import {NextIntlClientProvider, useMessages} from 'next-intl';
+import type {ReactNode} from 'react';
 
 type Props = {
   children: ReactNode;
+  params: {locale: string};
 };
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({children, params: {locale}}: Props) {
+  const messages = useMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -26,7 +30,9 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body className="font-body antialiased bg-[#0e141a]">
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
