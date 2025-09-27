@@ -118,14 +118,14 @@ export default async function Home() {
               All News <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-8 max-w-4xl mx-auto">
             {latestNews.length > 0 ? (
               latestNews.map((item) => {
                 const dateObj = new Date(item.date);
                 const formattedDate = format(dateObj, 'dd/MM/yyyy');
                 return (
-                  <div key={item.id} className="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-x-6 gap-y-4 items-start p-4 bg-white rounded-lg shadow-sm">
-                    <div className="relative w-full aspect-square rounded-md overflow-hidden bg-gray-200">
+                  <div key={item.id} className="grid grid-cols-[120px_1fr] gap-x-6 items-start border-b border-black/10 pb-8 last:border-b-0 last:pb-0">
+                    <div className="relative w-full aspect-square bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
                         {item.image ? (
                             <Image 
                                 src={item.image} 
@@ -133,20 +133,22 @@ export default async function Home() {
                                 fill
                                 className="object-cover"
                                 data-ai-hint="news article" 
-                                sizes="(max-width: 768px) 30vw, 150px"
+                                sizes="120px"
                             />
                         ) : (
-                          <div className="w-full h-full bg-gray-200"></div>
+                           <div className="w-full h-full bg-gray-200"></div>
                         )}
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col h-full justify-center">
                         <p className="text-sm text-gray-500 mb-1">{formattedDate}</p>
-                        <h3 className="font-bold text-lg text-[#333] mb-1">{item.title}</h3>
-                        <p className="text-sm text-gray-600 line-clamp-2 mb-2">{item.text}</p>
+                        <h3 className="font-semibold text-lg font-headline tracking-wide text-black/80 mb-1">{item.title}</h3>
+                        <p className="text-sm text-gray-600 line-clamp-3 mb-3 flex-grow">{item.text}</p>
                         {item.link && item.buttonText && (
-                         <Link href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] hover:underline font-semibold self-start">
-                            {item.buttonText} <ArrowRight className="inline h-3 w-3"/>
-                         </Link>
+                         <div className="text-left mt-auto">
+                            <Link href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm text-[#004a63] hover:underline font-semibold">
+                                {item.buttonText} <ArrowRight className="inline h-3 w-3"/>
+                            </Link>
+                         </div>
                         )}
                     </div>
                   </div>
@@ -194,4 +196,3 @@ export default async function Home() {
     </div>
   );
 }
-
