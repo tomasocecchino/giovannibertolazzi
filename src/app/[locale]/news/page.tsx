@@ -66,28 +66,30 @@ export default function NewsPage() {
             const formattedDate = format(dateObj, 'dd/MM/yyyy');
 
             return (
-              <div key={item.id} className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-x-8 gap-y-4 items-start border-b border-black/10 pb-12">
+              <div key={item.id} className="grid grid-cols-[120px_1fr] md:grid-cols-[180px_1fr] gap-x-6 md:gap-x-8 items-start border-b border-black/10 pb-12">
                 
-                <div className="relative w-full md:w-[180px] aspect-square bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
-                    {item.image && (
+                <div className="relative w-full aspect-square bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                    {item.image ? (
                         <Image 
                             src={item.image} 
                             alt={item.title} 
                             fill
                             className="object-cover"
                             data-ai-hint="news article" 
-                            sizes="(max-width: 768px) 100vw, 180px"
+                            sizes="(max-width: 768px) 120px, 180px"
                         />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200"></div>
                     )}
                 </div>
 
                 <div className="flex flex-col h-full justify-center">
-                  <p className="text-black/60 font-medium tracking-wider mb-2">{formattedDate}</p>
-                  <h2 className="text-xl font-semibold text-black/80 font-headline tracking-wide mb-1">{item.title}</h2>
+                  <p className="text-black/60 font-medium tracking-wider mb-2 text-sm">{formattedDate}</p>
+                  <h2 className="text-lg md:text-xl font-semibold text-black/80 font-headline tracking-wide mb-1">{item.title}</h2>
                   {item.subtitle && <p className="text-black/70 font-medium text-base mb-2">{item.subtitle}</p>}
-                  <p className="text-black/70 text-base mb-4 flex-grow">{item.text}</p>
+                  <p className="text-black/70 text-sm md:text-base mb-4 flex-grow">{item.text}</p>
                   {item.link && item.buttonText && (
-                    <div className="text-right">
+                    <div className="text-right mt-auto">
                        <Link href={item.link} target="_blank" rel="noopener noreferrer" className="text-[#004a63] font-semibold hover:underline text-sm">
                           {item.buttonText} <ArrowRight className="inline h-3 w-3" />
                        </Link>
@@ -104,3 +106,4 @@ export default function NewsPage() {
     </div>
   );
 }
+
