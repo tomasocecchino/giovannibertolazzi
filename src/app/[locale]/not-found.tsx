@@ -1,7 +1,11 @@
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from "next-intl/server";
 
-export default function NotFoundPage({params: {locale}}: {params: {locale: string}}) {
+type Props = {
+  params: { locale: string };
+};
+
+export default function NotFoundPage({params: {locale}}: Props) {
   // Enable static rendering
   setRequestLocale(locale);
   const t = useTranslations('Error');
