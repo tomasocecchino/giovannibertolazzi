@@ -1,8 +1,4 @@
-// This is the root layout component for your Next.js app.
-// It applies to all routes in your application.
-//
-// Read more about routing and layouts in Next.js:
-// https://nextjs.org/docs/getting-started/react-essentials#layouts
+// src/app/layout.tsx
 
 import {NextIntlClientProvider, useMessages} from 'next-intl';
 import type {ReactNode} from 'react';
