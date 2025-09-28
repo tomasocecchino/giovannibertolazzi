@@ -3,14 +3,14 @@
 import { getNews } from "@/lib/firebase";
 import type { NewsArticle } from "@/lib/firebase";
 import { ArrowRight, Loader2 } from "lucide-react";
-import { Link } from '@/navigation';
+import Link from 'next/link';
 import Image from "next/image";
 import { format } from 'date-fns';
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import messages from '@/messages/en.json';
 
 export default function NewsPage() {
-  const t = useTranslations('News');
+  const t = messages.News;
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,9 +44,9 @@ export default function NewsPage() {
       <div className="bg-[#f0f0f0] text-black">
         <div className="container mx-auto px-4 py-16 md:py-24 pt-40">
             <div className="max-w-4xl mx-auto text-center bg-red-100 border border-red-400 p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-red-800 mb-4">{t('errorTitle')}</h2>
+                <h2 className="text-2xl font-bold text-red-800 mb-4">{t.errorTitle}</h2>
                 <p className="text-red-700 mb-4">{error}</p>
-                <p className="text-sm text-gray-700">{t('errorHint')}</p>
+                <p className="text-sm text-gray-700">{t.errorHint}</p>
             </div>
         </div>
       </div>
@@ -99,11 +99,10 @@ export default function NewsPage() {
               </div>
             );
           }) : (
-            <p className="text-center text-lg text-black/70">{t('noNews')}</p>
+            <p className="text-center text-lg text-black/70">{t.noNews}</p>
           )}
         </div>
       </div>
     </div>
   );
 }
-

@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { Link } from '@/navigation';
+import Link from 'next/link';
 import { PlayCircle, Camera, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import type { GalleryImage, Video } from "@/lib/firebase";
@@ -11,14 +11,14 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useTranslations } from 'next-intl';
+import messages from '@/messages/en.json';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 type View = 'gallery' | 'videos';
 
 export default function MediaPage() {
-  const t = useTranslations('Media');
+  const t = messages.Media;
   const [currentView, setCurrentView] = useState<View>('gallery');
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [shootingImages, setShootingImages] = useState<GalleryImage[]>([]);
@@ -68,7 +68,7 @@ export default function MediaPage() {
               {shootingImages.length > 0 && (
                 <div>
                   <h2 className="text-3xl md:text-4xl font-semibold font-headline text-[#004165] mb-8">
-                    {t('shooting')}
+                    {t.shooting}
                   </h2>
                   <PhotoGrid images={shootingImages} t={t} />
                 </div>
@@ -86,7 +86,7 @@ export default function MediaPage() {
 
 interface PhotoGridProps {
   images: GalleryImage[];
-  t: (key: string) => string;
+  t: typeof messages.Media;
 }
 
 function PhotoGrid({ images, t }: PhotoGridProps) {
@@ -146,7 +146,7 @@ function PhotoGrid({ images, t }: PhotoGridProps) {
   const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
 
   if (images.length === 0) {
-    return <div className="text-center">{t('noImages')}</div>;
+    return <div className="text-center">{t.noImages}</div>;
   }
 
   return (
@@ -160,7 +160,7 @@ function PhotoGrid({ images, t }: PhotoGridProps) {
           >
             <Image
               src={photo.link}
-              alt={photo.title || t('galleryImageAlt')}
+              alt={photo.title || t.galleryImageAlt}
               fill
               className={cn(
                 "object-cover transition-transform duration-300 group-hover:scale-105",
@@ -182,7 +182,7 @@ function PhotoGrid({ images, t }: PhotoGridProps) {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
         >
-          <DialogTitle className="sr-only">{t('imageViewerTitle')}</DialogTitle>
+          <DialogTitle className="sr-only">{t.imageViewerTitle}</DialogTitle>
 
           {selectedImage && (
             <>
@@ -198,7 +198,7 @@ function PhotoGrid({ images, t }: PhotoGridProps) {
                     <Image
                       key={selectedImage.id}
                       src={selectedImage.link}
-                      alt={selectedImage.title || t('enlargedGalleryImageAlt')}
+                      alt={selectedImage.title || t.enlargedGalleryImageAlt}
                       fill
                       className={cn(
                         "object-contain transition-opacity duration-300",
@@ -233,7 +233,7 @@ function PhotoGrid({ images, t }: PhotoGridProps) {
             className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
           >
             <ChevronLeft className="h-8 w-8" />
-            <span className="sr-only">{t('previousImage')}</span>
+            <span className="sr-only">{t.previousImage}</span>
           </Button>
           <Button
             variant="ghost"
@@ -242,7 +242,7 @@ function PhotoGrid({ images, t }: PhotoGridProps) {
             className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white hover:text-white"
           >
             <ChevronRight className="h-8 w-8" />
-            <span className="sr-only">{t('nextImage')}</span>
+            <span className="sr-only">{t.nextImage}</span>
           </Button>
         </DialogContent>
       </Dialog>
@@ -276,7 +276,7 @@ function getYouTubeThumbnail(url: string): string {
     return `https://picsum.photos/seed/${url}/180/101`;
 }
 
-function VideoGallery({t}: {t: (key:string) => string}) {
+function VideoGallery({t}: {t: typeof messages.Media}) {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -295,7 +295,7 @@ function VideoGallery({t}: {t: (key:string) => string}) {
   }, []);
 
   if (loading) {
-    return <div className="text-center">{t('loadingVideos')}</div>;
+    return <div className="text-center">{t.loadingVideos}</div>;
   }
 
   return (
@@ -305,7 +305,7 @@ function VideoGallery({t}: {t: (key:string) => string}) {
                 <div className="relative shrink-0">
                     <Image
                         src={getYouTubeThumbnail(video.link)}
-                        alt={t('videoThumbnailAlt', {videoTitle: video.title})}
+                        alt={t.videoThumbnailAlt.replace('{videoTitle}', video.title)}
                         width={180}
                         height={101}
                         className="w-[180px] h-auto object-cover rounded-md"

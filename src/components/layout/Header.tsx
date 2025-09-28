@@ -1,7 +1,8 @@
 
 'use client';
 
-import { usePathname, Link } from '@/navigation';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +14,6 @@ import {
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import LanguageSwitcher from './LanguageSwitcher';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,8 +30,6 @@ export function Header() {
       textColor: 'text-white',
       textHoverColor: 'text-white/60 hover:text-white',
   });
-  const [languageSwitcherForces, setLanguageSwitcherForces] = useState({ forceDark: false, forceLight: false });
-
 
   useEffect(() => {
     setIsMounted(true);
@@ -84,11 +82,6 @@ export function Header() {
         bgColor: newBgColor,
         textColor: newTextColor,
         textHoverColor: newTextHoverColor,
-    });
-    
-    setLanguageSwitcherForces({
-      forceDark: showDarkHeader || isDiscographyPage,
-      forceLight: showDarkTextOnLoad,
     });
 
   }, [pathname, isScrolled, isMounted, darkLogoUrl, whiteLogoUrl]);
@@ -143,10 +136,6 @@ export function Header() {
               </Link>
             )
           })}
-          <LanguageSwitcher 
-             forceDark={languageSwitcherForces.forceDark} 
-             forceLight={languageSwitcherForces.forceLight} 
-          />
         </nav>
 
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -188,9 +177,6 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
-                <div className="mt-8">
-                  <LanguageSwitcher forceDark={true} />
-                </div>
               </div>
             </SheetContent>
           </Sheet>

@@ -1,10 +1,15 @@
-// src/app/not-found.tsx
 
-import { notFound } from 'next/navigation';
+'use client';
+import messages from '@/messages/en.json';
 
-// This is the root not-found.tsx and it doesn't have access to the locale.
-// It will render the root 404 page, which is not localized.
-// The localized 404 page is handled by `src/app/[locale]/not-found.tsx`.
 export default function NotFoundPage() {
-  notFound();
+  const t = messages.Error;
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-12rem)] text-center px-4 pt-24">
+      <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
+      <h2 className="text-2xl font-semibold mb-2">{t.title}</h2>
+      <p className="text-lg text-muted-foreground">{t.message}</p>
+    </div>
+  );
 }

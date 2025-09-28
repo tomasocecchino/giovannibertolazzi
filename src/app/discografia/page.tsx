@@ -1,15 +1,16 @@
-import { getTranslations } from "next-intl/server";
+
 import Image from "next/image";
 import { DISCOGRAPHY_DATA } from "@/lib/discography-data";
+import messages from '@/messages/en.json';
 
 export default async function DiscographyPage() {
-  const t = await getTranslations('Discography');
-  const d = await getTranslations('DiscographyData');
+  const t = messages.Discography;
+  const d = messages.DiscographyData;
 
   const DISCOGRAPHY = DISCOGRAPHY_DATA.map(album => ({
     ...album,
-    title: d(`${album.id}.title`),
-    awards: album.awards.map((_, index) => d(`${album.id}.awards.${index}`))
+    title: d[album.id.toString() as keyof typeof d].title,
+    awards: album.awards.map((_, index) => d[album.id.toString() as keyof typeof d].awards[index])
   }));
 
 
@@ -20,8 +21,8 @@ export default async function DiscographyPage() {
           Discography
         </h1>
         <blockquote className="max-w-2xl text-lg md:text-xl text-white/80 italic mt-4 mb-16">
-          <p>&quot;{t('heroQuote')}&quot;</p>
-          <cite className="block mt-2 not-italic text-sm text-white/50">{t('heroCite')}</cite>
+          <p>&quot;{t.heroQuote}&quot;</p>
+          <cite className="block mt-2 not-italic text-sm text-white/50">{t.heroCite}</cite>
         </blockquote>
 
         <div className="space-y-16">
@@ -31,7 +32,7 @@ export default async function DiscographyPage() {
                 <div className="flex items-center justify-center">
                   <Image
                     src={album.imageUrl}
-                    alt={t('albumCoverAlt', {albumTitle: album.title})}
+                    alt={t.albumCoverAlt.replace('{albumTitle}', album.title)}
                     width={500}
                     height={500}
                     className="w-full h-auto object-cover aspect-square shadow-lg"
@@ -55,7 +56,7 @@ export default async function DiscographyPage() {
               </div>
               <div className="bg-[#f0f0f0] text-black p-4 md:p-8">
                 <div className="mb-6 font-semibold text-lg">
-                  {t('getYourCopy')} - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a>
+                  {t.getYourCopy} - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a>
                 </div>
                 <div>
                   <ul className="space-y-2 text-sm font-medium text-black/70">

@@ -2,8 +2,8 @@
 'use client';
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { Link } from "@/navigation";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import messages from '@/messages/en.json';
 
 const socialLinks = [
     { name: 'YouTube', href: 'https://www.youtube.com/c/GiovanniBertolazzi' },
@@ -15,7 +15,7 @@ const socialLinks = [
 ];
 
 export default function ContactPage() {
-  const t = useTranslations('Contact');
+  const t = messages.Contact;
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
         <div className="container py-16 md:py-24 pt-32">
@@ -26,7 +26,7 @@ export default function ContactPage() {
                 <div className="max-w-[15rem] mx-auto">
                     <Image
                         src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Contact%20Giovanni%20Bertolazzi.png?alt=media&token=f43d2909-d46d-4df3-83be-b0d4b2f2ec29"
-                        alt={t('imageAlt')}
+                        alt={t.imageAlt}
                         width={150}
                         height={200}
                         className="w-full h-auto object-cover"
@@ -36,7 +36,7 @@ export default function ContactPage() {
                 <div className="mt-8 md:mt-0">
                      <a href="mailto:info@giovannibertolazzi.com" className="flex flex-wrap items-center text-lg md:text-xl text-black/80 border-b border-black/20 pb-4 transition-colors hover:text-[#004a63] hover:border-[#004a63]">
                         <ArrowUpRight className="h-8 w-8 mr-4 text-[#008DDA]"/>
-                        <span className="font-light mr-4">{t('emailLabel')}</span>
+                        <span className="font-light mr-4">{t.emailLabel}</span>
                         <span className="font-medium break-all">info@giovannibertolazzi.com</span>
                     </a>
                 </div>

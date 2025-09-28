@@ -2,10 +2,10 @@
 'use client';
 
 import { HardHat } from "lucide-react";
-import { useTranslations } from "next-intl";
+import messages from '@/messages/en.json';
 
 export default function IdentityPage() {
-  const t = useTranslations('Identity');
+  const t = messages.Identity;
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0]">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32 text-center">
@@ -14,7 +14,7 @@ export default function IdentityPage() {
           Identity
         </h1>
         <p className="text-lg md:text-xl text-black/70 max-w-2xl mx-auto">
-          {t('subtitle')}
+          {t.subtitle}
         </p>
       </div>
     </div>

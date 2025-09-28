@@ -1,11 +1,11 @@
 
 'use client';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { ArrowDown } from 'lucide-react';
+import messages from '@/messages/en.json';
 
 export function HomeHero() {
-    const t = useTranslations('Home');
+    const t = messages.Home;
 
     return (
         <section className="relative min-h-screen flex items-center bg-[#0e141a] overflow-hidden">
@@ -30,18 +30,18 @@ export function HomeHero() {
                                 <span className="font-semibold">Bertolazzi</span>
                             </h1>
                             <p className="mt-4 text-lg sm:text-xl md:text-2xl max-w-xl font-normal text-white/20 tracking-widest">
-                                {t('title')}
+                                {t.title}
                             </p>
                             <blockquote className="mt-8 sm:mt-12 italic text-base sm:text-lg text-white/50 max-w-md">
-                                {t('quote')}
-                                <cite className="block mt-2 not-italic text-sm sm:text-base text-white/20 tracking-widest">{t('quoteCite')}</cite>
+                                {t.quote}
+                                <cite className="block mt-2 not-italic text-sm sm:text-base text-white/20 tracking-widest">{t.quoteCite}</cite>
                             </blockquote>
                         </div>
                         <div className="mt-24 flex items-center gap-4 text-accent absolute bottom-10 left-4 sm:relative sm:bottom-auto sm:left-auto">
                             <ArrowDown className="animate-bounce h-8 w-8" />
                             <div className="text-sm">
-                                <p>{t('scrollDown')}</p>
-                                <p>{t('explore')}</p>
+                                <p>{t.scrollDown}</p>
+                                <p>{t.explore}</p>
                             </div>
                         </div>
                     </div>
