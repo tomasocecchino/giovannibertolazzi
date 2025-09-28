@@ -1,11 +1,37 @@
 
 import Image from "next/image";
 import { DISCOGRAPHY_DATA } from "@/lib/discography-data";
-import messages from '@/messages/en.json';
 
 export default async function DiscographyPage() {
-  const t = messages.Discography;
-  const d = messages.DiscographyData;
+  const t = {
+    title: "Discography",
+    heroQuote: "There is no doubt in my mind that the performances of both Liszt Sonatas (B minor and Dante) are among the very best I have ever heard!",
+    heroCite: "Cyprien Katsaris",
+    albumCoverAlt: "Album cover for {albumTitle}",
+    getYourCopy: "Get your copy",
+    awardSealAlt: "Award Seal"
+  };
+
+  const d = {
+    "1": {
+      "title": "LISZT: PIANO WORKS (2CD)",
+      "awards": [
+        "ICMA Nomination 2024",
+        "\"TOP\" Album MusicPaper Magazine",
+        "5 Stars Rivista MUSICA",
+        "5 Stars PIZZICATO Magazine"
+      ]
+    },
+    "2": {
+      "title": "LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE'S SONETT",
+      "awards": [
+        "ICMA Nomination 2023",
+        "SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)",
+        "5 Stars Rivista MUSICA",
+        "43rd \"Liszt Ferenc Grand Prix du Disque\" from Budapest Liszt Society (2024)"
+      ]
+    }
+  };
 
   const DISCOGRAPHY = DISCOGRAPHY_DATA.map(album => ({
     ...album,

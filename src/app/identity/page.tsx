@@ -2,10 +2,12 @@
 'use client';
 
 import { HardHat } from "lucide-react";
-import messages from '@/messages/en.json';
 
 export default function IdentityPage() {
-  const t = messages.Identity;
+  const t = {
+    title: "Identity",
+    subtitle: "This section is under construction. Come back soon to find out more about Giovanni Bertolazzi's musical philosophy."
+  };
   return (
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0]">
       <div className="container mx-auto px-4 py-16 md:py-24 pt-32 text-center">

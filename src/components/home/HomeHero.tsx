@@ -2,10 +2,15 @@
 'use client';
 import Image from 'next/image';
 import { ArrowDown } from 'lucide-react';
-import messages from '@/messages/en.json';
 
 export function HomeHero() {
-    const t = messages.Home;
+    const t = {
+        title: "CONCERT-PIANIST",
+        quote: "\"The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.\"",
+        quoteCite: "PIZZICATO Magazine",
+        scrollDown: "Scroll Down",
+        explore: "& Explore"
+    };
 
     return (
         <section className="relative min-h-screen flex items-center bg-[#0e141a] overflow-hidden">

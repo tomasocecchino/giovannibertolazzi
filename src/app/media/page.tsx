@@ -11,14 +11,27 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import messages from '@/messages/en.json';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 type View = 'gallery' | 'videos';
 
 export default function MediaPage() {
-  const t = messages.Media;
+  const t = {
+    title: "Media",
+    selectView: "Select view",
+    gallery: "Gallery",
+    videos: "Videos",
+    shooting: "Shooting",
+    noImages: "No images in this section.",
+    galleryImageAlt: "Gallery image",
+    imageViewerTitle: "Image Viewer",
+    enlargedGalleryImageAlt: "Enlarged gallery image",
+    previousImage: "Previous Image",
+    nextImage: "Next Image",
+    loadingVideos: "Loading videos...",
+    videoThumbnailAlt: "Thumbnail for {videoTitle}"
+  };
   const [currentView, setCurrentView] = useState<View>('gallery');
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [shootingImages, setShootingImages] = useState<GalleryImage[]>([]);
@@ -86,7 +99,21 @@ export default function MediaPage() {
 
 interface PhotoGridProps {
   images: GalleryImage[];
-  t: typeof messages.Media;
+  t: {
+    title: string;
+    selectView: string;
+    gallery: string;
+    videos: string;
+    shooting: string;
+    noImages: string;
+    galleryImageAlt: string;
+    imageViewerTitle: string;
+    enlargedGalleryImageAlt: string;
+    previousImage: string;
+    nextImage: string;
+    loadingVideos: string;
+    videoThumbnailAlt: string;
+  };
 }
 
 function PhotoGrid({ images, t }: PhotoGridProps) {
@@ -276,7 +303,7 @@ function getYouTubeThumbnail(url: string): string {
     return `https://picsum.photos/seed/${url}/180/101`;
 }
 
-function VideoGallery({t}: {t: typeof messages.Media}) {
+function VideoGallery({t}: {t: { videoThumbnailAlt: string, loadingVideos: string }}) {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
 

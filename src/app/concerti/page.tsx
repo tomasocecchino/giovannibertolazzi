@@ -14,7 +14,6 @@ import { useState, useEffect } from "react";
 import { getConcerts } from "@/lib/firebase";
 import type { Concert as RawConcert } from "@/lib/firebase";
 import { Loader2 } from "lucide-react";
-import messages from '@/messages/en.json';
 
 // Extend the concert type to work with JS Date objects
 interface Concert extends Omit<RawConcert, 'date'> {
@@ -22,7 +21,16 @@ interface Concert extends Omit<RawConcert, 'date'> {
 }
 
 export default function ConcertsPage() {
-  const t = messages.Concerts;
+  const t = {
+    title: "Concerts",
+    heroAlt: "Giovanni Bertolazzi performing in a concert hall",
+    heroQuote: "Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.",
+    heroCite: "Rivista Musica",
+    infoAndTickets: "Info & Tickets",
+    noConcerts: "No concerts scheduled for {year}.",
+    errorTitle: "Error Loading Concerts",
+    errorHint: "Please ensure your Firestore security rules for the `concerts` collection allow public read access. For example: `match /concerts/{'concertId'} {'{ allow read; }'}`. Also, check that the `date` field is a valid Timestamp or a string that can be parsed into a Date."
+  };
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
   const [allConcerts, setAllConcerts] = useState<Concert[]>([]);
   const [loading, setLoading] = useState(true);

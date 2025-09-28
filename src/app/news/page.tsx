@@ -7,10 +7,15 @@ import Link from 'next/link';
 import Image from "next/image";
 import { format } from 'date-fns';
 import { useEffect, useState } from "react";
-import messages from '@/messages/en.json';
 
 export default function NewsPage() {
-  const t = messages.News;
+  const t = {
+    title: "News",
+    errorTitle: "Error Loading News",
+    errorHint: "Please ensure your Firestore security rules for the `newsArticle` collection allow public read access. For example: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Also, check that all required fields (`date`, `title`, `text`) are present and correctly formatted in your documents.",
+    awardBadgeAlt: "Award Badge",
+    noNews: "No news articles found."
+  };
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

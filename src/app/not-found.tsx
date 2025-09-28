@@ -1,9 +1,11 @@
 
 'use client';
-import messages from '@/messages/en.json';
 
 export default function NotFoundPage() {
-  const t = messages.Error;
+  const t = {
+    title: "Page Not Found",
+    message: "The page you're looking for doesn't exist."
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-12rem)] text-center px-4 pt-24">

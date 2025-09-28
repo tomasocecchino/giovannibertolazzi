@@ -8,7 +8,6 @@ import type { NewsArticle, Video } from "@/lib/firebase";
 import { DISCOGRAPHY_DATA } from '@/lib/discography-data';
 import { HomeHero } from '@/components/home/HomeHero';
 import { format } from 'date-fns';
-import messages from '@/messages/en.json';
 
 function getYouTubeThumbnail(url: string): string {
     let videoId: string | null = null;
@@ -43,9 +42,52 @@ export default async function Home() {
   const allVideos: Video[] = await getVideos();
   const nextTwoVideos = allVideos.slice(0, 2);
 
-  const t = messages.Home;
-  const d = messages.DiscographyData;
-  const tNews = messages.News;
+  const t = {
+    title: "CONCERT-PIANIST",
+    quote: "\"The result is a pianistic drama of overwhelming power on the one hand and poetry on the other.\"",
+    quoteCite: "PIZZICATO Magazine",
+    scrollDown: "Scroll Down",
+    explore: "& Explore",
+    aboutTitle: "ABOUT",
+    aboutText1: "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the prestigious “F. Liszt” International Piano Competition in Budapest.",
+    aboutText2: "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra of National Opera Theatre of Tirana.",
+    aboutText3: "He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND PRIX 333 (3.33 meters long).",
+    aboutText4: "In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.",
+    readAbout: "Read About",
+    exploreCDsTitle: "EXPLORE CDs",
+    viewDiscography: "View Discography",
+    nextConcertsTitle: "NEXT CONCERTS",
+    allConcerts: "All Concerts",
+    buyTicket: "Buy Ticket",
+    noConcerts: "No upcoming concerts scheduled. Please check back soon.",
+    videosTitle: "VIDEOS",
+    viewVideos: "View Videos",
+    albumCoverAlt: "Album cover for {albumTitle}",
+    videoThumbnailAlt: "Thumbnail for {videoTitle}"
+  };
+  const d = {
+    "1": {
+      "title": "LISZT: PIANO WORKS (2CD)",
+      "awards": [
+        "ICMA Nomination 2024",
+        "\"TOP\" Album MusicPaper Magazine",
+        "5 Stars Rivista MUSICA",
+        "5 Stars PIZZICATO Magazine"
+      ]
+    },
+    "2": {
+      "title": "LISZT: PIANO SONATA IN B MINOR, APRÈS UNE LECTURE DU DANTE, HARMONIES DU SOIR, DANTE'S SONETT",
+      "awards": [
+        "ICMA Nomination 2023",
+        "SUPERSONIC PIZZICATO Award (PIZZICATO Magazine)",
+        "5 Stars Rivista MUSICA",
+        "43rd \"Liszt Ferenc Grand Prix du Disque\" from Budapest Liszt Society (2024)"
+      ]
+    }
+  };
+  const tNews = {
+    noNews: "No news articles found."
+  };
 
   const DISCOGRAPHY = DISCOGRAPHY_DATA.map(album => ({
     ...album,
