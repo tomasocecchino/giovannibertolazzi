@@ -5,11 +5,17 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 
+const faviconUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10";
+
 export const metadata: Metadata = {
   title: "Giovanni Bertolazzi",
   description: "The official website of Giovanni Bertolazzi, Concert-Pianist",
   icons: {
-    icon: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10',
+    icon: [
+      { url: faviconUrl, type: 'image/png', sizes: '32x32' },
+      { url: faviconUrl, type: 'image/png', sizes: '16x16' },
+    ],
+    apple: { url: faviconUrl, sizes: '180x180' },
   },
 };
 
@@ -24,7 +30,6 @@ export default function RootLayout({
   return (
     <html lang="en">
         <head>
-        <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10" type="image/png" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
