@@ -2,7 +2,7 @@ import {
   createLocalizedPathnamesNavigation,
   Pathnames
 } from 'next-intl/navigation';
-import {locales, localePrefix} from './i18n';
+import {locales, localePrefix} from './i18nConfig';
  
 // The `pathnames` object holds pairs of internal
 // and external paths, separated by locale.
