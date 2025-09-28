@@ -159,5 +159,9 @@
     "errorHint": "Por favor, asegúrese de que sus reglas de seguridad de Firestore para la colección `newsArticle` permitan el acceso de lectura público. Por ejemplo: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. También, compruebe que todos los campos obligatorios (`date`, `title`, `text`) estén presentes y con el formato correcto en sus documentos.",
     "awardBadgeAlt": "Insignia de premio",
     "noNews": "No se encontraron articles de noticias."
+  },
+  "Error": {
+    "title": "Página no encontrada",
+    "message": "La página que buscas no existe."
   }
 }

@@ -3,6 +3,7 @@ import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Giovanni Bertolazzi",
@@ -18,6 +19,8 @@ export default function LocaleLayout({
   children,
   params: { locale },
 }: Props) {
+  // Enable static rendering
+  setRequestLocale(locale);
 
   return (
       <div className="flex flex-col min-h-screen">

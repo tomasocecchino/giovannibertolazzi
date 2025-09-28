@@ -159,5 +159,9 @@
     "errorHint": "请确保您的Firestore安全规则允许对 `newsArticle` 集合进行公共读取访问。例如：`match /newsArticle/{'articleId'} {'{ allow read; }'}`。另外，请检查您的文档中是否存在所有必填字段（`date`、`title`、`text`）并且格式正确。",
     "awardBadgeAlt": "奖励徽章",
     "noNews": "未找到新闻文章。"
+  },
+  "Error": {
+    "title": "页面未找到",
+    "message": "您要查找的页面不存在。"
   }
 }

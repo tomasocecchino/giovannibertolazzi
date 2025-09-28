@@ -159,5 +159,9 @@
     "errorHint": "Bitte stellen Sie sicher, dass Ihre Firestore-Sicherheitsregeln für die Sammlung `newsArticle` öffentlichen Lesezugriff erlauben. Zum Beispiel: `match /newsArticle/{'articleId'} {'{ allow read; }'}`. Überprüfen Sie auch, ob alle erforderlichen Felder (`date`, `title`, `text`) in Ihren Dokumenten vorhanden und korrekt formatiert sind.",
     "awardBadgeAlt": "Auszeichnungsabzeichen",
     "noNews": "Keine Nachrichtenartikel gefunden."
+  },
+  "Error": {
+    "title": "Seite nicht gefunden",
+    "message": "Die Seite, die Sie suchen, existiert nicht."
   }
 }
