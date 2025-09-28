@@ -3,10 +3,9 @@
 
 import Error from 'next/error';
 
-// Render the default Next.js 404 page when a route
-// is requested that doesn't match the middleware and
-// therefore doesn't have a locale associated with it.
-
+// This component is not used for localized 404 pages.
+// It's a fallback for requests that don't have a locale.
+// The primary 404 page is in [locale]/not-found.tsx.
 export default function NotFound() {
   return (
     <html lang="en">
