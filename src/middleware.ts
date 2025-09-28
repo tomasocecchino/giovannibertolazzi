@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, localePrefix } from './i18nConfig';
+import { locales, localePrefix, defaultLocale } from './i18nConfig';
  
 export default createMiddleware({
   // A list of all locales that are supported
@@ -7,7 +7,7 @@ export default createMiddleware({
   localePrefix,
  
   // Used when no locale matches
-  defaultLocale: 'it'
+  defaultLocale
 });
  
 export const config = {
