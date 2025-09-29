@@ -14,13 +14,16 @@ export function Preloader({ loading }: { loading: boolean }) {
         loading ? 'opacity-100' : 'opacity-0 pointer-events-none'
       )}
     >
-      <div className="relative flex items-center justify-center">
-        <div className="absolute h-24 w-24 animate-spin rounded-full border-2 border-white/50 border-t-white"></div>
+      <div className="relative flex items-center justify-center h-24 w-24">
+        {/* Spinner */}
+        <div className="absolute inset-0 animate-spin rounded-full border-2 border-white/50 border-t-white"></div>
+        {/* Logo */}
         <Image
           src={logoUrl}
           alt="Giovanni Bertolazzi Logo"
           width={64}
           height={64}
+          className="h-16 w-16"
         />
       </div>
     </div>
