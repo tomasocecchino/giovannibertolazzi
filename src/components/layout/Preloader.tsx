@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 export function Preloader({ loading }: { loading: boolean }) {
-  const logoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10";
+  const logoUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Frame%2050%20(2).png?alt=media&token=01f7d64c-3ff7-4cd5-806a-cfa4a17caf5e";
 
   return (
     <div
