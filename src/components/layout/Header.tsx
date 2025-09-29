@@ -89,7 +89,7 @@ export function Header() {
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
     { href: '/about', label: 'ABOUT' },
-    { href: '/concerts', label: 'AGENDA' },
+    { href: '/agenda', label: 'AGENDA' },
     { href: '/media', label: 'MEDIA' },
     { href: '/news', label: 'NEWS' },
     { href: '/discography', label: 'DISCOGRAPHY' },
@@ -185,3 +185,5 @@ export function Header() {
     </header>
   );
 }
+
+    

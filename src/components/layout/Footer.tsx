@@ -6,7 +6,7 @@ export function Footer() {
   const footerNavLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/concerts', label: 'Agenda' },
+    { href: '/agenda', label: 'Agenda' },
     { href: '/media', label: 'Media' },
     { href: '/news', label: 'News' },
     { href: '/discography', label: 'Discography' },
@@ -86,3 +86,5 @@ export function Footer() {
     </footer>
   );
 }
+
+    

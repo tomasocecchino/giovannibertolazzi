@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '/',
     '/about',
-    '/concerts',
+    '/agenda',
     '/media',
     '/news',
     '/discography',
@@ -24,3 +24,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return sitemapEntries;
 }
+
+    
