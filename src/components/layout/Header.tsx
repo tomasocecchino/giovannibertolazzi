@@ -47,7 +47,7 @@ export function Header() {
   useEffect(() => {
     if (!isMounted) return;
     
-    const isDiscographyPage = pathname.startsWith('/discografia');
+    const isDiscographyPage = pathname.startsWith('/discography');
     const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
     
     const showDarkHeader = isScrolled;
@@ -89,10 +89,10 @@ export function Header() {
   const NAV_LINKS = [
     { href: '/', label: 'HOME' },
     { href: '/about', label: 'ABOUT' },
-    { href: '/concerti', label: 'AGENDA' },
+    { href: '/concerts', label: 'AGENDA' },
     { href: '/media', label: 'MEDIA' },
     { href: '/news', label: 'NEWS' },
-    { href: '/discografia', label: 'DISCOGRAPHY' },
+    { href: '/discography', label: 'DISCOGRAPHY' },
     { href: '/identity', label: 'IDENTITY' },
     { href: '/contact', label: 'CONTACT' },
   ];

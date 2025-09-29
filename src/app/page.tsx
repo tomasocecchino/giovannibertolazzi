@@ -126,7 +126,7 @@ export default async function Home() {
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
               EXPLORE <span className="text-accent">CDs</span>
             </h2>
-            <Link href="/discografia" className="text-white font-semibold hover:underline">
+            <Link href="/discography" className="text-white font-semibold hover:underline">
               {t.viewDiscography} <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
