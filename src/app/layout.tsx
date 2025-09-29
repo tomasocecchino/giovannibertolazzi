@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 
 const faviconUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10";
+const ogImageUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Media%2FGallery%2FBERTOLAZZI26.png?alt=media&token=ee920d5b-1cc9-49b3-ac35-b252e53e483b";
 
 export const metadata: Metadata = {
   title: "Giovanni Bertolazzi",
@@ -16,6 +17,19 @@ export const metadata: Metadata = {
       { url: faviconUrl, type: 'image/png', sizes: '16x16' },
     ],
     apple: { url: faviconUrl, sizes: '180x180' },
+  },
+  openGraph: {
+    title: "Giovanni Bertolazzi",
+    description: "The official website of Giovanni Bertolazzi, Concert-Pianist",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Giovanni Bertolazzi",
+      },
+    ],
+    type: 'website',
   },
 };
 
