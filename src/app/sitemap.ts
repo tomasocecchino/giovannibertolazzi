@@ -1,0 +1,25 @@
+import { MetadataRoute } from 'next'
+ 
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://www.giovannibertolazzi.com';
+
+  const staticRoutes = [
+    '/',
+    '/about',
+    '/concerts',
+    '/media',
+    '/news',
+    '/discography',
+    '/identity',
+    '/contact',
+  ];
+
+  const sitemapEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: route === '/' ? 1 : 0.8,
+  }));
+
+  return sitemapEntries;
+}
