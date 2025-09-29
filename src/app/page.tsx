@@ -120,7 +120,7 @@ export default async function Home() {
       </section>
 
       {/* Explore CDs Section */}
-      <section id="cds" className="bg-[#004165] py-16 md:py-24">
+      <section id="discography" className="bg-[#004165] py-16 md:py-24">
         <div className="container">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">
@@ -204,7 +204,7 @@ export default async function Home() {
       </section>
 
       {/* Videos Section */}
-      <section id="videos" className="bg-[#004165] py-16 md:py-24">
+      <section id="media" className="bg-[#004165] py-16 md:py-24">
         <div className="container">
            <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
