@@ -1,5 +1,5 @@
 
-'use client'; // Required for useEffect and useState
+'use client'; 
 
 import type { Metadata } from "next";
 import "./globals.css";
@@ -7,7 +7,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { useState, useEffect } from 'react';
-import { Preloader } from '@/components/layout/Preloader';
 import { usePathname } from 'next/navigation';
 
 // Metadata cannot be exported from a client component. 
@@ -47,20 +46,6 @@ type Props = {
 export default function RootLayout({
   children,
 }: Props) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // This logic now runs only on the client, after the initial render.
-    if (sessionStorage.getItem('preloaderShown')) {
-      setLoading(false);
-    } else {
-      const timer = setTimeout(() => {
-        setLoading(false);
-        sessionStorage.setItem('preloaderShown', 'true');
-      }, 2000); // 2 seconds
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   useEffect(() => {
     document.title = "Giovanni Bertolazzi | Concert Pianist";
@@ -82,7 +67,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased bg-[#0e141a]">
-        <Preloader loading={loading} />
         <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow -mt-24">{children}</main>
