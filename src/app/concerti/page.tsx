@@ -98,7 +98,7 @@ export default function ConcertsPage() {
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white bg-black">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Media%2FGallery%2FBERTOLAZZI29.jpg?alt=media&token=9e6c6c20-dc57-4aaf-a3c1-fea44ee077b1"
+            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Bertolazzi%20Giovanni%20Agenda.png?alt=media&token=5abb287b-3c95-42e3-a307-356eb91252b3"
             alt={t.heroAlt}
             fill
             priority
