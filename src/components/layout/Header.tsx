@@ -48,12 +48,12 @@ export function Header() {
     if (!isMounted) return;
     
     const isDiscographyPage = pathname.startsWith('/discography');
-    const isLightPage = ['/media', '/news', '/identity', '/contact'].some(p => pathname.startsWith(p));
+    const isLightPage = ['/media', '/news', '/identity', '/contact', '/privacy-policy', '/terms-of-service'].some(p => pathname.startsWith(p));
     
     const showDarkHeader = isScrolled;
     const showDarkTextOnLoad = isLightPage && !isScrolled;
 
-    setLogoUrl(isDiscographyPage ? whiteLogoUrl : darkLogoUrl);
+    setLogoUrl((showDarkHeader || isDiscographyPage) ? whiteLogoUrl : darkLogoUrl);
 
     const newBgColor = showDarkHeader ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
     let newTextColor = 'text-white';
@@ -185,5 +185,3 @@ export function Header() {
     </header>
   );
 }
-
-    
