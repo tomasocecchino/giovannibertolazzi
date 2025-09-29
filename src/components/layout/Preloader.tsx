@@ -23,7 +23,7 @@ export function Preloader({ loading }: { loading: boolean }) {
           alt="Giovanni Bertolazzi Logo"
           width={64}
           height={64}
-          className="h-16 w-16"
+          className="object-contain"
         />
       </div>
     </div>
