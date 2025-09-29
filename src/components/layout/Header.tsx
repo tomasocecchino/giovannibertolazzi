@@ -53,7 +53,7 @@ export function Header() {
     const showDarkHeader = isScrolled;
     const showDarkTextOnLoad = isLightPage && !isScrolled;
 
-    setLogoUrl((showDarkHeader || isDiscographyPage) ? whiteLogoUrl : darkLogoUrl);
+    setLogoUrl(darkLogoUrl); // Always use the dark (blue) logo
 
     const newBgColor = showDarkHeader ? 'bg-black/80 backdrop-blur-sm' : 'bg-transparent';
     let newTextColor = 'text-white';
@@ -77,12 +77,35 @@ export function Header() {
     } else {
         newTextHoverColor = 'text-white/60 hover:text-white';
     }
+    
+    // On pages with light background from the start, we might want a different logo logic
+    if (isLightPage && !isScrolled) {
+        setLogoUrl(darkLogoUrl);
+        newTextColor = 'text-black';
+        newTextHoverColor = 'text-black/60 hover:text-black';
+    } else if (isScrolled) {
+        setLogoUrl(whiteLogoUrl); // Use white logo on dark scrolled header
+        newTextColor = 'text-white';
+        newTextHoverColor = 'text-white/60 hover:text-white';
+    } else if (isDiscographyPage) {
+        setLogoUrl(whiteLogoUrl);
+        newTextColor = 'text-white';
+        newTextHoverColor = 'text-white/60 hover:text-white';
+    } else {
+        setLogoUrl(whiteLogoUrl); // Default for transparent header on hero sections
+        newTextColor = 'text-white';
+        newTextHoverColor = 'text-white/60 hover:text-white';
+    }
 
     setHeaderState({
         bgColor: newBgColor,
         textColor: newTextColor,
         textHoverColor: newTextHoverColor,
     });
+    
+    // This is the final override to keep the logo always blue
+    setLogoUrl(darkLogoUrl);
+
 
   }, [pathname, isScrolled, isMounted, darkLogoUrl, whiteLogoUrl]);
 
