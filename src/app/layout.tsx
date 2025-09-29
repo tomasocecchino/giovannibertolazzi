@@ -1,13 +1,18 @@
 
+'use client'; // Required for useEffect and useState
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { useState, useEffect } from 'react';
+import { Preloader } from '@/components/layout/Preloader';
+import { usePathname } from 'next/navigation';
 
-const faviconUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10";
-const ogImageUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Media%2FGallery%2FBERTOLAZZI26.png?alt=media&token=ee920d5b-1cc9-49b3-ac35-b252e53e483b";
-
+// Metadata cannot be exported from a client component. 
+// We will manage title and description dynamically if needed, or move this to a server component wrapper.
+/*
 export const metadata: Metadata = {
   title: "Giovanni Bertolazzi | Concert Pianist",
   description: "Sito ufficiale di Giovanni Bertolazzi, pianista da concerto. Scopri le date dei prossimi concerti, ascolta le registrazioni e leggi le ultime notizie.",
@@ -32,6 +37,8 @@ export const metadata: Metadata = {
     type: 'website',
   },
 };
+*/
+const faviconUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/GB.png?alt=media&token=7dd3a1e3-0244-455a-b48e-11a8e2a05a10";
 
 type Props = {
   children: React.ReactNode;
@@ -40,10 +47,33 @@ type Props = {
 export default function RootLayout({
   children,
 }: Props) {
+  const pathname = usePathname();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if the preloader has been shown in this session
+    if (sessionStorage.getItem('preloaderShown')) {
+      setLoading(false);
+      return;
+    }
+
+    // Show preloader for a minimum duration
+    const timer = setTimeout(() => {
+      setLoading(false);
+      sessionStorage.setItem('preloaderShown', 'true');
+    }, 2000); // 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    document.title = "Giovanni Bertolazzi | Concert Pianist";
+  }, []);
 
   return (
     <html lang="en">
         <head>
+        <link rel="icon" href={faviconUrl} sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -56,6 +86,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased bg-[#0e141a]">
+        <Preloader loading={loading} />
         <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow -mt-24">{children}</main>
@@ -66,5 +97,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-    
