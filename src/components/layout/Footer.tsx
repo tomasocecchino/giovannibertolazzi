@@ -16,7 +16,7 @@ export function Footer() {
   
   const dataProtectionLinks = [
      { href: '/privacy-policy', label: 'Privacy Policy' },
-     { href: '#', label: 'Terms & Conditions' },
+     { href: '/terms-of-service', label: 'Terms & Conditions' },
      { href: '#', label: 'Cookie Policy' },
   ];
   
