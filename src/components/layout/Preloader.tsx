@@ -21,7 +21,6 @@ export function Preloader({ loading }: { loading: boolean }) {
           alt="Giovanni Bertolazzi Logo"
           width={64}
           height={64}
-          className="rounded-full"
         />
       </div>
     </div>
