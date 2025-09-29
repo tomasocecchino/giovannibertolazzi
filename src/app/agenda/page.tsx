@@ -22,7 +22,7 @@ interface Concert extends Omit<RawConcert, 'date'> {
 
 export default function AgendaPage() {
   const t = {
-    title: "Agenda",
+    title: "Concerts",
     heroAlt: "Giovanni Bertolazzi performing in a concert hall",
     heroQuote: "Giovanni Bertolazzi performed Rachmaninov’s Third Concerto, capable of enhancing its full range and richness of sound.",
     heroCite: "Rivista Musica",
@@ -110,7 +110,7 @@ export default function AgendaPage() {
         <div className="container z-10 text-left relative pt-24">
             <div className="flex items-end gap-4">
                  <h1 className="text-5xl md:text-7xl font-semibold font-headline text-white mb-4">
-                    Agenda
+                    Concerts
                 </h1>
                 <Select value={selectedYear} onValueChange={setSelectedYear}>
                     <SelectTrigger 
