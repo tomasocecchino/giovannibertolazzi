@@ -15,7 +15,7 @@ export function Footer() {
   ];
   
   const dataProtectionLinks = [
-     { href: '#', label: 'Privacy Policy' },
+     { href: '/privacy-policy', label: 'Privacy Policy' },
      { href: '#', label: 'Terms & Conditions' },
      { href: '#', label: 'Cookie Policy' },
   ];
@@ -55,7 +55,7 @@ export function Footer() {
              <ul className="space-y-2">
                  {dataProtectionLinks.map(link => (
                     <li key={link.label}>
-                        <Link href={link.href} className="text-foreground hovertext-accent transition-colors font-medium text-sm">
+                        <Link href={link.href} className="text-foreground hover:text-accent transition-colors font-medium text-sm">
                             {link.label}
                         </Link>
                     </li>

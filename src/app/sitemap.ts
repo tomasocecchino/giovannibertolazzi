@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/discography',
     '/identity',
     '/contact',
+    '/privacy-policy',
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
