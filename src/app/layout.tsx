@@ -9,18 +9,18 @@ const faviconUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertola
 const ogImageUrl = "https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Media%2FGallery%2FBERTOLAZZI26.png?alt=media&token=ee920d5b-1cc9-49b3-ac35-b252e53e483b";
 
 export const metadata: Metadata = {
-  title: "Giovanni Bertolazzi",
-  description: "The official website of Giovanni Bertolazzi, Concert-Pianist",
+  title: "Giovanni Bertolazzi | Concert Pianist",
+  description: "Sito ufficiale di Giovanni Bertolazzi, pianista da concerto. Scopri le date dei prossimi concerti, ascolta le registrazioni e leggi le ultime notizie.",
   icons: {
     icon: [
       { url: faviconUrl, type: 'image/png', sizes: '32x32' },
       { url: faviconUrl, type: 'image/png', sizes: '16x16' },
     ],
-    apple: { url: faviconUrl, sizes: '180x180' },
+    apple: [{ url: faviconUrl, sizes: '180x180' }],
   },
   openGraph: {
-    title: "Giovanni Bertolazzi",
-    description: "The official website of Giovanni Bertolazzi, Concert-Pianist",
+    title: "Giovanni Bertolazzi | Concert Pianist",
+    description: "Sito ufficiale di Giovanni Bertolazzi, pianista da concerto. Scopri le date dei prossimi concerti, ascolta le registrazioni e leggi le ultime notizie.",
     images: [
       {
         url: ogImageUrl,
@@ -66,3 +66,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

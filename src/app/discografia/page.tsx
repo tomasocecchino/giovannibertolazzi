@@ -1,6 +1,12 @@
 
 import Image from "next/image";
 import { DISCOGRAPHY_DATA } from "@/lib/discography-data";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Discography | Giovanni Bertolazzi',
+  description: "Esplora la discografia completa di Giovanni Bertolazzi, incluse le premiate registrazioni di Liszt. Ascolta gli album in streaming e scopri dove acquistarli.",
+};
 
 export default async function DiscographyPage() {
   const t = {
@@ -102,3 +108,5 @@ export default async function DiscographyPage() {
     </div>
   );
 }
+
+    
