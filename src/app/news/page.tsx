@@ -1,14 +1,12 @@
 
-'use client';
 import { getNews } from "@/lib/firebase";
 import type { NewsArticle } from "@/lib/firebase";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from 'next/link';
 import Image from "next/image";
 import { format } from 'date-fns';
-import { useEffect, useState } from "react";
 
-export default function NewsPage() {
+export default async function NewsPage() {
   const t = {
     title: "News",
     errorTitle: "Error Loading News",
@@ -16,32 +14,14 @@ export default function NewsPage() {
     awardBadgeAlt: "Award Badge",
     noNews: "No news articles found."
   };
-  const [news, setNews] = useState<NewsArticle[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  
+  let news: NewsArticle[] = [];
+  let error: string | null = null;
 
-  useEffect(() => {
-    async function loadNews() {
-      try {
-        setLoading(true);
-        const fetchedNews = await getNews();
-        setNews(fetchedNews);
-        setError(null);
-      } catch (err: any) {
-        setError(err.message || 'An unknown error occurred.');
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadNews();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-[#f0f0f0]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
+  try {
+    news = await getNews();
+  } catch (err: any) {
+    error = err.message || 'An unknown error occurred.';
   }
 
   if (error) {
@@ -66,7 +46,7 @@ export default function NewsPage() {
         </h1>
 
         <div className="max-w-4xl mx-auto space-y-12">
-          {news.length > 0 ? news.map((item) => {
+          {news.length > 0 ? news.map((item, index) => {
             const dateObj = new Date(item.date);
             const formattedDate = format(dateObj, 'dd/MM/yyyy');
 
@@ -82,6 +62,7 @@ export default function NewsPage() {
                             className="object-cover"
                             data-ai-hint="news article" 
                             sizes="(max-width: 768px) 120px, 180px"
+                            priority={index === 0}
                         />
                     ) : (
                       <div className="w-full h-full bg-gray-200"></div>
