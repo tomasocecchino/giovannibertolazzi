@@ -95,10 +95,10 @@ export default function ConcertsPage() {
   return (
     <div className="animate-in fade-in duration-500">
        {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center text-white bg-black">
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white bg-black">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Agenda%2F17_MicheleMonasta_2M_09180%201.png?alt=media&token=fde8cce3-3f89-4123-bb0f-364cd05bfdf5"
+            src="https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Media%2FGallery%2FBERTOLAZZI29.jpg?alt=media&token=9e6c6c20-dc57-4aaf-a3c1-fea44ee077b1"
             alt={t.heroAlt}
             fill
             priority
