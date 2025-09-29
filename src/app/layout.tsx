@@ -47,23 +47,19 @@ type Props = {
 export default function RootLayout({
   children,
 }: Props) {
-  const pathname = usePathname();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the preloader has been shown in this session
+    // This logic now runs only on the client, after the initial render.
     if (sessionStorage.getItem('preloaderShown')) {
       setLoading(false);
-      return;
+    } else {
+      const timer = setTimeout(() => {
+        setLoading(false);
+        sessionStorage.setItem('preloaderShown', 'true');
+      }, 2000); // 2 seconds
+      return () => clearTimeout(timer);
     }
-
-    // Show preloader for a minimum duration
-    const timer = setTimeout(() => {
-      setLoading(false);
-      sessionStorage.setItem('preloaderShown', 'true');
-    }, 2000); // 2 seconds
-
-    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
