@@ -1,7 +1,8 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PhotoGallery from '@/components/media/PhotoGallery';
 import VideoGallery from '@/components/media/VideoGallery';
@@ -13,11 +14,34 @@ interface MediaPageProps {
   galleryImages: GalleryImage[];
   shootingImages: GalleryImage[];
   videos: Video[];
-  initialView: View;
 }
 
-export default function MediaPage({ galleryImages, shootingImages, videos, initialView }: MediaPageProps) {
+function MediaPageComponent({ galleryImages, shootingImages, videos }: MediaPageProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const initialView = searchParams.get('view') === 'videos' ? 'videos' : 'gallery';
+
   const [currentView, setCurrentView] = useState<View>(initialView);
+
+  useEffect(() => {
+    // This effect ensures that if the user navigates back/forward,
+    // the tab selection updates to match the URL.
+    const newView = searchParams.get('view') === 'videos' ? 'videos' : 'gallery';
+    if (newView !== currentView) {
+      setCurrentView(newView);
+    }
+  }, [searchParams, currentView]);
+
+
+  const handleValueChange = (value: string) => {
+    const newView = value as View;
+    setCurrentView(newView);
+    // Update the URL to reflect the tab change, without reloading the page
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('view', newView);
+    router.replace(`${pathname}?${newSearchParams.toString()}`);
+  };
 
   const t = {
     title: "Media",
@@ -30,7 +54,7 @@ export default function MediaPage({ galleryImages, shootingImages, videos, initi
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
       <div className="container py-16 md:py-24 pt-32">
 
-        <Tabs value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
+        <Tabs value={currentView} onValueChange={handleValueChange} className="w-full">
           <div className="flex items-baseline gap-x-6 mb-8 md:mb-12">
             <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
               {t.title}
@@ -60,4 +84,14 @@ export default function MediaPage({ galleryImages, shootingImages, videos, initi
       </div>
     </div>
   );
+}
+
+
+// A wrapper component is needed to use Suspense for useSearchParams
+export default function MediaPage(props: MediaPageProps) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MediaPageComponent {...props} />
+    </Suspense>
+  )
 }
