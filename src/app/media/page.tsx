@@ -13,10 +13,11 @@ interface MediaPageProps {
   galleryImages: GalleryImage[];
   shootingImages: GalleryImage[];
   videos: Video[];
+  initialView: View;
 }
 
-export default function MediaPage({ galleryImages, shootingImages, videos }: MediaPageProps) {
-  const [currentView, setCurrentView] = useState<View>('gallery');
+export default function MediaPage({ galleryImages, shootingImages, videos, initialView }: MediaPageProps) {
+  const [currentView, setCurrentView] = useState<View>(initialView);
 
   const t = {
     title: "Media",
@@ -29,7 +30,7 @@ export default function MediaPage({ galleryImages, shootingImages, videos }: Med
     <div className="animate-in fade-in duration-500 bg-[#f0f0f0] text-black">
       <div className="container py-16 md:py-24 pt-32">
 
-        <Tabs defaultValue="gallery" value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
+        <Tabs defaultValue={initialView} value={currentView} onValueChange={(value) => setCurrentView(value as View)} className="w-full">
           <div className="flex items-baseline gap-x-6 mb-8 md:mb-12">
             <h1 className="text-4xl md:text-6xl font-semibold font-headline text-[#004165]">
               {t.title}

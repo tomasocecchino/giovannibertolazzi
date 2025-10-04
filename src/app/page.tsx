@@ -208,7 +208,7 @@ export default async function Home() {
         <div className="container">
            <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl md:text-5xl font-headline font-semibold text-white">VIDEOS</h2>
-            <Link href="/media" className="text-white font-semibold hover:underline">
+            <Link href="/media?view=videos" className="text-white font-semibold hover:underline">
               {t.viewVideos} <ArrowRight className="inline h-4 w-4" />
             </Link>
           </div>
