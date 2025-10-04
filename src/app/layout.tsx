@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import Script from "next/script";
 
 // Metadata cannot be exported from a client component. 
 // We will manage title and description dynamically if needed, or move this to a server component wrapper.
@@ -67,6 +68,19 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased bg-[#0e141a]">
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-EJJDD2DPK0"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-EJJDD2DPK0');
+          `}
+        </Script>
         <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow -mt-24">{children}</main>
