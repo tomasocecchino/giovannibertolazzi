@@ -37,10 +37,10 @@ export default function ContactPage() {
                     />
                 </div>
                 <div className="mt-8 md:mt-0">
-                     <a href="mailto:info@giovannibertolazzi.com" className="flex flex-wrap items-center text-lg md:text-xl text-black/80 border-b border-black/20 pb-4 transition-colors hover:text-[#004a63] hover:border-[#004a63]">
+                     <a href="mailto:giovannibertolazzi98@gmail.com" className="flex flex-wrap items-center text-lg md:text-xl text-black/80 border-b border-black/20 pb-4 transition-colors hover:text-[#004a63] hover:border-[#004a63]">
                         <ArrowUpRight className="h-8 w-8 mr-4 text-[#008DDA]"/>
                         <span className="font-light mr-4">{t.emailLabel}</span>
-                        <span className="font-medium break-all">info@giovannibertolazzi.com</span>
+                        <span className="font-medium break-all">giovannibertolazzi98@gmail.com</span>
                     </a>
                 </div>
             </div>
