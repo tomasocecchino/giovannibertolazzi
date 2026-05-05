@@ -1,10 +1,11 @@
-
 import { getNews } from "@/lib/firebase";
 import type { NewsArticle } from "@/lib/firebase";
 import { ArrowRight } from "lucide-react";
 import Link from 'next/link';
 import Image from "next/image";
 import { format } from 'date-fns';
+
+export const revalidate = 0;
 
 export default async function NewsPage() {
   const t = {

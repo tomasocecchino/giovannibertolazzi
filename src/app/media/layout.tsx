@@ -1,6 +1,7 @@
-
 import { getGalleryImages, getVideos } from '@/lib/firebase';
 import MediaPage from './page';
+
+export const revalidate = 0;
 
 export default async function MediaLayout() {
   const allImages = await getGalleryImages();

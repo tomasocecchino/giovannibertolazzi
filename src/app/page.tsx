@@ -9,6 +9,8 @@ import { DISCOGRAPHY_DATA } from '@/lib/discography-data';
 import { HomeHero } from '@/components/home/HomeHero';
 import { format } from 'date-fns';
 
+export const revalidate = 0;
+
 function getYouTubeThumbnail(url: string): string {
     let videoId: string | null = null;
     try {
