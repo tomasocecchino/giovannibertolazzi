@@ -53,7 +53,7 @@ export default async function Home() {
     aboutTitle: "ABOUT",
     aboutText1: "Giovanni Bertolazzi made his mark on the international scene by winning 2nd prize and 5 special prizes at the prestigious “F. Liszt” International Piano Competition in Budapest.",
     aboutText2: "Highlights of his career include appearances with the Hungarian Philharmonic Orchestra, Orchestra del Maggio Musicale Fiorentino, the Kodály Philharmonic Orchestra, Orchestra del Teatro La Fenice, Orchestra of National Opera Theatre of Tirana.",
-    aboutText3: "He officially performed on the world’s longest concert-grand piano during his first public presentation, the BORGATO GRAND PRIX 333 (3.33 meters long).",
+    aboutText3: "He was the pianist who presented the world’s longest concert grand piano to the public, the BORGATO GRAND PRIX 333 (3.33 metres in length).",
     aboutText4: "In 2024, he was awarded the 43rd “Liszt Ferenc International Grand Prix Du Disque” by the Liszt Society of Budapest for his Liszt recordings.",
     readAbout: "Read About",
     exploreCDsTitle: "EXPLORE CDs",
@@ -68,6 +68,10 @@ export default async function Home() {
     videoThumbnailAlt: "Thumbnail for {videoTitle}"
   };
   const d = {
+    "3": {
+      "title": "LISZT: PAGANINI ETUDES, CONCERT ETUDES",
+      "awards": []
+    },
     "1": {
       "title": "LISZT: PIANO WORKS (2CD)",
       "awards": [
@@ -133,7 +137,7 @@ export default async function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {DISCOGRAPHY.slice(0, 2).map((album) => (
+            {DISCOGRAPHY.slice(0, 3).map((album) => (
               <Card key={album.id} className="bg-transparent border-0 shadow-none overflow-hidden group">
                 <CardHeader className="p-0">
                   <Image

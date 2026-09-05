@@ -1,6 +1,15 @@
 
 export const DISCOGRAPHY_DATA = [
   {
+    id: 3,
+    recordLabel: 'PIANO CLASSICS',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/Liszt_Paganini_Etudes_Cover.jpg?alt=media&token=c4fb053d-ad2c-4e27-b282-df57117ce0d1',
+    spotifyEmbedUrl: 'https://open.spotify.com/embed/album/0G1hj8DnSoJV47B8KhYome?utm_source=generator&theme=0',
+    copyLink: 'https://www.piano-classics.com/articles/l/liszt-paganini-etudes-concert-etudes/',
+    copyLinkText: 'Piano Classics',
+    awards: [],
+  },
+  {
     id: 1,
     recordLabel: 'BORGATO COLLECTION',
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/giovanni-bertolazzi.firebasestorage.app/o/LISZT-DOPPIO-CD.png?alt=media&token=4ead12fc-8dae-4802-aa89-6ac3a320358e',

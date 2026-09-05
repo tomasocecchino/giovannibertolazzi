@@ -19,6 +19,10 @@ export default async function DiscographyPage() {
   };
 
   const d = {
+    "3": {
+      "title": "LISZT: PAGANINI ETUDES, CONCERT ETUDES",
+      "awards": []
+    },
     "1": {
       "title": "LISZT: PIANO WORKS (2CD)",
       "awards": [
@@ -88,7 +92,11 @@ export default async function DiscographyPage() {
               </div>
               <div className="bg-[#f0f0f0] text-black p-4 md:p-8">
                 <div className="mb-6 font-semibold text-lg">
-                  {t.getYourCopy} - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a>
+                  {album.copyLink ? (
+                    <>{t.getYourCopy} - <a href={album.copyLink} target="_blank" rel="noopener noreferrer" className="text-[#004a63] hover:underline">{album.copyLinkText}</a></>
+                  ) : (
+                    <>{t.getYourCopy} - <a href={`mailto:${album.copyEmail}`} className="text-[#004a63] hover:underline">{album.copyEmail}</a></>
+                  )}
                 </div>
                 <div>
                   <ul className="space-y-2 text-sm font-medium text-black/70">
